@@ -81,6 +81,8 @@ export function Callout({ children, type = 'info', title }: { children: React.Re
 }
 
 export function GlossaryIndex({ terms }: { terms: string[] }) {
+  if (!terms || !Array.isArray(terms)) return null
+
   return (
     <div className="mt-12 p-6 rounded-xl border border-border bg-surface/30">
       <h3 className="text-lg font-bold text-text-primary mb-4 flex items-center gap-2">
