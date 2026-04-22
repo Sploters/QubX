@@ -1,5 +1,0 @@
-https://www.ibm.com/br-pt/topics/quantum-computing
-
-https://qiskit.org/
-
-https://quantum-computing.ibm.com/composer/files/new
