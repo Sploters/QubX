@@ -4,7 +4,14 @@ import remarkGfm from 'remark-gfm'
 import { MODULES, getModuleBySlug, getAdjacentModules } from '@/lib/modules'
 import { getModuleContent } from '@/lib/mdx'
 import { ModuleLayout } from '@/components/ModuleLayout'
+import { Term, Callout, GlossaryIndex } from '@/components/mdx'
 import type { Metadata } from 'next'
+
+const mdxComponents = {
+  Term,
+  Callout,
+  GlossaryIndex,
+}
 
 interface PageProps {
   params: { slug: string }
@@ -32,7 +39,11 @@ export default function ModulePage({ params }: PageProps) {
 
   return (
     <ModuleLayout module={mod} prev={prev} next={next}>
-      <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+      <MDXRemote 
+        source={content} 
+        components={mdxComponents}
+        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} 
+      />
     </ModuleLayout>
   )
 }

@@ -1,3 +1,9 @@
+export interface Reference {
+  title: string
+  url: string
+  type: 'article' | 'book' | 'video' | 'paper'
+}
+
 export interface Module {
   slug: string
   order: number
@@ -5,6 +11,7 @@ export interface Module {
   description: string
   videoUrl?: string
   images: string[]
+  references?: Reference[]
 }
 
 export const MODULES: Module[] = [
@@ -15,6 +22,18 @@ export const MODULES: Module[] = [
     description: 'A corrida quântica global já começou. Entenda por que governos e gigantes da tecnologia investem bilhões nessa tecnologia e o que está em jogo.',
     videoUrl: 'https://www.youtube.com/embed/e3fz3dqhN44',
     images: ['/images/bit-vs-qubit.png'],
+    references: [
+      {
+        title: 'Quantum Computing for Everyone (Bernhardt)',
+        url: 'https://mitpress.mit.edu/9780262539531/quantum-computing-for-everyone/',
+        type: 'book'
+      },
+      {
+        title: 'Google: Quantum Supremacy Using a Programmable Superconducting Processor',
+        url: 'https://www.nature.com/articles/s41586-019-1666-5',
+        type: 'paper'
+      }
+    ]
   },
   {
     slug: '02-o-mundo-quantico',
@@ -23,6 +42,18 @@ export const MODULES: Module[] = [
     description: 'Antes dos qubits, existe a física quântica. Descubra os experimentos e princípios que revelaram que a realidade funciona de forma completamente diferente do que imaginamos.',
     videoUrl: 'https://www.youtube.com/embed/CfpvQFGNrXk',
     images: [],
+    references: [
+      {
+        title: 'The Feynman Lectures on Physics: Quantum Mechanics',
+        url: 'https://www.feynmanlectures.caltech.edu/III_toc.html',
+        type: 'book'
+      },
+      {
+        title: 'Experiment of the Double Slit - Veritasium',
+        url: 'https://www.youtube.com/watch?v=A9tKncAdlHQ',
+        type: 'video'
+      }
+    ]
   },
   {
     slug: '03-qubits-alem-do-bit',

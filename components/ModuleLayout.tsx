@@ -74,6 +74,35 @@ export function ModuleLayout({ module, prev, next, children }: ModuleLayoutProps
             </div>
           )}
 
+          {/* References */}
+          {module.references && module.references.length > 0 && (
+            <div className="mt-10 pt-10 border-t border-border">
+              <h2 className="text-xl font-semibold text-text-primary mb-4 flex items-center gap-2">
+                📚 Referências e Aprofundamento
+              </h2>
+              <ul className="grid gap-3 list-none p-0">
+                {module.references.map((ref, i) => (
+                  <li key={i} className="m-0">
+                    <a 
+                      href={ref.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-surface/50 hover:border-purple/50 transition-all no-underline group"
+                    >
+                      <span className="text-xs uppercase px-2 py-1 rounded bg-border text-text-muted group-hover:text-purple group-hover:bg-purple/10 transition-colors">
+                        {ref.type}
+                      </span>
+                      <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">
+                        {ref.title}
+                      </span>
+                      <span className="ml-auto text-text-muted opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* Prev / Next navigation */}
           <nav aria-label="Navegação entre módulos" className="mt-12 flex gap-4">
             {prev ? (
