@@ -23,16 +23,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/e3fz3dqhN44',
     images: ['/images/bit-vs-qubit.png'],
     references: [
-      {
-        title: 'Quantum Computing for Everyone (Bernhardt)',
-        url: 'https://mitpress.mit.edu/9780262539531/quantum-computing-for-everyone/',
-        type: 'book'
-      },
-      {
-        title: 'Google: Quantum Supremacy Using a Programmable Superconducting Processor',
-        url: 'https://www.nature.com/articles/s41586-019-1666-5',
-        type: 'paper'
-      }
+      { title: 'Google: Quantum Supremacy (Nature, 2019)', url: 'https://www.nature.com/articles/s41586-019-1666-5', type: 'paper' },
+      { title: 'Google: Quantum Error Correction com Willow (Nature, 2024)', url: 'https://www.nature.com/articles/s41586-024-08449-y', type: 'paper' },
+      { title: 'Kurzgesagt: Quantum Computers Explained (vídeo)', url: 'https://www.youtube.com/watch?v=JhHMJCUmq28', type: 'video' },
+      { title: 'Quantum Computing for Everyone — Bernhardt (MIT Press)', url: 'https://mitpress.mit.edu/9780262539531/quantum-computing-for-everyone/', type: 'book' },
+      { title: 'IBM Quantum Network — empresas e casos reais', url: 'https://www.ibm.com/quantum/network', type: 'article' },
     ]
   },
   {
@@ -43,16 +38,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/CfpvQFGNrXk',
     images: [],
     references: [
-      {
-        title: 'The Feynman Lectures on Physics: Quantum Mechanics',
-        url: 'https://www.feynmanlectures.caltech.edu/III_toc.html',
-        type: 'book'
-      },
-      {
-        title: 'Experiment of the Double Slit - Veritasium',
-        url: 'https://www.youtube.com/watch?v=A9tKncAdlHQ',
-        type: 'video'
-      }
+      { title: 'Veritasium: O Experimento da Dupla Fenda (vídeo)', url: 'https://www.youtube.com/watch?v=A9tKncAdlHQ', type: 'video' },
+      { title: 'The Feynman Lectures on Physics: Quantum Behavior (Cap. 1)', url: 'https://www.feynmanlectures.caltech.edu/III_01.html', type: 'book' },
+      { title: 'PBS Space Time: Schrödinger\'s Cat (vídeo)', url: 'https://www.youtube.com/watch?v=UjaAxUO6-Uw', type: 'video' },
+      { title: 'Carlo Rovelli: Helgoland', url: 'https://www.amazon.com.br/Helgoland-Rovelli-Carlo/dp/0593328884', type: 'book' },
+      { title: 'Heisenberg: Über den anschaulichen Inhalt (Physics Today)', url: 'https://physicstoday.scitation.org/doi/10.1063/1.3086963', type: 'paper' },
     ]
   },
   {
@@ -63,16 +53,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO',
     images: ['/images/esfera-de-bloch.png', '/images/quantum-bits-qubits1.gif', '/images/quantum-bits-qubits2.gif'],
     references: [
-      {
-        title: 'Preskill: Quantum Computing in the NISQ era and beyond',
-        url: 'https://arxiv.org/abs/1801.00862',
-        type: 'paper'
-      },
-      {
-        title: 'IBM Quantum Learning: Introduction to Quantum Computing',
-        url: 'https://learning.quantum.ibm.com/',
-        type: 'article'
-      }
+      { title: 'Aspect et al.: Experimental Tests of Bell\'s Inequalities (PRL, 1982)', url: 'https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.49.91', type: 'paper' },
+      { title: 'Preskill: Quantum Computing in the NISQ Era and Beyond (arXiv)', url: 'https://arxiv.org/abs/1801.00862', type: 'paper' },
+      { title: 'IBM Research: What is a Qubit? (vídeo)', url: 'https://www.youtube.com/watch?v=zOGNoDO7mcU', type: 'video' },
+      { title: 'MinutePhysics: Bell\'s Theorem — The Quantum Venn Diagram Paradox (vídeo)', url: 'https://www.youtube.com/watch?v=zcqZHYo7ONs', type: 'video' },
+      { title: 'IBM Quantum Learning: Basics of Quantum Information', url: 'https://learning.quantum.ibm.com/course/basics-of-quantum-information', type: 'article' },
     ]
   },
   {
@@ -83,11 +68,10 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO',
     images: ['/images/dirac-notation.png', '/images/standard-basis-vectors.png', '/images/measuring-probabilistic-states.png'],
     references: [
-      {
-        title: 'Dirac: The Principles of Quantum Mechanics',
-        url: 'https://archive.org/details/PrinciplesOfQuantumMechanics',
-        type: 'book'
-      }
+      { title: '3Blue1Brown: Quantum Computing (vídeo)', url: 'https://www.youtube.com/watch?v=spUNpyF58BY', type: 'video' },
+      { title: 'Dirac: The Principles of Quantum Mechanics (archive.org)', url: 'https://archive.org/details/PrinciplesOfQuantumMechanics', type: 'book' },
+      { title: 'MIT OpenCourseWare: Quantum Physics I', url: 'https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/', type: 'article' },
+      { title: 'Quirk — Simulador de Circuitos Quânticos', url: 'https://algassert.com/quirk', type: 'article' },
     ]
   },
   {
@@ -98,16 +82,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/pwwuF-DaPk0',
     images: ['/images/superdense-coding.png', '/images/ibm-device.png'],
     references: [
-      {
-        title: 'Deutsch-Jozsa Algorithm - Qiskit Textbook',
-        url: 'https://learn.qiskit.org/course/ch-algorithms/deutsch-jozsa-algorithm',
-        type: 'article'
-      },
-      {
-        title: 'Quantum Gates and Circuits Visualization',
-        url: 'https://algassert.com/quirk',
-        type: 'video'
-      }
+      { title: 'Deutsch & Jozsa: Rapid Solution of Problems by Quantum Computation (1992)', url: 'https://royalsocietypublishing.org/doi/10.1098/rspa.1992.0167', type: 'paper' },
+      { title: 'Nielsen & Chuang: Quantum Computation and Quantum Information', url: 'https://www.amazon.com.br/Quantum-Computation-Information-10th-Anniversary/dp/1107002176', type: 'book' },
+      { title: 'IBM Quantum Composer — editor visual gratuito', url: 'https://quantum.ibm.com/composer', type: 'article' },
+      { title: 'Quirk — Simulador de Circuitos Quânticos', url: 'https://algassert.com/quirk', type: 'article' },
+      { title: 'Qiskit: Understanding Quantum Gates (vídeo)', url: 'https://www.youtube.com/watch?v=mAHC1dWKNYE', type: 'video' },
     ]
   },
   {
@@ -118,16 +97,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/seersj3W-hg',
     images: [],
     references: [
-      {
-        title: 'Science: Superconducting Qubits: Current State of Play',
-        url: 'https://www.science.org/doi/10.1126/science.abb2823',
-        type: 'paper'
-      },
-      {
-        title: 'Intel: The Path to Practical Quantum Computing',
-        url: 'https://www.intel.com/content/www/us/en/research/quantum-computing.html',
-        type: 'article'
-      }
+      { title: 'Kjaergaard et al.: Superconducting Qubits: Current State of Play (2020)', url: 'https://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031119-050605', type: 'paper' },
+      { title: 'Google: QEC Below the Surface Code Threshold (Nature, 2023)', url: 'https://www.nature.com/articles/s41586-022-05434-1', type: 'paper' },
+      { title: 'IBM Research: Inside a Quantum Computer (vídeo)', url: 'https://www.youtube.com/watch?v=2B680SL4K1I', type: 'video' },
+      { title: 'IonQ: How Trapped-Ion Quantum Computers Work', url: 'https://ionq.com/technology', type: 'article' },
+      { title: 'Microsoft: Topological Qubits Research', url: 'https://www.microsoft.com/en-us/research/research-area/quantum-computing/', type: 'article' },
     ]
   },
   {
@@ -138,11 +112,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/iaWpoPsSBf4',
     images: [],
     references: [
-      {
-        title: 'China’s Quantum Leap - Nature News',
-        url: 'https://www.nature.com/articles/d41586-021-02052-y',
-        type: 'paper'
-      }
+      { title: 'Google: Quantum Supremacy (Nature, 2019)', url: 'https://www.nature.com/articles/s41586-019-1666-5', type: 'paper' },
+      { title: 'Google: Quantum Error Correction com Willow (Nature, 2024)', url: 'https://www.nature.com/articles/s41586-024-08449-y', type: 'paper' },
+      { title: 'IBM Quantum Roadmap', url: 'https://www.ibm.com/quantum/roadmap', type: 'article' },
+      { title: 'Gibney: China\'s Quantum Satellite (Nature News)', url: 'https://www.nature.com/articles/d41586-021-02052-y', type: 'paper' },
+      { title: 'The Quantum Insider — cobertura do mercado quântico', url: 'https://thequantuminsider.com/', type: 'article' },
     ]
   },
   {
@@ -153,16 +127,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/6qD9XElTpCE',
     images: [],
     references: [
-      {
-        title: 'NIST: Post-Quantum Cryptography Standardization',
-        url: 'https://csrc.nist.gov/projects/post-quantum-cryptography',
-        type: 'article'
-      },
-      {
-        title: 'Shor: Algorithms for Quantum Computation (1994)',
-        url: 'https://ieeexplore.ieee.org/document/365700',
-        type: 'paper'
-      }
+      { title: 'Shor: Algorithms for Quantum Computation (IEEE, 1994)', url: 'https://ieeexplore.ieee.org/document/365700', type: 'paper' },
+      { title: 'NIST: Post-Quantum Cryptography Standardization', url: 'https://csrc.nist.gov/projects/post-quantum-cryptography', type: 'article' },
+      { title: 'Computerphile: Quantum Computing and Cryptography (vídeo)', url: 'https://www.youtube.com/watch?v=lvTqbM5Dq4Q', type: 'video' },
+      { title: 'NSA: Commercial National Security Algorithm Suite 2.0', url: 'https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS_.PDF', type: 'article' },
+      { title: 'CISA: Post-Quantum Cryptography Initiative', url: 'https://www.cisa.gov/quantum', type: 'article' },
     ]
   },
   {
@@ -173,11 +142,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/pwwuF-DaPk0',
     images: ['/images/linguagem-quantica.png'],
     references: [
-      {
-        title: 'IBM Quantum Documentation (Qiskit)',
-        url: 'https://docs.quantum.ibm.com/',
-        type: 'article'
-      }
+      { title: 'IBM Quantum Learning — cursos gratuitos', url: 'https://learning.quantum.ibm.com', type: 'article' },
+      { title: 'Qiskit Documentation', url: 'https://docs.quantum.ibm.com/', type: 'article' },
+      { title: 'Canal Qiskit no YouTube', url: 'https://www.youtube.com/@qiskit', type: 'video' },
+      { title: 'IBM Quantum Composer — editor visual', url: 'https://quantum.ibm.com/composer', type: 'article' },
+      { title: 'Qiskit Textbook — livro completo open-source', url: 'https://qiskit.org/learn', type: 'book' },
     ]
   },
   {
@@ -188,16 +157,11 @@ export const MODULES: Module[] = [
     videoUrl: 'https://www.youtube.com/embed/seersj3W-hg',
     images: ['/images/IBM-Q-System-One-display.png', '/images/computador-quantico-IBM-1.png'],
     references: [
-      {
-        title: 'Quantum Sensing: Review and Outlook',
-        url: 'https://arxiv.org/abs/1611.02427',
-        type: 'paper'
-      },
-      {
-        title: 'The Quantum Internet - Science Magazine',
-        url: 'https://www.science.org/doi/10.1126/science.aam9288',
-        type: 'paper'
-      }
+      { title: 'Kimble: The Quantum Internet (Nature, 2008)', url: 'https://www.nature.com/articles/nature07127', type: 'paper' },
+      { title: 'Degen et al.: Quantum Sensing (Reviews of Modern Physics, 2017)', url: 'https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.89.035002', type: 'paper' },
+      { title: 'Veritasium: Quantum Teleportation — How It Really Works (vídeo)', url: 'https://www.youtube.com/watch?v=DxQK1WDYI_k', type: 'video' },
+      { title: 'Amazon Braket — computação quântica na nuvem', url: 'https://aws.amazon.com/braket/', type: 'article' },
+      { title: 'Quanta Magazine: Quantum Computing Coverage', url: 'https://www.quantamagazine.org/tag/quantum-computing/', type: 'article' },
     ]
   },
 ]
