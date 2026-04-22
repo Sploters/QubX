@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import { MODULES, getModuleBySlug, getAdjacentModules } from '@/lib/modules'
 import { getModuleContent } from '@/lib/mdx'
 import { ModuleLayout } from '@/components/ModuleLayout'
@@ -31,7 +32,7 @@ export default function ModulePage({ params }: PageProps) {
 
   return (
     <ModuleLayout module={mod} prev={prev} next={next}>
-      <MDXRemote source={content} />
+      <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
     </ModuleLayout>
   )
 }

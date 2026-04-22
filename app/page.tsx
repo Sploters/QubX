@@ -36,7 +36,7 @@ export default function HomePage() {
             Começar trilha
           </Link>
           <Link
-            href="/modulo/01-o-que-e-computacao-quantica"
+            href="/modulo/01-a-nova-era-da-computacao"
             className="inline-block px-8 py-3 rounded-lg font-semibold text-text-secondary border border-border hover:border-purple hover:text-purple no-underline transition-all"
           >
             Primeiro módulo →
@@ -45,7 +45,7 @@ export default function HomePage() {
 
         <div className="mt-16 grid grid-cols-3 gap-8 text-center">
           {[
-            { label: 'Módulos', value: '6' },
+            { label: 'Módulos', value: '10' },
             { label: 'Nível', value: 'Zero ao técnico' },
             { label: 'Acesso', value: 'Gratuito' },
           ].map(({ label, value }) => (
