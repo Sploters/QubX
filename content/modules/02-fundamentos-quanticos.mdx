@@ -1,0 +1,36 @@
+## Superposição
+
+Um qubit em superposição existe em uma combinação de |0⟩ e |1⟩ simultaneamente. Matematicamente:
+
+```
+|ψ⟩ = α|0⟩ + β|1⟩
+```
+
+onde α e β são números complexos e |α|² + |β|² = 1.
+
+Quando medimos o qubit, ele "colapsa" para 0 com probabilidade |α|² ou para 1 com probabilidade |β|².
+
+![Animação de qubit em superposição](/images/quantum-bits-qubits1.gif)
+
+## Emaranhamento
+
+Dois qubits podem ser **emaranhados**: o estado de um afeta instantaneamente o estado do outro, independente da distância física. Einstein chamou isso de "ação fantasmagórica à distância".
+
+Essa propriedade é fundamental para protocolos como a **Codificação Superdensa** e a **Teleportação Quântica**.
+
+## A Esfera de Bloch
+
+A Esfera de Bloch é a representação visual do estado de um qubit. Cada ponto na superfície da esfera representa um estado quântico possível.
+
+![Esfera de Bloch](/images/esfera-de-bloch.png)
+
+- **Polo norte** → estado |0⟩
+- **Polo sul** → estado |1⟩
+- **Equador** → superposição igual (50/50)
+- **Qualquer outro ponto** → superposição com diferentes probabilidades
+
+Portas quânticas são operações que **rotacionam** o qubit na esfera.
+
+## Decoerência
+
+O maior desafio da computação quântica é a **decoerência**: a tendência dos qubits de perder seu estado quântico ao interagir com o ambiente. É por isso que computadores quânticos reais precisam operar perto do zero absoluto (≈ −273°C).
