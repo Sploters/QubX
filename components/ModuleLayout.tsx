@@ -65,6 +65,7 @@ export function ModuleLayout({ module, prev, next, children }: ModuleLayoutProps
                 <iframe
                   src={module.videoUrl}
                   title={`Vídeo: ${module.title}`}
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full"
                   allowFullScreen
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -74,7 +75,7 @@ export function ModuleLayout({ module, prev, next, children }: ModuleLayoutProps
           )}
 
           {/* Prev / Next navigation */}
-          <nav className="mt-12 flex gap-4">
+          <nav aria-label="Navegação entre módulos" className="mt-12 flex gap-4">
             {prev ? (
               <Link
                 href={`/modulo/${prev.slug}`}
@@ -86,7 +87,12 @@ export function ModuleLayout({ module, prev, next, children }: ModuleLayoutProps
                 </div>
               </Link>
             ) : (
-              <div className="flex-1" />
+              <div className="flex-1 p-4 rounded-xl border border-border bg-surface/50">
+                <div className="text-xs text-text-muted mb-1">Início da trilha</div>
+                <Link href="/trilha" className="text-sm font-medium text-purple no-underline">
+                  Ver todos os módulos →
+                </Link>
+              </div>
             )}
 
             {next ? (

@@ -47,7 +47,7 @@ export function Sidebar({ currentSlug, visited }: SidebarProps) {
           <p className="text-xs font-medium text-text-muted uppercase tracking-widest mb-3">
             Módulos
           </p>
-          <nav className="flex flex-col gap-1">
+          <nav aria-label="Lista de módulos" className="flex flex-col gap-1">
             {MODULES.map((module) => {
               const isCurrent = module.slug === currentSlug
               const isVisited = visited.has(module.slug)

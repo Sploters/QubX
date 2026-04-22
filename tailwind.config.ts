@@ -27,10 +27,6 @@ const config: Config = {
           muted: '#475569',
         },
       },
-      backgroundImage: {
-        'brand-gradient': 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-        'brand-gradient-h': 'linear-gradient(90deg, #8b5cf6, #06b6d4)',
-      },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
