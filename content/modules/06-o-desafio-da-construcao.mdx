@@ -100,6 +100,43 @@ A solução é o **Quantum Error Correction (QEC)**: distribuir a informação d
 | Código de Steane | 7 |
 | Código de Shor | 9 |
 
+<svg viewBox="0 0 700 220" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  {/* Lado esquerdo: qubits físicos ruidosos */}
+  <text x="160" y="22" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">~1.000 QUBITS FÍSICOS (ruidosos)</text>
+  {/* Grid de mini-qubits */}
+  {[0,1,2,3,4].map((row) =>
+    [0,1,2,3,4,5].map((col) => {
+      const x = 30 + col * 38
+      const y = 35 + row * 32
+      const isError = (row === 1 && col === 2) || (row === 3 && col === 4)
+      return (
+        <g key={`${row}-${col}`}>
+          <rect x={x} y={y} width="26" height="22" rx="4" fill="#1e1e30" stroke={isError ? "#ef4444" : "#334155"} strokeWidth={isError ? 1.5 : 1}/>
+          <text x={x+13} y={y+15} textAnchor="middle" fill={isError ? "#ef4444" : "#475569"} fontSize="9" fontFamily="monospace">{isError ? "✗" : "q"}</text>
+        </g>
+      )
+    })
+  )}
+  <text x="160" y="205" textAnchor="middle" fill="#ef4444" fontSize="9" fontFamily="Inter, sans-serif">erros acontecem (~0,1% por operação)</text>
+
+  {/* Seta */}
+  <line x1="340" y1="110" x2="395" y2="110" stroke="#a78bfa" strokeWidth="2.5"/>
+  <polygon points="395,104 408,110 395,116" fill="#a78bfa"/>
+  <text x="372" y="98" textAnchor="middle" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif">QEC</text>
+  <text x="372" y="130" textAnchor="middle" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif">correção</text>
+
+  {/* Lado direito: 1 qubit lógico */}
+  <rect x="415" y="65" width="120" height="90" rx="10" fill="#1e1e30" stroke="#06b6d4" strokeWidth="2"/>
+  <text x="475" y="95" textAnchor="middle" fill="#06b6d4" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">1 QUBIT</text>
+  <text x="475" y="112" textAnchor="middle" fill="#06b6d4" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">LÓGICO</text>
+  <text x="475" y="130" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">livre de erros</text>
+  <text x="475" y="200" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif">tolerante a falhas</text>
+
+  {/* Balão explicativo */}
+  <text x="555" y="50" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">1.000 físicos</text>
+  <text x="555" y="62" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">→ 1 lógico</text>
+</svg>
+
 Na prática: para rodar um algoritmo útil que exigiria 1.000 qubits lógicos livres de erro, você precisaria de **1 milhão de qubits físicos** com os códigos atuais.
 
 O IBM Condor tem 1.121 qubits físicos. Estamos no início.
@@ -111,13 +148,5 @@ O IBM Condor tem 1.121 qubits físicos. Estamos no início.
 ![Criostato do computador quântico IBM Q System One](/images/IBM-Q-System-One-display.png)
 
 O que parece uma escultura de arte moderna é, na verdade, um dos sistemas de engenharia mais sofisticados do mundo. Cada camada cilíndrica representa um estágio de resfriamento progressivo — da temperatura ambiente (topo) até os 15 millikelvins onde os qubits vivem (fundo).
-
-## Para ir mais fundo
-
-- 📄 [Kjaergaard et al.: Superconducting Qubits: Current State of Play (Annual Review, 2020)](https://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031119-050605) — revisão técnica abrangente das tecnologias de qubit supercondutor
-- 🎥 [IBM Research: Inside a Quantum Computer](https://www.youtube.com/watch?v=2B680SL4K1I) — tour pelo hardware real com os engenheiros da IBM
-- 📄 [Google: Suppressing quantum errors by scaling a surface code logical qubit (Nature, 2023)](https://www.nature.com/articles/s41586-022-05434-1) — como a correção de erros escala com mais qubits físicos
-- 🌐 [IonQ: How Trapped-Ion Quantum Computers Work](https://ionq.com/technology) — a tecnologia concorrente dos supercondutores explicada
-- 🌐 [Microsoft: Topological Qubits](https://www.microsoft.com/en-us/research/research-area/quantum-computing/) — a aposta de longo prazo da Microsoft em férmions de Majorana
 
 <GlossaryIndex terms={['decoerencia', 'qubit', 'superposicao']} />

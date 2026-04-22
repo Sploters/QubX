@@ -69,6 +69,48 @@ A China também lidera em **comunicações quânticas**: possui a maior rede de 
 | PsiQuantum | EUA | Fotônica | Parceria com GlobalFoundries para chips em escala |
 | D-Wave | Canadá | Annealing quântico | Foco em otimização, já com clientes reais |
 
+<svg viewBox="0 0 700 230" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  <text x="350" y="20" textAnchor="middle" fill="#94a3b8" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">QUBITS FÍSICOS × ANO (marcos públicos)</text>
+  {/* Eixos */}
+  <line x1="60" y1="185" x2="660" y2="185" stroke="#1e1e30" strokeWidth="2"/>
+  <line x1="60" y1="40" x2="60" y2="185" stroke="#1e1e30" strokeWidth="2"/>
+  {/* Labels eixo X */}
+  <text x="130" y="200" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">2019</text>
+  <text x="240" y="200" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">2020</text>
+  <text x="350" y="200" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">2021</text>
+  <text x="460" y="200" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">2022</text>
+  <text x="570" y="200" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">2023</text>
+  <text x="650" y="200" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">2024</text>
+  {/* Labels eixo Y */}
+  <text x="50" y="185" textAnchor="end" fill="#475569" fontSize="8" fontFamily="Inter, sans-serif">53</text>
+  <text x="50" y="155" textAnchor="end" fill="#475569" fontSize="8" fontFamily="Inter, sans-serif">127</text>
+  <text x="50" y="115" textAnchor="end" fill="#475569" fontSize="8" fontFamily="Inter, sans-serif">433</text>
+  <text x="50" y="75" textAnchor="end" fill="#475569" fontSize="8" fontFamily="Inter, sans-serif">1121</text>
+  {/* IBM linha */}
+  <polyline points="130,185 240,178 350,155 460,115 570,75 650,72" fill="none" stroke="#8b5cf6" strokeWidth="2.5" strokeLinejoin="round"/>
+  {/* Google linha */}
+  <polyline points="130,185 570,130 650,118" fill="none" stroke="#06b6d4" strokeWidth="2.5" strokeLinejoin="round" strokeDasharray="6 3"/>
+  {/* Pontos IBM */}
+  <circle cx="130" cy="185" r="5" fill="#8b5cf6"/>
+  <circle cx="350" cy="155" r="5" fill="#8b5cf6"/>
+  <circle cx="460" cy="115" r="5" fill="#8b5cf6"/>
+  <circle cx="570" cy="75" r="5" fill="#8b5cf6"/>
+  <circle cx="650" cy="72" r="6" fill="#8b5cf6"/>
+  {/* Pontos Google */}
+  <circle cx="130" cy="185" r="4" fill="#06b6d4"/>
+  <circle cx="650" cy="118" r="6" fill="#06b6d4"/>
+  {/* Legenda */}
+  <rect x="460" y="55" width="10" height="3" fill="#8b5cf6"/>
+  <text x="475" y="60" fill="#8b5cf6" fontSize="9" fontFamily="Inter, sans-serif">IBM</text>
+  <line x1="460" y1="70" x2="470" y2="70" stroke="#06b6d4" strokeWidth="2" strokeDasharray="3"/>
+  <text x="475" y="74" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif">Google</text>
+  {/* Labels pontos */}
+  <text x="355" y="150" fill="#8b5cf6" fontSize="8" fontFamily="Inter, sans-serif">Eagle 127q</text>
+  <text x="465" y="110" fill="#8b5cf6" fontSize="8" fontFamily="Inter, sans-serif">Osprey 433q</text>
+  <text x="530" y="68" fill="#8b5cf6" fontSize="8" fontFamily="Inter, sans-serif">Condor 1121q</text>
+  <text x="612" y="113" fill="#06b6d4" fontSize="8" fontFamily="Inter, sans-serif">Willow 105q</text>
+</svg>
+
 ## Timeline da Corrida
 
 <svg viewBox="0 0 720 200" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
@@ -103,13 +145,5 @@ A China também lidera em **comunicações quânticas**: possui a maior rede de 
 </svg>
 
 > 💡 **O que esperar:** analistas projetam que computadores quânticos capazes de resolver problemas comercialmente relevantes (além de benchmarks artificiais) devem aparecer entre 2027 e 2033, quando a correção de erros estiver madura o suficiente.
-
-## Para ir mais fundo
-
-- 📄 [Google: Quantum Supremacy Using a Programmable Superconducting Processor (Nature, 2019)](https://www.nature.com/articles/s41586-019-1666-5) — o paper original do Sycamore
-- 📄 [Google: Quantum Error Correction Below the Surface Code Threshold (Nature, 2024)](https://www.nature.com/articles/s41586-024-08449-y) — o resultado do Willow que mudou o campo
-- 🌐 [IBM Quantum Roadmap](https://www.ibm.com/quantum/roadmap) — o plano público e detalhado da IBM até 2033
-- 📄 [Gibney: China's Quantum Satellite Achieves 'Spooky Action' at Record Distance (Nature News)](https://www.nature.com/articles/d41586-021-02052-y) — o avanço chinês em comunicação quântica via satélite
-- 🌐 [The Quantum Insider: Quantum Computing Market Report](https://thequantuminsider.com/) — cobertura de notícias e análises do mercado quântico
 
 <GlossaryIndex terms={['supremacia-quantica', 'qubit', 'decoerencia']} />

@@ -72,6 +72,38 @@ Estava errado.
 
 Dois qubits emaranhados compartilham um único estado quântico. Medir um deles **instantaneamente** determina o estado do outro — independente da distância entre eles.
 
+<svg viewBox="0 0 700 200" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  {/* Fonte de emaranhamento */}
+  <circle cx="350" cy="100" r="22" fill="#1e1e30" stroke="#a78bfa" strokeWidth="2"/>
+  <text x="350" y="96" textAnchor="middle" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">FONTE</text>
+  <text x="350" y="110" textAnchor="middle" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif">EPR</text>
+
+  {/* Linha emaranhada */}
+  <line x1="120" y1="100" x2="328" y2="100" stroke="#a78bfa" strokeWidth="2" strokeDasharray="6 3"/>
+  <line x1="372" y1="100" x2="580" y2="100" stroke="#a78bfa" strokeWidth="2" strokeDasharray="6 3"/>
+
+  {/* Qubit A - Alice */}
+  <rect x="20" y="70" width="100" height="60" rx="8" fill="#1e1e30" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="70" y="92" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">Alice</text>
+  <text x="70" y="108" textAnchor="middle" fill="#8b5cf6" fontSize="14" fontFamily="monospace">|?⟩</text>
+  <text x="70" y="122" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">superposição</text>
+
+  {/* Qubit B - Bob */}
+  <rect x="580" y="70" width="100" height="60" rx="8" fill="#1e1e30" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="630" y="92" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">Bob</text>
+  <text x="630" y="108" textAnchor="middle" fill="#06b6d4" fontSize="14" fontFamily="monospace">|?⟩</text>
+  <text x="630" y="122" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">superposição</text>
+
+  {/* Seta medição Alice */}
+  <text x="70" y="155" textAnchor="middle" fill="#8b5cf6" fontSize="9" fontFamily="Inter, sans-serif">① Alice mede: obtém |0⟩</text>
+  <text x="630" y="155" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif">② Bob obtém |0⟩ instantaneamente</text>
+  <text x="350" y="170" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">— sem troca de informação —</text>
+
+  {/* Distância */}
+  <line x1="120" y1="40" x2="580" y2="40" stroke="#1e1e30" strokeWidth="1"/>
+  <text x="350" y="36" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">qualquer distância — mesmo galáxias</text>
+</svg>
+
 **Experimento de Aspect (1982):** Alain Aspect e sua equipe em Paris confirmaram experimentalmente que o emaranhamento é real. Fótons separados por dezenas de metros mostraram correlações que nenhuma teoria clássica consegue explicar. Aspect ganhou o Nobel de Física em 2022 por isso.
 
 > ⚠️ **Importante:** O emaranhamento não permite transmissão de informação mais rápida que a luz. A correlação existe, mas o resultado de cada medição ainda é aleatório — você só descobre a correlação quando compara os resultados pelo canal clássico.
@@ -92,13 +124,5 @@ Isso se chama **decoerência**.
 | Spin nuclear (NMR) | Milissegundos a segundos |
 
 Tempo de coerência maior = mais tempo para executar cálculos antes do qubit "desfazer" a superposição.
-
-## Para ir mais fundo
-
-- 📄 [Preskill: Quantum Computing in the NISQ Era and Beyond (arXiv)](https://arxiv.org/abs/1801.00862) — o roadmap teórico mais influente da área
-- 🎥 [IBM Research: What is a Qubit?](https://www.youtube.com/watch?v=zOGNoDO7mcU) — explicação visual diretamente dos engenheiros da IBM
-- 📄 [Aspect et al.: Experimental Tests of Bell's Inequalities (1982)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.49.91) — o paper que confirmou o emaranhamento quântico (Nobel 2022)
-- 🎓 [IBM Quantum Learning: Introduction to Quantum Computing](https://learning.quantum.ibm.com/course/basics-of-quantum-information) — curso gratuito e interativo da IBM
-- 🎥 [MinutePhysics: Bell's Theorem — The Quantum Venn Diagram Paradox](https://www.youtube.com/watch?v=zcqZHYo7ONs) — emaranhamento e desigualdades de Bell em 8 minutos
 
 <GlossaryIndex terms={['qubit', 'superposicao', 'emaranhamento', 'decoerencia']} />
