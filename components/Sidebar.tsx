@@ -16,6 +16,7 @@ export function Sidebar({ currentSlug, visited }: SidebarProps) {
     <>
       {/* Mobile toggle */}
       <button
+        type="button"
         onClick={() => setOpen(!open)}
         className="lg:hidden fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg"
         style={{ background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)' }}
