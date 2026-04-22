@@ -73,6 +73,41 @@ Isso é crítico para:
 
 Se um dado criptografado hoje precisar continuar secreto por 20 anos, ele já está em risco.
 
+<Callout type="warning" title="Papo de Hacker: O Roubo Invisível">
+Você pode pensar: *"Mas o computador quântico ainda não existe em escala, estou seguro"*.
+Infelizmente, existe uma estratégia chamada **Harvest Now, Decrypt Later** (Colha agora, decifre depois). 
+
+Atores maliciosos estão salvando seus dados criptografados hoje, mesmo sem conseguir abri-los, apenas esperando o dia em que um computador quântico forte o suficiente seja ligado. É um sequestro de dados onde o resgate é o próprio tempo.
+
+<svg viewBox="0 0 700 250" className="w-full my-8 rounded-xl" style={{background:'#0a0a0f', border:'1px solid #3b1e1e', padding:'20px'}}>
+  {/* Data Flow */}
+  <rect x="50" y="100" width="80" height="50" fill="#1e1e30" stroke="#475569" rx="5" />
+  <text x="90" y="130" textAnchor="middle" fill="#94a3b8" fontSize="10">DADOS HOJE</text>
+  
+  <line x1="130" y1="125" x2="300" y2="125" stroke="#475569" strokeWidth="2" strokeDasharray="5 5" />
+  <text x="215" y="115" textAnchor="middle" fill="#475569" fontSize="9">INTERNET (HTTPS)</text>
+
+  {/* Attacker Server */}
+  <rect x="300" y="80" width="120" height="90" fill="#3b1e1e" stroke="#ef4444" rx="8" />
+  <text x="360" y="105" textAnchor="middle" fill="#ef4444" fontSize="10" fontWeight="bold">STORAGE MALICIOSO</text>
+  <text x="360" y="130" textAnchor="middle" fill="#f1f5f9" fontSize="18">💾</text>
+  <text x="360" y="155" textAnchor="middle" fill="#94a3b8" fontSize="9">COLETANDO DADOS...</text>
+
+  {/* Future Arrow */}
+  <path d="M420 125 Q 500 125, 550 180" stroke="#ef4444" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ef4444" />
+    </marker>
+  </defs>
+
+  {/* Future Quantum Computer */}
+  <rect x="530" y="180" width="120" height="50" fill="#13131f" stroke="#06b6d4" rx="5" />
+  <text x="590" y="210" textAnchor="middle" fill="#06b6d4" fontSize="10" fontWeight="bold">Q-DAY (FUTURO)</text>
+  <text x="590" y="245" textAnchor="middle" fill="#94a3b8" fontSize="9">DESCRIPTOGRAFANDO...</text>
+</svg>
+</Callout>
+
 ## A Resposta: Criptografia Pós-Quântica
 
 Em 2024, o **NIST** (Instituto Nacional de Padrões dos EUA) padronizou os primeiros algoritmos resistentes a ataques quânticos:
@@ -96,3 +131,5 @@ Esses algoritmos são difíceis tanto para computadores clássicos quanto para q
 - 🔒 **Signal, Apple, Google:** já implementaram camadas pós-quânticas em protocolos de mensageria (PQXDH, Kyber)
 
 A revolução já começou — silenciosamente.
+
+<GlossaryIndex terms={['algoritmo-de-shor', 'qubit', 'supremacia-quantica']} />

@@ -80,6 +80,42 @@ O **Algoritmo de Deutsch-Jozsa** (1992) foi o primeiro a demonstrar vantagem qu�
 
 O computador quântico resolve em uma única consulta usando superposição e interferência. O clássico precisa testar metade de todos os possíveis inputs.
 
+<Callout type="tip" title="Onde o bicho pega: O Labirinto">
+Imagine que você está em um labirinto e precisa encontrar a saída.
+- **Computador Clássico:** É como uma pessoa correndo: ela tenta o primeiro caminho, bate no muro, volta, e tenta o próximo. Um de cada vez.
+- **Computador Quântico:** É como uma névoa que se espalha por todos os caminhos ao mesmo tempo. A névoa encontra a saída instantaneamente porque ela ocupou o labirinto inteiro simultaneamente.
+
+<svg viewBox="0 0 700 300" className="w-full my-8 rounded-xl" style={{background:'#0a0a0f', border:'1px solid #1e1e30', padding:'20px'}}>
+  {/* Maze Walls */}
+  <g stroke="#1e1e30" strokeWidth="4" fill="none">
+    <rect x="50" y="50" width="250" height="200" rx="10" />
+    <path d="M100 50 v100 h50 M200 250 v-100 h-50 M50 150 h50" />
+    <rect x="400" y="50" width="250" height="200" rx="10" />
+    <path d="M450 50 v100 h50 M550 250 v-100 h-50 M400 150 h50" />
+  </g>
+  
+  {/* Classic Path */}
+  <path d="M60 220 h40 v-70 h50 v-50" stroke="#f1f5f9" strokeWidth="2" fill="none" strokeDasharray="5 5">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" />
+  </path>
+  <circle cx="60" cy="220" r="4" fill="#f1f5f9" />
+  <text x="175" y="280" textAnchor="middle" fill="#94a3b8" fontSize="12">Lógica Clássica: Tentativa e Erro</text>
+
+  {/* Quantum Fog */}
+  <rect x="410" y="60" width="230" height="180" fill="url(#fogGradient)" opacity="0.6" rx="5" />
+  <defs>
+    <radialGradient id="fogGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.8" />
+      <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.2" />
+    </radialGradient>
+  </defs>
+  <text x="525" y="280" textAnchor="middle" fill="#06b6d4" fontSize="12" fontWeight="bold">Lógica Quântica: Exploração Paralela</text>
+  
+  <text x="50" y="30" fill="#8b5cf6" fontSize="10" fontWeight="bold">STEP-BY-STEP</text>
+  <text x="400" y="30" fill="#06b6d4" fontSize="10" fontWeight="bold">ALL-AT-ONCE</text>
+</svg>
+</Callout>
+
 ## IBM Quantum Composer
 
 O IBM Quantum Composer é um editor visual gratuito de circuitos quânticos no navegador. Você pode arrastar e soltar portas, visualizar o estado do qubit na esfera de Bloch e executar em simulador ou hardware real.
@@ -87,3 +123,5 @@ O IBM Quantum Composer é um editor visual gratuito de circuitos quânticos no n
 👉 Acesse: [quantum-computing.ibm.com/composer](https://quantum-computing.ibm.com/composer/files/new)
 
 **Experimento sugerido:** crie um circuito com uma porta H seguida de medição. Execute 1024 vezes. Veja os resultados oscilando próximo de 50/50 — isso é superposição em ação.
+
+<GlossaryIndex terms={['superposicao', 'emaranhamento']} />
