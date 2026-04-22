@@ -1,0 +1,83 @@
+## Por que precisamos de uma nova linguagem?
+
+A física quântica descreve estados que não têm analogia na experiência cotidiana. Para isso, os físicos desenvolveram uma notação matemática compacta e poderosa: a **Notação de Dirac**, criada por Paul Dirac em 1939.
+
+![Notação de Dirac](/images/dirac-notation.png)
+
+## Ket, Bra e Braket
+
+A notação usa três elementos:
+
+**Ket `|ψ⟩`** — representa um estado quântico. É um vetor coluna:
+```
+|0⟩ = [1]    |1⟩ = [0]
+      [0]          [1]
+```
+
+**Bra `⟨ψ|`** — o conjugado transposto do ket. É um vetor linha:
+```
+⟨0| = [1  0]    ⟨1| = [0  1]
+```
+
+**Braket `⟨φ|ψ⟩`** — produto interno entre dois estados. Representa a probabilidade de amplitude de transição de |ψ⟩ para |φ⟩.
+
+Exemplos:
+- `⟨0|0⟩ = 1` (estado |0⟩ medido como 0: certeza)
+- `⟨1|0⟩ = 0` (estado |0⟩ medido como 1: impossível)
+
+## Vetores de Estado
+
+Os dois vetores base formam o chamado **espaço de Hilbert de dimensão 2** — o espaço matemático que descreve um qubit:
+
+![Vetores base padrão](/images/standard-basis-vectors.png)
+
+Um estado geral é uma combinação linear:
+```
+|ψ⟩ = α|0⟩ + β|1⟩ = [α]
+                      [β]
+```
+
+**Exemplo:** o estado de Hadamard (superposição perfeita)
+```
+|+⟩ = (|0⟩ + |1⟩)/√2 = [1/√2]  ≈ [0.707]
+                         [1/√2]    [0.707]
+```
+
+## Medição e Colapso
+
+Medir um qubit em superposição é um ato irreversível.
+
+![Medindo estados probabilísticos](/images/measuring-probabilistic-states.png)
+
+Para o estado `|ψ⟩ = α|0⟩ + β|1⟩`:
+- Probabilidade de obter **0** = |α|²
+- Probabilidade de obter **1** = |β|²
+- Após a medição, o qubit colapsa para |0⟩ ou |1⟩ — a superposição é destruída
+
+**Você não pode clonar um estado quântico desconhecido.** O Teorema da Não-Clonagem (1982) prova que é impossível criar uma cópia perfeita de um estado quântico arbitrário sem destruir o original. Isso é uma limitação fundamental — e ao mesmo tempo um recurso para criptografia quântica.
+
+## Informação Clássica vs. Quântica
+
+<svg viewBox="0 0 680 220" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'16px'}}>
+  <text x="170" y="30" textAnchor="middle" fill="#8b5cf6" fontSize="13" fontFamily="Inter, sans-serif" fontWeight="bold">CLÁSSICO</text>
+  <text x="510" y="30" textAnchor="middle" fill="#06b6d4" fontSize="13" fontFamily="Inter, sans-serif" fontWeight="bold">QUÂNTICO</text>
+  <line x1="20" y1="38" x2="660" y2="38" stroke="#1e1e30" strokeWidth="1"/>
+  <line x1="340" y1="38" x2="340" y2="210" stroke="#1e1e30" strokeWidth="1"/>
+
+  <text x="170" y="62" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Bit: 0 ou 1</text>
+  <text x="510" y="62" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Qubit: 0, 1 ou superposição</text>
+
+  <text x="170" y="92" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Cópia: trivial</text>
+  <text x="510" y="92" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Cópia: impossível (No-Cloning)</text>
+
+  <text x="170" y="122" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Medição: não perturba o estado</text>
+  <text x="510" y="122" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Medição: colapsa o estado</text>
+
+  <text x="170" y="152" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">n bits: 1 estado por vez</text>
+  <text x="510" y="152" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">n qubits: 2ⁿ estados simultâneos</text>
+
+  <text x="170" y="182" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Ruído: simples de corrigir</text>
+  <text x="510" y="182" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Ruído: requer QEC (correção complexa)</text>
+</svg>
+
+> 💡 **O poder do paralelismo:** 3 qubits em superposição representam 2³ = 8 estados simultaneamente. 300 qubits em superposição representam mais estados do que átomos no universo observável (2³⁰⁰ ≈ 10⁹⁰).

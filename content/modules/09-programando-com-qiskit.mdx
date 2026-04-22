@@ -1,0 +1,151 @@
+## O que é Qiskit?
+
+Qiskit é o SDK open-source da IBM para computação quântica, lançado em 2017. Com ele você pode:
+
+- Criar circuitos quânticos em Python
+- Simular localmente com ruído realista
+- Executar em hardware quântico real via IBM Quantum Cloud
+- Visualizar estados quânticos e resultados
+
+![Linguagem de programação quântica](/images/linguagem-quantica.png)
+
+## Instalação
+
+```bash
+pip install qiskit
+pip install qiskit-aer          # simulador local (inclui modelos de ruído)
+pip install qiskit-ibm-runtime  # acesso ao hardware IBM Quantum
+pip install matplotlib          # visualizações
+```
+
+## Circuito 1: Superposição Simples
+
+```python
+from qiskit import QuantumCircuit
+from qiskit_aer import AerSimulator
+
+# Cria circuito: 1 qubit, 1 bit clássico
+qc = QuantumCircuit(1, 1)
+
+# Porta Hadamard: coloca qubit em superposição perfeita
+qc.h(0)
+
+# Medição
+qc.measure(0, 0)
+
+# Visualiza o circuito
+print(qc.draw())
+# ┌───┐ ░ ┌─┐
+# ┤ H ├─░─┤M├
+# └───┘ ░ └─┘
+
+# Simula 1024 vezes
+sim = AerSimulator()
+result = sim.run(qc, shots=1024).result()
+print(result.get_counts())
+# Esperado: {'0': ~512, '1': ~512}
+```
+
+## Circuito 2: Estado de Bell (Emaranhamento)
+
+```python
+from qiskit import QuantumCircuit
+from qiskit_aer import AerSimulator
+
+qc = QuantumCircuit(2, 2)
+
+# Hadamard no qubit 0 → superposição
+qc.h(0)
+
+# CNOT: emaranha os dois qubits
+qc.cx(0, 1)
+
+# Mede os dois
+qc.measure([0, 1], [0, 1])
+
+sim = AerSimulator()
+result = sim.run(qc, shots=1024).result()
+counts = result.get_counts()
+print(counts)
+# Esperado: {'00': ~512, '11': ~512}
+# Nunca '01' ou '10' — os qubits estão emaranhados!
+```
+
+O resultado `{'00': ~512, '11': ~512}` demonstra o emaranhamento: os qubits **sempre** são medidos iguais — ambos 0 ou ambos 1 — independente de quantas vezes você rodar.
+
+## Circuito 3: Algoritmo de Grover (Busca Quântica)
+
+O algoritmo de Grover resolve o problema de **busca em um banco de dados não estruturado** com vantagem quadrática:
+
+| Abordagem | Buscas necessárias |
+|-----------|-------------------|
+| Clássico (pior caso) | N buscas |
+| Quântico (Grover) | √N buscas |
+
+Para 1 milhão de itens: clássico = 1.000.000 buscas, Grover = ~1.000.
+
+```python
+from qiskit import QuantumCircuit
+from qiskit_aer import AerSimulator
+import numpy as np
+
+# Grover em 2 qubits buscando |11⟩
+qc = QuantumCircuit(2, 2)
+
+# Passo 1: Hadamard em todos — superposição uniforme
+qc.h([0, 1])
+
+# Passo 2: Oráculo — marca |11⟩ com fase negativa
+qc.cz(0, 1)
+
+# Passo 3: Difusão — amplifica o estado marcado
+qc.h([0, 1])
+qc.x([0, 1])
+qc.cz(0, 1)
+qc.x([0, 1])
+qc.h([0, 1])
+
+# Medição
+qc.measure([0, 1], [0, 1])
+
+sim = AerSimulator()
+result = sim.run(qc, shots=1024).result()
+print(result.get_counts())
+# Esperado: {'11': ~1024} — Grover amplificou o estado correto!
+```
+
+## Executando em Hardware Real
+
+Para rodar em um computador quântico real da IBM:
+
+```python
+from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
+
+# Autentique com sua conta IBM Quantum (gratuita em quantum.ibm.com)
+service = QiskitRuntimeService(channel="ibm_quantum", token="SEU_TOKEN_AQUI")
+
+# Escolhe o backend menos ocupado
+backend = service.least_busy(operational=True, simulator=False)
+print(f"Usando: {backend.name}")
+
+# Compila o circuito para o hardware específico
+from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
+pm = generate_preset_pass_manager(backend=backend, optimization_level=1)
+isa_circuit = pm.run(qc)
+
+# Executa
+sampler = Sampler(backend)
+job = sampler.run([isa_circuit], shots=1024)
+result = job.result()
+print(result[0].data.c.get_counts())
+```
+
+> 💡 **Dica:** no hardware real, os resultados serão mais "ruidosos" — você verá alguns '01' e '10' que não deveriam existir. Isso é o ruído quântico em ação. É normal, e é exatamente o problema que a correção de erros resolve.
+
+## Recursos para Continuar
+
+- 📚 [IBM Quantum Learning](https://learning.quantum.ibm.com) — cursos gratuitos do introdutório ao avançado
+- 🖥️ [IBM Quantum](https://quantum.ibm.com) — conta gratuita com acesso a hardware real
+- 📖 [Qiskit Textbook](https://qiskit.org/learn) — livro completo open-source
+- 🎥 [Canal Qiskit no YouTube](https://www.youtube.com/@qiskit) — tutoriais e palestras
+- 🧪 [IBM Quantum Composer](https://quantum.ibm.com/composer) — editor visual de circuitos

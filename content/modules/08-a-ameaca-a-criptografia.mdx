@@ -1,0 +1,98 @@
+## Como a Internet é Protegida Hoje
+
+Toda vez que você acessa um site com "https://", envia um WhatsApp ou faz um PIX, sua comunicação é protegida por criptografia. A base dessa proteção é um problema matemático simples de formular, mas **extremamente difícil de resolver**.
+
+**O problema da fatoração:** dado um número enorme N = p × q (produto de dois primos grandes), encontre p e q.
+
+- Multiplicar dois primos de 1024 bits: fração de segundo
+- Fatorar o resultado: com computadores clássicos atuais, levaria **bilhões de anos**
+
+É nessa assimetria que o RSA — o algoritmo de criptografia mais usado na internet — se apoia desde 1977.
+
+<svg viewBox="0 0 680 220" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  <rect x="20" y="80" width="100" height="60" rx="8" fill="#1e1e30" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="70" y="106" textAnchor="middle" fill="#f1f5f9" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">Alice</text>
+  <text x="70" y="122" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">mensagem</text>
+
+  <rect x="170" y="70" width="140" height="80" rx="8" fill="#1e1e30" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="240" y="100" textAnchor="middle" fill="#8b5cf6" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">Criptografia</text>
+  <text x="240" y="116" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">RSA / AES</text>
+  <text x="240" y="132" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">chave pública</text>
+
+  <line x1="120" y1="110" x2="170" y2="110" stroke="#475569" strokeWidth="2"/>
+  <line x1="310" y1="110" x2="380" y2="110" stroke="#475569" strokeWidth="2"/>
+  <rect x="380" y="90" width="120" height="40" rx="4" fill="#13131f" stroke="#475569" strokeWidth="1" strokeDasharray="4"/>
+  <text x="440" y="106" textAnchor="middle" fill="#475569" fontSize="10" fontFamily="Inter, sans-serif">🔒 dados</text>
+  <text x="440" y="120" textAnchor="middle" fill="#475569" fontSize="10" fontFamily="Inter, sans-serif">cifrados</text>
+  <line x1="500" y1="110" x2="560" y2="110" stroke="#475569" strokeWidth="2"/>
+
+  <rect x="560" y="80" width="100" height="60" rx="8" fill="#1e1e30" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="610" y="106" textAnchor="middle" fill="#f1f5f9" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">Bob</text>
+  <text x="610" y="122" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">chave privada</text>
+
+  <rect x="390" y="165" width="100" height="40" rx="6" fill="#1e1e30" stroke="#ef4444" strokeWidth="1.5"/>
+  <text x="440" y="181" textAnchor="middle" fill="#ef4444" fontSize="11" fontFamily="Inter, sans-serif">👾 Atacante</text>
+  <text x="440" y="195" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">vê texto cifrado</text>
+  <line x1="440" y1="130" x2="440" y2="165" stroke="#ef4444" strokeWidth="1" strokeDasharray="3"/>
+</svg>
+
+## O Algoritmo de Shor: A Ameaça
+
+Em 1994, Peter Shor — matemático do Bell Labs — publicou um algoritmo para computadores quânticos capaz de fatorar números grandes de forma **exponencialmente mais rápida** que qualquer método clássico conhecido.
+
+Um número RSA-2048 (o padrão atual):
+- Computador clássico: **bilhões de anos**
+- Computador quântico com Shor: **horas a dias**
+
+O catch: o algoritmo de Shor precisa de um computador quântico com **milhões de qubits lógicos** (tolerantes a erros). Hoje temos alguns milhares de qubits físicos ruidosos.
+
+**Ainda estamos seguros? Sim — por enquanto.** Mas o relógio está contando.
+
+## Y2Q: O Prazo que Ninguém Sabe Ao Certo
+
+Y2Q (Years to Quantum) é o termo para o momento em que computadores quânticos serão capazes de quebrar criptografias atuais. Estimativas variam drasticamente:
+
+| Fonte | Estimativa Y2Q |
+|-------|---------------|
+| NIST (EUA) | 10–15 anos |
+| Analistas mais pessimistas | 5–8 anos |
+| Analistas mais otimistas | 20–30 anos |
+| IBM (com QEC madura) | ~2033–2038 |
+
+A incerteza é enorme. Mas há um problema muito mais urgente:
+
+## "Harvest Now, Decrypt Later"
+
+Agências de inteligência e atores maliciosos provavelmente já estão coletando dados cifrados hoje — com planos de descriptografá-los quando o computador quântico estiver disponível.
+
+Isso é crítico para:
+- **Segredos de Estado** (classificados por décadas)
+- **Registros médicos** (dados sensíveis para sempre)
+- **Segredos comerciais** (propriedade intelectual)
+- **Comunicações diplomáticas**
+
+Se um dado criptografado hoje precisar continuar secreto por 20 anos, ele já está em risco.
+
+## A Resposta: Criptografia Pós-Quântica
+
+Em 2024, o **NIST** (Instituto Nacional de Padrões dos EUA) padronizou os primeiros algoritmos resistentes a ataques quânticos:
+
+| Algoritmo | Uso | Base matemática |
+|-----------|-----|----------------|
+| **CRYSTALS-Kyber** | Troca de chaves | Lattices (reticulados) |
+| **CRYSTALS-Dilithium** | Assinaturas digitais | Lattices |
+| **FALCON** | Assinaturas digitais | Lattices NTRU |
+| **SPHINCS+** | Assinaturas digitais | Hash functions |
+
+Esses algoritmos são difíceis tanto para computadores clássicos quanto para quânticos. A migração para eles já começou em governos e grandes empresas.
+
+> ⚠️ **O medo do colapso da internet:** se o Y2Q chegar antes da migração para pós-quântica estar completa, praticamente toda comunicação digital cifrada com RSA/ECC (HTTPS, VPNs, emails, apps de banco) ficaria vulnerável. É por isso que a migração está sendo tratada como urgência de segurança nacional em vários países.
+
+## O Que Está Sendo Feito
+
+- 🇺🇸 **EUA:** memorando da Casa Branca (2022) exigiu que agências governamentais migrem para pós-quântico até 2035
+- 🇪🇺 **União Europeia:** programa ENISA de migração pós-quântica em andamento
+- 🏦 **Bancos:** grandes bancos já testam criptografia pós-quântica em sistemas críticos
+- 🔒 **Signal, Apple, Google:** já implementaram camadas pós-quânticas em protocolos de mensageria (PQXDH, Kyber)
+
+A revolução já começou — silenciosamente.

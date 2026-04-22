@@ -1,0 +1,89 @@
+## Portas Lógicas: Clássicas vs. Quânticas
+
+Em computadores clássicos, operações são realizadas por **portas lógicas**: AND, OR, NOT, NAND. Em computadores quânticos, usamos **portas quânticas** — mas com diferenças fundamentais.
+
+<svg viewBox="0 0 680 200" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'16px'}}>
+  <text x="170" y="28" textAnchor="middle" fill="#8b5cf6" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">PORTAS CLÁSSICAS</text>
+  <text x="510" y="28" textAnchor="middle" fill="#06b6d4" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">PORTAS QUÂNTICAS</text>
+  <line x1="20" y1="36" x2="660" y2="36" stroke="#1e1e30" strokeWidth="1"/>
+  <line x1="340" y1="36" x2="340" y2="190" stroke="#1e1e30" strokeWidth="1"/>
+
+  <text x="170" y="60" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">AND, OR, NOT, NAND, XOR</text>
+  <text x="510" y="60" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">X, H, CNOT, Toffoli, Phase</text>
+
+  <text x="170" y="88" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Irreversíveis (AND: 2→1 bit)</text>
+  <text x="510" y="88" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Reversíveis (sempre 1→1 qubit)</text>
+
+  <text x="170" y="116" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Operam em bits: 0 ou 1</text>
+  <text x="510" y="116" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Operam em superposições</text>
+
+  <text x="170" y="144" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Matriz booleana (0s e 1s)</text>
+  <text x="510" y="144" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">Matriz unitária (complexa)</text>
+
+  <text x="170" y="172" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">NAND é universal</text>
+  <text x="510" y="172" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">H + CNOT + T é universal</text>
+</svg>
+
+## As Portas Fundamentais
+
+**Porta X (NOT quântico)** — inverte o estado do qubit:
+```
+X|0⟩ = |1⟩    X|1⟩ = |0⟩
+
+Matriz: X = [0  1]
+            [1  0]
+```
+
+**Porta H (Hadamard)** — cria superposição perfeita:
+```
+H|0⟩ = (|0⟩ + |1⟩)/√2 = |+⟩   (50% zero, 50% um)
+H|1⟩ = (|0⟩ - |1⟩)/√2 = |−⟩
+
+Matriz: H = 1/√2 × [1   1]
+                    [1  -1]
+```
+
+**Porta CNOT (Controlled-NOT)** — emaranha dois qubits:
+```
+CNOT|00⟩ = |00⟩    CNOT|10⟩ = |11⟩
+CNOT|01⟩ = |01⟩    CNOT|11⟩ = |10⟩
+```
+O primeiro qubit é o controle: só inverte o segundo se o primeiro for |1⟩.
+
+**Porta Toffoli (CCNOT)** — controle duplo, inverte o terceiro qubit se os dois primeiros forem |1⟩. É o equivalente quântico do AND clássico — mas reversível.
+
+**Portas de Fase (S, T)** — rotacionam a fase do qubit na esfera de Bloch sem alterar as probabilidades de medição. Essenciais para algoritmos mais avançados.
+
+## Codificação Superdensa
+
+A Codificação Superdensa usa emaranhamento para transmitir **2 bits clássicos** usando apenas **1 qubit**:
+
+![Diagrama de Codificação Superdensa](/images/superdense-coding.png)
+
+1. Alice e Bob compartilham um par de qubits emaranhados (Bell state)
+2. Alice aplica uma de 4 portas no seu qubit, codificando 2 bits
+3. Alice envia seu qubit para Bob
+4. Bob mede os dois qubits e lê os 2 bits
+
+Eficiência dobrada. Isso só é possível graças ao emaranhamento.
+
+## O Primeiro Algoritmo com Vantagem Quântica
+
+O **Algoritmo de Deutsch-Jozsa** (1992) foi o primeiro a demonstrar vantagem quântica real:
+
+**Problema:** dada uma função f(x) que pode ser "constante" (sempre retorna 0 ou sempre 1) ou "balanceada" (retorna 0 metade das vezes e 1 na outra), determine qual é.
+
+| Abordagem | Consultas à função |
+|-----------|------------------|
+| Clássico (pior caso) | 2ⁿ⁻¹ + 1 |
+| Quântico (sempre) | **1** |
+
+O computador quântico resolve em uma única consulta usando superposição e interferência. O clássico precisa testar metade de todos os possíveis inputs.
+
+## IBM Quantum Composer
+
+O IBM Quantum Composer é um editor visual gratuito de circuitos quânticos no navegador. Você pode arrastar e soltar portas, visualizar o estado do qubit na esfera de Bloch e executar em simulador ou hardware real.
+
+👉 Acesse: [quantum-computing.ibm.com/composer](https://quantum-computing.ibm.com/composer/files/new)
+
+**Experimento sugerido:** crie um circuito com uma porta H seguida de medição. Execute 1024 vezes. Veja os resultados oscilando próximo de 50/50 — isso é superposição em ação.
