@@ -90,7 +90,7 @@ export const MODULES: Module[] = [
       },
       {
         title: 'Nielsen & Chuang: Quantum Computation and Quantum Information',
-        url: 'http://mmrc.amss.cas.cn/tlb/201702/W020170224608150240647.pdf',
+        url: 'https://archive.org/details/quantumcomputati0000niel',
         type: 'book'
       }
     ]
@@ -144,8 +144,8 @@ export const MODULES: Module[] = [
     images: [],
     references: [
       {
-        title: 'Google Quantum AI - Official Blog',
-        url: 'https://quantumai.google/blog',
+        title: 'Google Quantum AI - Official Site',
+        url: 'https://quantumai.google/',
         type: 'article'
       },
       {
@@ -184,13 +184,13 @@ export const MODULES: Module[] = [
     images: ['/images/linguagem-quantica.png'],
     references: [
       {
-        title: 'Qiskit Official Documentation',
-        url: 'https://qiskit.org/documentation/',
+        title: 'IBM Quantum Documentation (Qiskit)',
+        url: 'https://docs.quantum.ibm.com/',
         type: 'article'
       },
       {
-        title: 'Python for Quantum Computing (Coursera)',
-        url: 'https://www.coursera.org/learn/introduction-quantum-computing',
+        title: 'Introduction to Quantum Computing (Coursera)',
+        url: 'https://www.coursera.org/learn/quantum-computing-algorithms',
         type: 'video'
       }
     ]
