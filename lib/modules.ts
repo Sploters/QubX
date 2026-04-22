@@ -87,11 +87,6 @@ export const MODULES: Module[] = [
         title: 'Dirac: The Principles of Quantum Mechanics',
         url: 'https://archive.org/details/PrinciplesOfQuantumMechanics',
         type: 'book'
-      },
-      {
-        title: 'Nielsen & Chuang: Quantum Computation and Quantum Information',
-        url: 'https://archive.org/details/quantumcomputati0000niel',
-        type: 'book'
       }
     ]
   },
@@ -144,11 +139,6 @@ export const MODULES: Module[] = [
     images: [],
     references: [
       {
-        title: 'Google Quantum AI - Official Site',
-        url: 'https://quantumai.google/',
-        type: 'article'
-      },
-      {
         title: 'China’s Quantum Leap - Nature News',
         url: 'https://www.nature.com/articles/d41586-021-02052-y',
         type: 'paper'
@@ -187,11 +177,6 @@ export const MODULES: Module[] = [
         title: 'IBM Quantum Documentation (Qiskit)',
         url: 'https://docs.quantum.ibm.com/',
         type: 'article'
-      },
-      {
-        title: 'Introduction to Quantum Computing (Coursera)',
-        url: 'https://www.coursera.org/learn/quantum-computing-algorithms',
-        type: 'video'
       }
     ]
   },
