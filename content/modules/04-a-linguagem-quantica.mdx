@@ -91,4 +91,60 @@ Para o estado `|ψ⟩ = α|0⟩ + β|1⟩`:
 
 > 💡 **O poder do paralelismo:** 3 qubits em superposição representam 2³ = 8 estados simultaneamente. 300 qubits em superposição representam mais estados do que átomos no universo observável (2³⁰⁰ ≈ 10⁹⁰).
 
+## O Ciclo de Vida de um Qubit
+
+<svg viewBox="0 0 720 180" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  {/* Fase 1: Preparação */}
+  <rect x="20" y="60" width="130" height="60" rx="8" fill="#1e1e30" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="85" y="86" textAnchor="middle" fill="#8b5cf6" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">PREPARAÇÃO</text>
+  <text x="85" y="102" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">|0⟩ definido</text>
+  <text x="85" y="116" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">estado inicial fixo</text>
+
+  {/* Seta 1 */}
+  <line x1="150" y1="90" x2="188" y2="90" stroke="#475569" strokeWidth="2"/>
+  <polygon points="188,85 198,90 188,95" fill="#475569"/>
+  <text x="174" y="80" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">H gate</text>
+
+  {/* Fase 2: Superposição */}
+  <rect x="198" y="60" width="140" height="60" rx="8" fill="#1e1e30" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="268" y="86" textAnchor="middle" fill="#06b6d4" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">SUPERPOSIÇÃO</text>
+  <text x="268" y="102" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">α|0⟩ + β|1⟩</text>
+  <text x="268" y="116" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">0 e 1 ao mesmo tempo</text>
+
+  {/* Seta 2 */}
+  <line x1="338" y1="90" x2="376" y2="90" stroke="#475569" strokeWidth="2"/>
+  <polygon points="376,85 386,90 376,95" fill="#475569"/>
+  <text x="362" y="80" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">operações</text>
+
+  {/* Fase 3: Processamento */}
+  <rect x="386" y="60" width="140" height="60" rx="8" fill="#1e1e30" stroke="#a78bfa" strokeWidth="1.5"/>
+  <text x="456" y="86" textAnchor="middle" fill="#a78bfa" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">CÔMPUTO</text>
+  <text x="456" y="102" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">portas aplicadas</text>
+  <text x="456" y="116" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">interferência controlada</text>
+
+  {/* Seta 3 */}
+  <line x1="526" y1="90" x2="564" y2="90" stroke="#475569" strokeWidth="2"/>
+  <polygon points="564,85 574,90 564,95" fill="#475569"/>
+  <text x="550" y="80" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">medir</text>
+
+  {/* Fase 4: Medição */}
+  <rect x="574" y="60" width="126" height="60" rx="8" fill="#1e1e30" stroke="#ef4444" strokeWidth="1.5"/>
+  <text x="637" y="86" textAnchor="middle" fill="#ef4444" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">COLAPSO</text>
+  <text x="637" y="102" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">0 ou 1 clássico</text>
+  <text x="637" y="116" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">superposição destruída</text>
+
+  {/* Labels de fases */}
+  <text x="85" y="148" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">① inicializar</text>
+  <text x="268" y="148" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">② explorar estados</text>
+  <text x="456" y="148" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">③ amplificar resposta</text>
+  <text x="637" y="148" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">④ extrair resultado</text>
+</svg>
+
+## Para ir mais fundo
+
+- 📄 [3Blue1Brown: Quantum Computing (vídeo)](https://www.youtube.com/watch?v=spUNpyF58BY) — a melhor explicação visual da notação de Dirac e qubits
+- 📚 [Dirac: The Principles of Quantum Mechanics (archive.org)](https://archive.org/details/PrinciplesOfQuantumMechanics) — o livro original de Dirac, acesso gratuito
+- 🎓 [MIT OpenCourseWare: Quantum Physics I](https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/) — curso completo gratuito do MIT
+- 🌐 [Quirk — Simulador de Circuitos Quânticos](https://algassert.com/quirk) — experimente notação e estados diretamente no navegador
+
 <GlossaryIndex terms={['qubit', 'superposicao']} />

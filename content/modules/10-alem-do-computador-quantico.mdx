@@ -57,6 +57,40 @@ O estado foi teleportado. A informação clássica viajou pelo canal comum. Nada
 
 **Internet quântica** usará emaranhamento e teletransporte quântico para criar redes de comunicação **absolutamente invioláveis** por princípio físico — não por dificuldade matemática.
 
+<svg viewBox="0 0 700 220" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  {/* Alice */}
+  <rect x="20" y="80" width="110" height="60" rx="8" fill="#1e1e30" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="75" y="106" textAnchor="middle" fill="#f1f5f9" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">Alice</text>
+  <text x="75" y="122" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">estado |ψ⟩</text>
+
+  {/* Fonte de emaranhamento */}
+  <rect x="270" y="55" width="150" height="50" rx="8" fill="#1e1e30" stroke="#a78bfa" strokeWidth="1.5"/>
+  <text x="345" y="77" textAnchor="middle" fill="#a78bfa" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold">FONTE DE</text>
+  <text x="345" y="92" textAnchor="middle" fill="#a78bfa" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold">EMARANHAMENTO</text>
+  <text x="345" y="107" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">par EPR distribuído</text>
+
+  {/* Bob */}
+  <rect x="565" y="80" width="110" height="60" rx="8" fill="#1e1e30" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="620" y="106" textAnchor="middle" fill="#f1f5f9" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">Bob</text>
+  <text x="620" y="122" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">recebe |ψ⟩</text>
+
+  {/* Fios de emaranhamento */}
+  <line x1="130" y1="110" x2="270" y2="80" stroke="#a78bfa" strokeWidth="1.5" strokeDasharray="5"/>
+  <line x1="420" y1="80" x2="565" y2="110" stroke="#a78bfa" strokeWidth="1.5" strokeDasharray="5"/>
+
+  {/* Canal clássico (2 bits) */}
+  <line x1="130" y1="130" x2="565" y2="130" stroke="#f59e0b" strokeWidth="2"/>
+  <text x="348" y="148" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="Inter, sans-serif">canal clássico (2 bits de correção)</text>
+  <polygon points="560,125 570,130 560,135" fill="#f59e0b"/>
+
+  {/* Passos */}
+  <text x="75" y="170" textAnchor="middle" fill="#8b5cf6" fontSize="9" fontFamily="Inter, sans-serif">① mede + codifica</text>
+  <text x="75" y="182" textAnchor="middle" fill="#8b5cf6" fontSize="9" fontFamily="Inter, sans-serif">2 bits clássicos</text>
+  <text x="345" y="25" textAnchor="middle" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif">par emaranhado pré-compartilhado</text>
+  <text x="620" y="170" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif">② aplica operação</text>
+  <text x="620" y="182" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif">e recupera |ψ⟩</text>
+</svg>
+
 A China tem a maior rede de comunicação quântica operacional do mundo (2.000 km de fibra + satélite Micius).
 
 ## Aplicações Reais: Empresas que Já Usam
@@ -122,5 +156,13 @@ A janela para aprender computação quântica está aberta agora. As primeiras g
 - 🏢 **Empresa:** o IBM Quantum Network conecta mais de 200 organizações a hardware real
 
 A computação quântica não vai substituir o programador — vai criar uma nova categoria de profissional. E o melhor momento para se preparar é antes da demanda explodir.
+
+## Para ir mais fundo
+
+- 📄 [Kimble: The Quantum Internet (Nature, 2008)](https://www.nature.com/articles/nature07127) — o artigo fundacional sobre internet quântica global
+- 📄 [Degen, Reinhard & Cappellaro: Quantum Sensing (Reviews of Modern Physics, 2017)](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.89.035002) — revisão completa de sensores quânticos e suas aplicações
+- 🎥 [Veritasium: Quantum Teleportation — How It Really Works](https://www.youtube.com/watch?v=DxQK1WDYI_k) — desmistificando o teletransporte quântico
+- 🌐 [Amazon Braket](https://aws.amazon.com/braket/) — plataforma da AWS para computação quântica na nuvem (IonQ, Rigetti, IBM)
+- 📚 [The Quanta Magazine: Quantum Science Coverage](https://www.quantamagazine.org/tag/quantum-computing/) — jornalismo científico de alta qualidade sobre os últimos avanços quânticos
 
 <GlossaryIndex terms={['qubit', 'superposicao', 'emaranhamento']} />

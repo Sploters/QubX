@@ -8,11 +8,61 @@ Esse momento — chamado de "<Term id="supremacia-quantica">supremacia quântica
 
 Computadores convencionais processam informação em **bits**: cada bit é 0 ou 1. Um computador quântico usa **<Term id="qubit">qubits</Term>**, que podem ser 0, 1 ou qualquer combinação dos dois ao mesmo tempo — graças a um fenômeno da física chamado **<Term id="superposicao">superposição</Term>**.
 
-<Callout type="tip" title="O Poder da Paralelismo">
+<Callout type="tip" title="O Poder do Paralelismo">
 Isso permite que um computador quântico explore milhões de possibilidades simultaneamente, em vez de testá-las uma a uma. Imagine encontrar a saída de um labirinto: um computador clássico tenta um caminho por vez; o quântico entra em todos os caminhos ao mesmo tempo.
 </Callout>
 
 ![Bit clássico versus qubit](/images/bit-vs-qubit.png)
+
+## A Corrida Global
+
+A computação quântica é considerada tão estratégica quanto a corrida espacial dos anos 1960. Os principais players:
+
+| País / Empresa | Investimento | Destaque |
+|----------------|-------------|---------|
+| 🇺🇸 IBM | $100B+ projetado | Roadmap mais público do setor |
+| 🇺🇸 Google | Bilhões | Primeiro a anunciar "supremacia quântica" |
+| 🇺🇸 Microsoft | Bilhões | Aposta em qubits topológicos |
+| 🇨🇳 China | $15B governo | Maior investimento público único |
+| 🇪🇺 União Europeia | €1B (Quantum Flagship) | Programa de 10 anos |
+| 🇧🇷 Brasil | Em desenvolvimento | CBPF e universidades federais |
+
+## Linha do Tempo: Marcos Históricos
+
+<svg viewBox="0 0 760 260" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  <line x1="40" y1="130" x2="720" y2="130" stroke="#1e1e30" strokeWidth="3"/>
+  <polygon points="720,124 733,130 720,136" fill="#1e1e30"/>
+
+  <circle cx="80" cy="130" r="6" fill="#8b5cf6"/>
+  <line x1="80" y1="124" x2="80" y2="60" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4"/>
+  <text x="80" y="52" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">1981</text>
+  <text x="80" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">Feynman propõe</text>
+  <text x="80" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">computação quântica</text>
+
+  <circle cx="210" cy="130" r="6" fill="#8b5cf6"/>
+  <line x1="210" y1="136" x2="210" y2="200" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4"/>
+  <text x="210" y="215" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">1994</text>
+  <text x="210" y="229" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">Algoritmo de Shor</text>
+  <text x="210" y="243" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">(ameaça ao RSA)</text>
+
+  <circle cx="330" cy="130" r="6" fill="#8b5cf6"/>
+  <line x1="330" y1="124" x2="330" y2="60" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4"/>
+  <text x="330" y="52" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">2001</text>
+  <text x="330" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">IBM executa Shor</text>
+  <text x="330" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">em 7 qubits</text>
+
+  <circle cx="500" cy="130" r="8" fill="#06b6d4"/>
+  <line x1="500" y1="136" x2="500" y2="200" stroke="#06b6d4" strokeWidth="1" strokeDasharray="4"/>
+  <text x="500" y="215" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">2019</text>
+  <text x="500" y="229" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">Google: supremacia</text>
+  <text x="500" y="243" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">quântica (53 qubits)</text>
+
+  <circle cx="630" cy="130" r="8" fill="#06b6d4"/>
+  <line x1="630" y1="124" x2="630" y2="60" stroke="#06b6d4" strokeWidth="1" strokeDasharray="4"/>
+  <text x="630" y="52" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">2024</text>
+  <text x="630" y="38" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">Google Willow</text>
+  <text x="630" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">QEC milestone</text>
+</svg>
 
 ## Por que Agora?
 
@@ -32,7 +82,16 @@ Diferente do que muitos pensam, o computador quântico não fará o Windows roda
 
 <Callout type="info" title="Mito vs Fato">
 **Mito:** O computador quântico vai substituir o meu notebook em alguns anos.
+
 **Fato:** O computador quântico não substitui o computador clássico. Ele resolve problemas específicos exponencialmente mais rápido — especialmente simulação molecular, otimização e criptografia. Para tarefas comuns como navegar na web ou editar textos, seu computador atual é (e continuará sendo) muito mais eficiente.
 </Callout>
+
+## Para ir mais fundo
+
+- 📄 [Google: Quantum Supremacy (Nature, 2019)](https://www.nature.com/articles/s41586-019-1666-5) — o paper original que anunciou a supremacia quântica
+- 📄 [Google: Quantum Error Correction com Willow (Nature, 2024)](https://www.nature.com/articles/s41586-024-08449-y) — o próximo grande marco
+- 🎥 [Kurzgesagt: Quantum Computers Explained](https://www.youtube.com/watch?v=JhHMJCUmq28) — introdução visual de alta qualidade
+- 📚 [Quantum Computing for Everyone — Bernhardt (MIT Press)](https://mitpress.mit.edu/9780262539531/quantum-computing-for-everyone/) — livro acessível sem matemática avançada
+- 🌐 [IBM Quantum Network](https://www.ibm.com/quantum/network) — empresas e instituições que já usam computação quântica
 
 <GlossaryIndex terms={['supremacia-quantica', 'qubit', 'superposicao']} />

@@ -46,6 +46,67 @@ print(result.get_counts())
 # Esperado: {'0': ~512, '1': ~512}
 ```
 
+## Como ler um Diagrama de Circuito Quântico
+
+Antes do código, entenda a notação visual. Circuitos quânticos são lidos da esquerda para a direita:
+
+<svg viewBox="0 0 680 200" className="w-full my-6 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  {/* Labels qubits */}
+  <text x="16" y="72" fill="#94a3b8" fontSize="12" fontFamily="monospace">q₀</text>
+  <text x="16" y="132" fill="#94a3b8" fontSize="12" fontFamily="monospace">q₁</text>
+  <text x="16" y="175" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">c₀ c₁</text>
+
+  {/* Fios quânticos */}
+  <line x1="40" y1="68" x2="640" y2="68" stroke="#334155" strokeWidth="2"/>
+  <line x1="40" y1="128" x2="640" y2="128" stroke="#334155" strokeWidth="2"/>
+  {/* Fio clássico (duplo) */}
+  <line x1="40" y1="172" x2="640" y2="172" stroke="#334155" strokeWidth="1"/>
+  <line x1="40" y1="176" x2="640" y2="176" stroke="#334155" strokeWidth="1"/>
+
+  {/* Porta H no q₀ */}
+  <rect x="80" y="50" width="50" height="36" rx="6" fill="#1e1e30" stroke="#8b5cf6" strokeWidth="2"/>
+  <text x="105" y="73" textAnchor="middle" fill="#8b5cf6" fontSize="16" fontFamily="monospace" fontWeight="bold">H</text>
+  <text x="105" y="100" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">Hadamard</text>
+  <text x="105" y="112" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">cria superposição</text>
+
+  {/* CNOT: ponto de controle em q₀, alvo em q₁ */}
+  <circle cx="230" cy="68" r="7" fill="#06b6d4"/>
+  <line x1="230" y1="75" x2="230" y2="110" stroke="#06b6d4" strokeWidth="2"/>
+  <circle cx="230" cy="128" r="16" fill="none" stroke="#06b6d4" strokeWidth="2"/>
+  <line x1="214" y1="128" x2="246" y2="128" stroke="#06b6d4" strokeWidth="2"/>
+  <line x1="230" y1="112" x2="230" y2="144" stroke="#06b6d4" strokeWidth="2"/>
+  <text x="230" y="158" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">CNOT</text>
+
+  {/* Medição q₀ */}
+  <rect x="340" y="50" width="50" height="36" rx="6" fill="#1e1e30" stroke="#f59e0b" strokeWidth="2"/>
+  <path d="M355 74 Q365 58 375 74" fill="none" stroke="#f59e0b" strokeWidth="1.5"/>
+  <line x1="365" y1="74" x2="371" y2="60" stroke="#f59e0b" strokeWidth="1.5"/>
+  <text x="365" y="100" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">mede q₀</text>
+
+  {/* Medição q₁ */}
+  <rect x="340" y="110" width="50" height="36" rx="6" fill="#1e1e30" stroke="#f59e0b" strokeWidth="2"/>
+  <path d="M355 134 Q365 118 375 134" fill="none" stroke="#f59e0b" strokeWidth="1.5"/>
+  <line x1="365" y1="134" x2="371" y2="120" stroke="#f59e0b" strokeWidth="1.5"/>
+  <text x="365" y="158" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">mede q₁</text>
+
+  {/* Fios de resultado clássico */}
+  <line x1="365" y1="86" x2="365" y2="172" stroke="#f59e0b" strokeWidth="1" strokeDasharray="4"/>
+  <line x1="375" y1="146" x2="385" y2="172" stroke="#f59e0b" strokeWidth="1" strokeDasharray="4"/>
+
+  {/* Resultado */}
+  <rect x="440" y="155" width="120" height="34" rx="6" fill="#1e1e30" stroke="#a78bfa" strokeWidth="1.5"/>
+  <text x="500" y="169" textAnchor="middle" fill="#a78bfa" fontSize="10" fontFamily="monospace">00 ou 11</text>
+  <text x="500" y="182" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">nunca 01 ou 10</text>
+
+  {/* Legenda */}
+  <text x="80" y="30" fill="#8b5cf6" fontSize="10" fontFamily="Inter, sans-serif">① superposição</text>
+  <text x="200" y="30" fill="#06b6d4" fontSize="10" fontFamily="Inter, sans-serif">② emaranhamento</text>
+  <text x="330" y="30" fill="#f59e0b" fontSize="10" fontFamily="Inter, sans-serif">③ medição</text>
+  <text x="440" y="30" fill="#a78bfa" fontSize="10" fontFamily="Inter, sans-serif">④ resultado</text>
+</svg>
+
+Este é o circuito do **Estado de Bell** — o circuito quântico mais famoso. Leia o código abaixo e compare com o diagrama acima.
+
 ## Circuito 2: Estado de Bell (Emaranhamento)
 
 ```python
