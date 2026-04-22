@@ -64,6 +64,7 @@ export function getModuleBySlug(slug: string): Module | undefined {
 
 export function getAdjacentModules(slug: string): { prev: Module | null; next: Module | null } {
   const index = MODULES.findIndex((m) => m.slug === slug)
+  if (index === -1) return { prev: null, next: null }
   return {
     prev: index > 0 ? MODULES[index - 1] : null,
     next: index < MODULES.length - 1 ? MODULES[index + 1] : null,

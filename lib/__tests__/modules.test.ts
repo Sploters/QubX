@@ -48,4 +48,10 @@ describe('getAdjacentModules', () => {
     expect(prev?.order).toBe(2)
     expect(next?.order).toBe(4)
   })
+
+  it('returns both null for unknown slug', () => {
+    const { prev, next } = getAdjacentModules('nonexistent-slug')
+    expect(prev).toBeNull()
+    expect(next).toBeNull()
+  })
 })
