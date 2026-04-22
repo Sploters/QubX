@@ -9,7 +9,7 @@ export function Header() {
             Qub<span className="text-purple">X</span>
           </span>
         </Link>
-        <nav>
+        <nav aria-label="Principal">
           <Link
             href="/trilha"
             className="text-sm font-medium text-text-secondary hover:text-purple transition-colors no-underline"
