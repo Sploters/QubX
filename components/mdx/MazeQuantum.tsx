@@ -77,12 +77,12 @@ export function MazeQuantum() {
 
         {/* Status */}
         <div>
-          <p className="text-[11px] text-text-secondary">
+          <p className="text-sm text-text-secondary">
             Verificadas:{' '}
             <span className="text-cyan font-bold">{visited}</span>/{TOTAL}{' '}
             {found && <span className="text-emerald-400">— achada em {TARGET + 1} passos</span>}
           </p>
-          <p className="text-[10px] text-text-muted mt-0.5">
+          <p className="text-xs text-text-muted mt-1">
             Pior caso: <strong>N</strong> verificações sequenciais
           </p>
         </div>
@@ -137,7 +137,7 @@ export function MazeQuantum() {
 
         {/* Status */}
         <div>
-          <p className="text-[11px] text-text-secondary">
+          <p className="text-sm text-text-secondary">
             {qPhase === 0 ? (
               <>
                 <span className="text-purple-light font-bold">Todas</span> as células exploradas{' '}
@@ -150,7 +150,7 @@ export function MazeQuantum() {
               </>
             )}
           </p>
-          <p className="text-[10px] text-text-muted mt-0.5">
+          <p className="text-xs text-text-muted mt-1">
             Grover: apenas <strong>√N</strong> iterações necessárias
           </p>
         </div>

@@ -2,15 +2,36 @@
 
 A física quântica descreve estados que não têm analogia na experiência cotidiana. Para isso, os físicos desenvolveram uma notação matemática compacta e poderosa: a **Notação de Dirac**, criada por Paul Dirac em 1939.
 
-<figure className="my-6 flex flex-col items-center gap-2">
-  <div className="rounded-xl overflow-hidden border border-border/50 bg-surface/20 p-2 max-w-md w-full mx-auto">
-    <img src="/images/dirac-notation.png" alt="Notação de Dirac" className="w-full rounded-lg block"/>
-  </div>
-  <figcaption className="text-xs text-text-secondary text-center max-w-sm">
-    Representação da notação bra-ket criada por Paul Dirac (1939).
-    <span className="text-text-muted"> — IBM Quantum Learning</span>
-  </figcaption>
-</figure>
+<svg viewBox="0 0 720 210" className="w-full my-6 rounded-xl" style={{background:'#0d1117', padding:'22px'}}>
+  <text x="360" y="16" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="2">NOTAÇÃO BRA-KET DE DIRAC</text>
+
+  {/* ── BRA ⟨ψ| ── */}
+  <rect x="16" y="28" width="200" height="162" rx="10" fill="#0f172a" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="116" y="54"  textAnchor="middle" fill="#67e8f9" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="2">BRA</text>
+  <text x="116" y="98"  textAnchor="middle" fill="#06b6d4" fontSize="40" fontFamily="monospace" fontWeight="bold">⟨ψ|</text>
+  <text x="116" y="128" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">vetor linha</text>
+  <line x1="36" y1="140" x2="196" y2="140" stroke="#0e7490" strokeWidth="0.8"/>
+  <text x="116" y="158" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">⟨0| = [ 1  0 ]</text>
+  <text x="116" y="174" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">ferramenta de medição</text>
+
+  {/* ── KET |ψ⟩ ── */}
+  <rect x="260" y="28" width="200" height="162" rx="10" fill="#0f172a" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="360" y="54"  textAnchor="middle" fill="#c4b5fd" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="2">KET</text>
+  <text x="360" y="98"  textAnchor="middle" fill="#8b5cf6" fontSize="40" fontFamily="monospace" fontWeight="bold">|ψ⟩</text>
+  <text x="360" y="128" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">vetor coluna</text>
+  <line x1="280" y1="140" x2="440" y2="140" stroke="#6d28d9" strokeWidth="0.8"/>
+  <text x="360" y="155" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">|0⟩ = [ 1 ]ᵀ   |1⟩ = [ 0 ]ᵀ</text>
+  <text x="360" y="174" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">          [ 0 ]            [ 1 ]</text>
+
+  {/* ── BRAKET ⟨φ|ψ⟩ ── */}
+  <rect x="504" y="28" width="200" height="162" rx="10" fill="#0f172a" stroke="#a78bfa" strokeWidth="1.5"/>
+  <text x="604" y="54"  textAnchor="middle" fill="#ddd6fe" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="2">BRAKET</text>
+  <text x="604" y="98"  textAnchor="middle" fill="#a78bfa" fontSize="30" fontFamily="monospace" fontWeight="bold">⟨φ|ψ⟩</text>
+  <text x="604" y="128" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">produto interno</text>
+  <line x1="524" y1="140" x2="684" y2="140" stroke="#7c3aed" strokeWidth="0.8"/>
+  <text x="604" y="157" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">⟨0|0⟩ = 1 → certeza</text>
+  <text x="604" y="173" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">⟨1|0⟩ = 0 → impossível</text>
+</svg>
 
 <Callout type="tip" title="Descomplicando o Nome: Bra-Ket">
 O nome vem de **Bracket** (parêntese em inglês). Paul Dirac simplesmente quebrou a palavra ao meio:
@@ -46,15 +67,48 @@ Exemplos:
 
 Os dois vetores base formam o chamado **espaço de Hilbert de dimensão 2** — o espaço matemático que descreve um qubit:
 
-<figure className="my-6 flex flex-col items-center gap-2">
-  <div className="rounded-xl overflow-hidden border border-border/50 bg-surface/20 p-2 max-w-xs w-full mx-auto">
-    <img src="/images/standard-basis-vectors.png" alt="Vetores base padrão |0⟩ e |1⟩" className="w-full rounded-lg block"/>
-  </div>
-  <figcaption className="text-xs text-text-secondary text-center max-w-sm">
-    Os vetores base |0⟩ e |1⟩ formam o espaço de Hilbert de dimensão 2 de um qubit.
-    <span className="text-text-muted"> — IBM Quantum Learning</span>
-  </figcaption>
-</figure>
+<svg viewBox="0 0 720 200" className="w-full my-6 rounded-xl" style={{background:'#0d1117', padding:'22px'}}>
+  <text x="360" y="16" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="2">VETORES BASE — ESPAÇO DE HILBERT (dim. 2)</text>
+
+  {/* ── |0⟩ ── */}
+  <rect x="16" y="28" width="216" height="152" rx="10" fill="#0f172a" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="124" y="52" textAnchor="middle" fill="#67e8f9" fontSize="13" fontFamily="monospace" fontWeight="bold">|0⟩</text>
+
+  {/* Vetor coluna [ 1 / 0 ] */}
+  <rect x="80" y="62" width="88" height="78" rx="6" fill="#061020" stroke="#0e7490" strokeWidth="1"/>
+  <text x="124" y="94"  textAnchor="middle" fill="#06b6d4" fontSize="30" fontFamily="monospace" fontWeight="bold">1</text>
+  <line x1="88" y1="106" x2="160" y2="106" stroke="#0e7490" strokeWidth="0.8" strokeDasharray="3 2"/>
+  <text x="124" y="128" textAnchor="middle" fill="#475569" fontSize="30" fontFamily="monospace">0</text>
+
+  <text x="124" y="166" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">polo norte da Esfera de Bloch</text>
+
+  {/* ── |1⟩ ── */}
+  <rect x="252" y="28" width="216" height="152" rx="10" fill="#0f172a" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="360" y="52" textAnchor="middle" fill="#c4b5fd" fontSize="13" fontFamily="monospace" fontWeight="bold">|1⟩</text>
+
+  <rect x="316" y="62" width="88" height="78" rx="6" fill="#0a0614" stroke="#6d28d9" strokeWidth="1"/>
+  <text x="360" y="94"  textAnchor="middle" fill="#475569" fontSize="30" fontFamily="monospace">0</text>
+  <line x1="324" y1="106" x2="396" y2="106" stroke="#6d28d9" strokeWidth="0.8" strokeDasharray="3 2"/>
+  <text x="360" y="128" textAnchor="middle" fill="#8b5cf6" fontSize="30" fontFamily="monospace" fontWeight="bold">1</text>
+
+  <text x="360" y="166" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">polo sul da Esfera de Bloch</text>
+
+  {/* ── Superposição geral ── */}
+  <rect x="488" y="28" width="216" height="152" rx="10" fill="#0f172a" stroke="#a78bfa" strokeWidth="1.5"/>
+  <text x="596" y="50" textAnchor="middle" fill="#ddd6fe" fontSize="11" fontFamily="monospace" fontWeight="bold">α|0⟩ + β|1⟩</text>
+
+  {/* Barras de probabilidade */}
+  <text x="524" y="72" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">|α|² = 70%</text>
+  <rect x="518" y="78" width="154" height="14" rx="3" fill="#0f172a" stroke="#334155" strokeWidth="1"/>
+  <rect x="520" y="80" width="106" height="10" rx="2" fill="#06b6d4" opacity="0.7"/>
+
+  <text x="524" y="108" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">|β|² = 30%</text>
+  <rect x="518" y="114" width="154" height="14" rx="3" fill="#0f172a" stroke="#334155" strokeWidth="1"/>
+  <rect x="520" y="116" width="46" height="10" rx="2" fill="#8b5cf6" opacity="0.7"/>
+
+  <text x="596" y="148" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">qualquer ponto na esfera</text>
+  <text x="596" y="162" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">|α|² + |β|² = 1 sempre</text>
+</svg>
 
 Um estado geral é uma combinação linear:
 ```
@@ -72,15 +126,63 @@ Um estado geral é uma combinação linear:
 
 Medir um qubit em superposição é um ato irreversível.
 
-<figure className="my-6 flex flex-col items-center gap-2">
-  <div className="rounded-xl overflow-hidden border border-border/50 bg-surface/20 p-2 max-w-sm w-full mx-auto">
-    <img src="/images/measuring-probabilistic-states.png" alt="Medição de estados quânticos probabilísticos" className="w-full rounded-lg block"/>
-  </div>
-  <figcaption className="text-xs text-text-secondary text-center max-w-sm">
-    A medição colapsa o estado: P(0) = |α|² e P(1) = |β|². O resultado é sempre 0 ou 1, nunca os dois.
-    <span className="text-text-muted"> — IBM Quantum Learning</span>
-  </figcaption>
-</figure>
+<svg viewBox="0 0 720 200" className="w-full my-6 rounded-xl" style={{background:'#0d1117', padding:'22px'}}>
+  <text x="360" y="16" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="2">MEDIÇÃO — COLAPSO DO ESTADO QUÂNTICO</text>
+
+  {/* ── ANTES: superposição ── */}
+  <rect x="16" y="28" width="190" height="152" rx="10" fill="#0f172a" stroke="#a78bfa" strokeWidth="1.5"/>
+  <text x="111" y="52" textAnchor="middle" fill="#ddd6fe" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">ANTES</text>
+  <text x="111" y="74" textAnchor="middle" fill="#a78bfa" fontSize="16" fontFamily="monospace">α|0⟩ + β|1⟩</text>
+
+  {/* Barras: |α|²=65% e |β|²=35% */}
+  <text x="36" y="98" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">|0⟩</text>
+  <rect x="56" y="88" width="130" height="14" rx="3" fill="#0f172a" stroke="#334155" strokeWidth="1"/>
+  <rect x="58" y="90" width="84" height="10" rx="2" fill="#06b6d4" opacity="0.7"/>
+  <text x="148" y="101" fill="#64748b" fontSize="8" fontFamily="Inter, sans-serif">65%</text>
+
+  <text x="36" y="120" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">|1⟩</text>
+  <rect x="56" y="110" width="130" height="14" rx="3" fill="#0f172a" stroke="#334155" strokeWidth="1"/>
+  <rect x="58" y="112" width="46" height="10" rx="2" fill="#8b5cf6" opacity="0.7"/>
+  <text x="110" y="123" fill="#64748b" fontSize="8" fontFamily="Inter, sans-serif">35%</text>
+
+  <text x="111" y="152" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">ambos os estados co-existem</text>
+  <text x="111" y="166" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">resultado: indeterminado</text>
+
+  {/* ── MEDIÇÃO ── */}
+  <text x="278" y="92" textAnchor="middle" fill="#f59e0b" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">MEDIR</text>
+  {/* Ícone de detector */}
+  <circle cx="278" cy="114" r="16" fill="#1a0f00" stroke="#f59e0b" strokeWidth="1.5"/>
+  <path d="M 266 120 Q 278 104 290 120" fill="none" stroke="#f59e0b" strokeWidth="1.5"/>
+  <line x1="278" y1="120" x2="278" y2="106" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round"/>
+  {/* Setas para dois resultados */}
+  <line x1="294" y1="100" x2="328" y2="80" stroke="#f59e0b" strokeWidth="1.5"/>
+  <polygon points="326,74 334,82 320,84" fill="#f59e0b"/>
+  <line x1="294" y1="128" x2="328" y2="148" stroke="#f59e0b" strokeWidth="1.5"/>
+  <polygon points="326,155 334,147 322,143" fill="#f59e0b"/>
+  <text x="278" y="158" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">irreversível</text>
+
+  {/* ── RESULTADO A: |0⟩ ── */}
+  <rect x="336" y="28" width="172" height="80" rx="10" fill="#040d1c" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="422" y="52" textAnchor="middle" fill="#67e8f9" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">RESULTADO A</text>
+  <text x="422" y="80" textAnchor="middle" fill="#06b6d4" fontSize="22" fontFamily="monospace" fontWeight="bold">|0⟩</text>
+  <text x="422" y="100" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">com probabilidade |α|² = 65%</text>
+
+  {/* ── RESULTADO B: |1⟩ ── */}
+  <rect x="336" y="118" width="172" height="80" rx="10" fill="#0a0614" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="422" y="142" textAnchor="middle" fill="#c4b5fd" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">RESULTADO B</text>
+  <text x="422" y="170" textAnchor="middle" fill="#8b5cf6" fontSize="22" fontFamily="monospace" fontWeight="bold">|1⟩</text>
+  <text x="422" y="190" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">com probabilidade |β|² = 35%</text>
+
+  {/* ── NOTA: DEPOIS ── */}
+  <rect x="526" y="28" width="178" height="152" rx="10" fill="#0f172a" stroke="#334155" strokeWidth="1.5"/>
+  <text x="615" y="52" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="bold">DEPOIS</text>
+  <text x="615" y="80" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">superposição destruída</text>
+  <text x="615" y="96" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">resultado: 0 ou 1 (clássico)</text>
+  <line x1="546" y1="110" x2="694" y2="110" stroke="#1e293b" strokeWidth="0.8"/>
+  <text x="615" y="128" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">P(0) = |α|² = 65%</text>
+  <text x="615" y="144" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">P(1) = |β|² = 35%</text>
+  <text x="615" y="160" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">P(0) + P(1) = 1</text>
+</svg>
 
 Para o estado `|ψ⟩ = α|0⟩ + β|1⟩`:
 - Probabilidade de obter **0** = |α|²
