@@ -79,7 +79,7 @@ export const MODULES: Module[] = [
     title: 'A Linguagem Quântica',
     description: 'A notação de Dirac é o idioma da mecânica quântica. Aprenda a ler e escrever estados quânticos como um físico.',
     videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO',
-    images: ['/images/dirac-notation.png', '/images/standard-basis-vectors.png', '/images/measuring-probabilistic-states.png'],
+    images: [],
     references: [
       { title: '3Blue1Brown: Quantum Computing (vídeo)', url: 'https://www.youtube.com/watch?v=spUNpyF58BY', type: 'video' },
       { title: 'Dirac: The Principles of Quantum Mechanics (archive.org)', url: 'https://archive.org/details/PrinciplesOfQuantumMechanics', type: 'book' },
@@ -107,7 +107,6 @@ export const MODULES: Module[] = [
     order: 6,
     title: 'O Desafio da Construção',
     description: 'Construir um computador quântico é um dos maiores desafios de engenharia da história. Criogenia, decoerência, correção de erros e as 4 tecnologias que competem pelo futuro.',
-    videoUrl: 'https://www.youtube.com/embed/seersj3W-hg',
     images: [],
     references: [
       { title: 'Kjaergaard et al.: Superconducting Qubits: Current State of Play (2020)', url: 'https://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031119-050605', type: 'paper' },
@@ -153,7 +152,7 @@ export const MODULES: Module[] = [
     title: 'Programando com Qiskit',
     description: 'Mãos na massa: crie circuitos quânticos em Python com Qiskit, simule localmente e execute em hardware quântico real da IBM.',
     videoUrl: 'https://www.youtube.com/embed/pwwuF-DaPk0',
-    images: ['/images/linguagem-quantica.png'],
+    images: [],
     references: [
       { title: 'IBM Quantum Learning — cursos gratuitos', url: 'https://learning.quantum.ibm.com', type: 'article' },
       { title: 'Qiskit Documentation', url: 'https://docs.quantum.ibm.com/', type: 'article' },
