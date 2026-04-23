@@ -48,6 +48,12 @@ O espaço sideral fica a cerca de 2,7 K. Os qubits supercondutores da IBM operam
 
 Para alcançar isso, usa-se um equipamento chamado **diluição criogênica** (dilution refrigerator) — um sistema de resfriamento especialíssimo, do tamanho de uma geladeira, que custa entre US$500.000 e US$2 milhões.
 
+![O interior de um refrigerador de diluição da IBM, mostrando a complexa fiação de micro-ondas](/images/ibm-device.png)
+
+<Callout type="deep-dive" title="Como funciona a Diluição?">
+Diferente de uma geladeira comum, esse equipamento usa uma mistura de dois isótopos de hélio (**Hélio-3** e **Hélio-4**). Quando resfriados abaixo de uma certa temperatura, eles se separam em duas fases. Ao forçar o Hélio-3 a "evaporar" de uma fase para a outra, ele remove calor do sistema — permitindo chegar a temperaturas de milikelvins.
+</Callout>
+
 ## As 4 Tecnologias de Qubit
 
 Não existe uma única forma de fazer um qubit. Diferentes empresas apostam em diferentes abordagens:
@@ -143,10 +149,21 @@ O IBM Condor tem 1.121 qubits físicos. Estamos no início.
 
 > 💡 **Por que isso importa:** a diferença entre os qubits "ruidosos" de hoje e os qubits lógicos com correção de erro total é a diferença entre uma calculadora quebrada e um supercomputador. Os próximos 10 anos são sobre fechar esse gap.
 
-## Hardware Real: O Criostato IBM
+## Conteúdo Recomendado
 
-![Criostato do computador quântico IBM Q System One](/images/IBM-Q-System-One-display.png)
+Para visualizar melhor como esses computadores são construídos por dentro, recomendamos este vídeo excelente:
 
-O que parece uma escultura de arte moderna é, na verdade, um dos sistemas de engenharia mais sofisticados do mundo. Cada camada cilíndrica representa um estágio de resfriamento progressivo — da temperatura ambiente (topo) até os 15 millikelvins onde os qubits vivem (fundo).
+<div className="aspect-video my-6 rounded-xl overflow-hidden border border-border">
+  <iframe 
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/JhHMJCUmq28" 
+    title="How Quantum Computers Work" 
+    frameBorder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowFullScreen
+  ></iframe>
+</div>
+
+*Vídeo: "Quantum Computers Explained – Limits of Human Technology" por Kurzgesagt.*
 
 <GlossaryIndex terms={['decoerencia', 'qubit', 'superposicao']} />

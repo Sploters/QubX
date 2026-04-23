@@ -4,13 +4,16 @@ import remarkGfm from 'remark-gfm'
 import { MODULES, getModuleBySlug, getAdjacentModules } from '@/lib/modules'
 import { getModuleContent } from '@/lib/mdx'
 import { ModuleLayout } from '@/components/ModuleLayout'
-import { Term, Callout, GlossaryIndex } from '@/components/mdx'
+import { Term, Callout, GlossaryIndex, BitVsQubit, SuperdenseCoding, MazeQuantum } from '@/components/mdx'
 import type { Metadata } from 'next'
 
 const mdxComponents = {
   Term,
   Callout,
   GlossaryIndex,
+  BitVsQubit,
+  SuperdenseCoding,
+  MazeQuantum,
 }
 
 interface PageProps {

@@ -8,6 +8,9 @@ interface TermProps {
   children?: React.ReactNode
 }
 
+export * from './BitVsQubit'
+export * from './SuperdenseCoding'
+export * from './MazeQuantum'
 export function Term({ id, children }: TermProps) {
   const [isVisible, setIsVisible] = useState(false)
   const entry = GLOSSARY[id]
@@ -15,6 +18,24 @@ export function Term({ id, children }: TermProps) {
   if (!entry) {
     return <span className="text-red-500 font-bold underline decoration-dotted">{children || id}</span>
   }
+
+  const content = (
+    <>
+      <strong className="block text-text-primary mb-1">{entry.term}</strong>
+      {entry.definition}
+      {id === 'nobel-2022' && (
+        <a 
+          href="https://www.nobelprize.org/prizes/physics/2022/summary/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block mt-2 text-purple-light hover:underline font-bold"
+        >
+          Ver anúncio oficial →
+        </a>
+      )}
+      <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-surface" />
+    </>
+  )
 
   return (
     <span 
@@ -28,9 +49,7 @@ export function Term({ id, children }: TermProps) {
       
       {isVisible && (
         <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface border border-border rounded-lg shadow-xl z-50 text-xs text-text-secondary animate-in fade-in slide-in-from-bottom-1 duration-200">
-          <strong className="block text-text-primary mb-1">{entry.term}</strong>
-          {entry.definition}
-          <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-surface" />
+          {content}
         </span>
       )}
     </span>
