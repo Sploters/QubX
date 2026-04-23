@@ -80,4 +80,39 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
     definition: 'Fenômeno quântico onde uma partícula atravessa uma barreira de energia que, segundo a física clássica, seria intransponível.',
     slug: 'efeito-tunel',
   },
+  'notacao-de-dirac': {
+    term: 'Notação de Dirac',
+    definition: 'Também chamada de bra-ket, é a notação padrão na mecânica quântica para descrever estados quânticos, usando símbolos como |ψ⟩ (ket) e ⟨ψ| (bra).',
+    slug: 'notacao-de-dirac',
+  },
+  'teorema-da-nao-clonagem': {
+    term: 'Teorema da Não-Clonagem',
+    definition: 'Um resultado fundamental que afirma ser impossível criar uma cópia idêntica e independente de um estado quântico desconhecido.',
+    slug: 'teorema-da-nao-clonagem',
+  },
+  'y2q': {
+    term: 'Y2Q (Years to Quantum)',
+    definition: 'O momento hipotético em que computadores quânticos se tornarão poderosos o suficiente para quebrar os algoritmos de criptografia de chave pública atuais (como RSA).',
+    slug: 'y2q',
+  },
+  'criptografia-pos-quantica': {
+    term: 'Criptografia Pós-Quântica',
+    definition: 'Algoritmos criptográficos projetados para serem seguros contra ataques de computadores clássicos e quânticos.',
+    slug: 'criptografia-pos-quantica',
+  },
+  'qiskit': {
+    term: 'Qiskit',
+    definition: 'Um SDK de código aberto para trabalhar com computadores quânticos ao nível de circuitos, pulsos e algoritmos, desenvolvido pela IBM.',
+    slug: 'qiskit',
+  },
+  'algoritmo-de-grover': {
+    term: 'Algoritmo de Grover',
+    definition: 'Um algoritmo quântico que fornece uma aceleração quadrática para a busca em bancos de dados não estruturados.',
+    slug: 'algoritmo-de-grover',
+  },
+  'teletransporte-quantico': {
+    term: 'Teletransporte Quântico',
+    definition: 'Processo pelo qual a informação quântica (o estado de um qubit) pode ser transmitida de um local para outro usando emaranhamento e comunicação clássica.',
+    slug: 'teletransporte-quantico',
+  },
 }

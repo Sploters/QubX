@@ -177,7 +177,6 @@ export const MODULES: Module[] = [
     order: 6,
     title: 'O Desafio da Construção',
     description: 'Construir um computador quântico é um dos maiores desafios de engenharia da história. Criogenia, decoerência, correção de erros e as 4 tecnologias que competem pelo futuro.',
-    videoUrl: 'https://www.youtube.com/embed/seersj3W-hg',
     images: [],
   },
   {

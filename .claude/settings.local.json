@@ -45,7 +45,9 @@
       "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/IBM_Q_quantum_computer.jpg/800px-IBM_Q_quantum_computer.jpg\" -o /dev/null -w \"URL1: %{http_code} final=%{url_effective}\\\\n\" --max-redirs 5)",
       "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Sycamore_Processor.png/800px-Sycamore_Processor.png\" -o /dev/null -w \"URL2: %{http_code} final=%{url_effective}\\\\n\" --max-redirs 5)",
       "WebFetch(domain:upload.wikimedia.org)",
-      "WebFetch(domain:commons.wikimedia.org)"
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
