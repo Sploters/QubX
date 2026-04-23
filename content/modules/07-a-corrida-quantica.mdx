@@ -14,53 +14,118 @@ Quem dominar a computação quântica primeiro terá vantagem estratégica em:
 
 O processador quântico **Sycamore** (53 qubits) realizou uma tarefa específica em **200 segundos**. O supercomputador Summit, então o mais poderoso do mundo, levaria **10.000 anos** para fazer o mesmo.
 
-<svg viewBox="0 0 720 200" className="w-full my-6 rounded-xl" style={{background:'#0d1117', padding:'24px'}}>
+<svg viewBox="0 0 740 220" className="w-full my-6 rounded-xl" style={{background:'#0d1117', padding:'24px'}}>
   <defs>
-    <linearGradient id="chipGrad" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="chipBg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stopColor="#1a2744"/>
       <stop offset="100%" stopColor="#0d1b35"/>
     </linearGradient>
+    <linearGradient id="blueGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#1d4ed8" stopOpacity="0.8"/>
+      <stop offset="100%" stopColor="#1e3a8a" stopOpacity="0.4"/>
+    </linearGradient>
   </defs>
 
-  {/* Chip central representando Sycamore */}
-  <rect x="240" y="30" width="240" height="140" rx="6" fill="url(#chipGrad)" stroke="#334155" strokeWidth="1.5"/>
-  {/* Grade de qubits (7×8 = representação visual dos 53q) */}
-  {[0,1,2,3,4,5,6].map(row =>
-    [0,1,2,3,4,5,6,7].map(col => {
-      const x = 260 + col * 26
-      const y = 44 + row * 16
-      const active = (row + col) % 2 === 0
-      return (
-        <rect key={`${row}-${col}`} x={x} y={y} width="14" height="10" rx="2"
-          fill={active ? "#1d4ed8" : "#1e293b"}
-          stroke={active ? "#3b82f6" : "#334155"} strokeWidth="0.8"/>
-      )
-    })
-  )}
-  <text x="360" y="174" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif">Sycamore — 53 qubits supercondutores</text>
+  {/* ── PAINEL QUÂNTICO (esquerdo) ── */}
+  <rect x="16" y="30" width="196" height="160" rx="12" fill="#040d1c" stroke="#3b82f6" strokeWidth="2"/>
+  <text x="114" y="54" textAnchor="middle" fill="#93c5fd" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="2">SYCAMORE</text>
+  <text x="114" y="70" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">Google · 53 qubits · 2019</text>
 
-  {/* Pinos laterais */}
-  {[0,1,2,3,4].map(i => (
-    <g key={`l${i}`}>
-      <rect x="222" y={50 + i * 24} width="18" height="6" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="1"/>
-      <rect x="480" y={50 + i * 24} width="18" height="6" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="1"/>
-    </g>
-  ))}
+  {/* Valor destaque */}
+  <text x="114" y="116" textAnchor="middle" fill="#3b82f6" fontSize="48" fontFamily="Inter, sans-serif" fontWeight="bold">200</text>
+  <text x="114" y="138" textAnchor="middle" fill="#3b82f6" fontSize="16" fontFamily="Inter, sans-serif" fontWeight="bold">segundos</text>
+  <text x="114" y="176" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">para completar o cálculo</text>
 
-  {/* Painel esquerdo: tempo quântico */}
-  <rect x="16" y="44" width="170" height="112" rx="8" fill="#0f172a" stroke="#3b82f6" strokeWidth="1.5"/>
-  <text x="101" y="66" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="1">SYCAMORE</text>
-  <text x="101" y="96" textAnchor="middle" fill="#3b82f6" fontSize="28" fontFamily="Inter, sans-serif" fontWeight="bold">200s</text>
-  <text x="101" y="118" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">para completar a tarefa</text>
-  <text x="101" y="146" textAnchor="middle" fill="#3b82f6" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">53 qubits · 2019</text>
+  {/* ── CHIP SYCAMORE (centro) — grade 7×8 hardcoded ── */}
+  <rect x="262" y="26" width="218" height="168" rx="8" fill="url(#chipBg)" stroke="#1e3a5f" strokeWidth="1.5"/>
 
-  {/* Painel direito: tempo clássico */}
-  <rect x="534" y="44" width="170" height="112" rx="8" fill="#0f172a" stroke="#ef4444" strokeWidth="1.5"/>
-  <text x="619" y="66" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="1">SUMMIT (CLÁSSICO)</text>
-  <text x="619" y="94" textAnchor="middle" fill="#ef4444" fontSize="22" fontFamily="Inter, sans-serif" fontWeight="bold">10.000</text>
-  <text x="619" y="112" textAnchor="middle" fill="#ef4444" fontSize="13" fontFamily="Inter, sans-serif" fontWeight="bold">anos</text>
-  <text x="619" y="134" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">estimativa para a mesma tarefa</text>
-  <text x="619" y="152" textAnchor="middle" fill="#ef4444" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">supercomputador mais poderoso</text>
+  {/* Linha 0 */}
+  <rect x="272" y="38" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="296" y="38" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="320" y="38" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="344" y="38" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="368" y="38" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="392" y="38" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="416" y="38" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="440" y="38" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  {/* Linha 1 */}
+  <rect x="272" y="57" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="296" y="57" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="320" y="57" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="344" y="57" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="368" y="57" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="392" y="57" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="416" y="57" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="440" y="57" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  {/* Linha 2 */}
+  <rect x="272" y="76" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="296" y="76" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="320" y="76" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="344" y="76" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="368" y="76" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="392" y="76" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="416" y="76" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="440" y="76" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  {/* Linha 3 */}
+  <rect x="272" y="95" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="296" y="95" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="320" y="95" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="344" y="95" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="368" y="95" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="392" y="95" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="416" y="95" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="440" y="95" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  {/* Linha 4 */}
+  <rect x="272" y="114" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="296" y="114" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="320" y="114" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="344" y="114" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="368" y="114" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="392" y="114" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="416" y="114" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="440" y="114" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  {/* Linha 5 */}
+  <rect x="272" y="133" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="296" y="133" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="320" y="133" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="344" y="133" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="368" y="133" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="392" y="133" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="416" y="133" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="440" y="133" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  {/* Linha 6 */}
+  <rect x="272" y="152" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="296" y="152" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="320" y="152" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="344" y="152" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="368" y="152" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="392" y="152" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+  <rect x="416" y="152" width="18" height="13" rx="2" fill="url(#blueGlow)" stroke="#3b82f6" strokeWidth="0.7"/>
+  <rect x="440" y="152" width="18" height="13" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.7"/>
+
+  {/* Pinos do chip */}
+  <rect x="248" y="60"  width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="248" y="80"  width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="248" y="100" width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="248" y="120" width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="248" y="140" width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="480" y="60"  width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="480" y="80"  width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="480" y="100" width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="480" y="120" width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+  <rect x="480" y="140" width="14" height="5" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="0.8"/>
+
+  <text x="371" y="206" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">Sycamore — 53 qubits supercondutores — Google 2019</text>
+
+  {/* ── PAINEL CLÁSSICO (direito) ── */}
+  <rect x="530" y="30" width="196" height="160" rx="12" fill="#1a0505" stroke="#ef4444" strokeWidth="2"/>
+  <text x="628" y="54" textAnchor="middle" fill="#fca5a5" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="2">SUMMIT</text>
+  <text x="628" y="70" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">supercomputador clássico · 2019</text>
+
+  <text x="628" y="112" textAnchor="middle" fill="#ef4444" fontSize="40" fontFamily="Inter, sans-serif" fontWeight="bold">10K</text>
+  <text x="628" y="134" textAnchor="middle" fill="#ef4444" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="bold">anos</text>
+  <text x="628" y="152" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">estimativa para a mesma tarefa</text>
+  <text x="628" y="176" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">sem truques de otimização</text>
 </svg>
 
 *Ressalva importante:* a tarefa era artificial — calculada especificamente para ser fácil para o Sycamore e difícil para o clássico. O IBM questionou o resultado, dizendo que o clássico poderia fazer em 2,5 dias com técnicas diferentes. Mas o impacto simbólico foi real.

@@ -2,7 +2,15 @@
 
 A física quântica descreve estados que não têm analogia na experiência cotidiana. Para isso, os físicos desenvolveram uma notação matemática compacta e poderosa: a **Notação de Dirac**, criada por Paul Dirac em 1939.
 
-![Notação de Dirac](/images/dirac-notation.png)
+<figure className="my-6 flex flex-col items-center gap-2">
+  <div className="rounded-xl overflow-hidden border border-border/50 bg-surface/20 p-2 max-w-md w-full mx-auto">
+    <img src="/images/dirac-notation.png" alt="Notação de Dirac" className="w-full rounded-lg block"/>
+  </div>
+  <figcaption className="text-xs text-text-secondary text-center max-w-sm">
+    Representação da notação bra-ket criada por Paul Dirac (1939).
+    <span className="text-text-muted"> — IBM Quantum Learning</span>
+  </figcaption>
+</figure>
 
 <Callout type="tip" title="Descomplicando o Nome: Bra-Ket">
 O nome vem de **Bracket** (parêntese em inglês). Paul Dirac simplesmente quebrou a palavra ao meio:
@@ -38,7 +46,15 @@ Exemplos:
 
 Os dois vetores base formam o chamado **espaço de Hilbert de dimensão 2** — o espaço matemático que descreve um qubit:
 
-![Vetores base padrão](/images/standard-basis-vectors.png)
+<figure className="my-6 flex flex-col items-center gap-2">
+  <div className="rounded-xl overflow-hidden border border-border/50 bg-surface/20 p-2 max-w-xs w-full mx-auto">
+    <img src="/images/standard-basis-vectors.png" alt="Vetores base padrão |0⟩ e |1⟩" className="w-full rounded-lg block"/>
+  </div>
+  <figcaption className="text-xs text-text-secondary text-center max-w-sm">
+    Os vetores base |0⟩ e |1⟩ formam o espaço de Hilbert de dimensão 2 de um qubit.
+    <span className="text-text-muted"> — IBM Quantum Learning</span>
+  </figcaption>
+</figure>
 
 Um estado geral é uma combinação linear:
 ```
@@ -56,7 +72,15 @@ Um estado geral é uma combinação linear:
 
 Medir um qubit em superposição é um ato irreversível.
 
-![Medindo estados probabilísticos](/images/measuring-probabilistic-states.png)
+<figure className="my-6 flex flex-col items-center gap-2">
+  <div className="rounded-xl overflow-hidden border border-border/50 bg-surface/20 p-2 max-w-sm w-full mx-auto">
+    <img src="/images/measuring-probabilistic-states.png" alt="Medição de estados quânticos probabilísticos" className="w-full rounded-lg block"/>
+  </div>
+  <figcaption className="text-xs text-text-secondary text-center max-w-sm">
+    A medição colapsa o estado: P(0) = |α|² e P(1) = |β|². O resultado é sempre 0 ou 1, nunca os dois.
+    <span className="text-text-muted"> — IBM Quantum Learning</span>
+  </figcaption>
+</figure>
 
 Para o estado `|ψ⟩ = α|0⟩ + β|1⟩`:
 - Probabilidade de obter **0** = |α|²

@@ -1,77 +1,161 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+const GRID = 5
+const TOTAL = GRID * GRID
+// Índice da célula-alvo (linha 3, coluna 4 = índice 19)
+const TARGET = 19
+
+// Amplitudes de base para o lado quântico — determinísticas, sem Math.random()
+const BASE_AMPS = [
+  0.28, 0.24, 0.30, 0.22, 0.26,
+  0.25, 0.32, 0.20, 0.29, 0.24,
+  0.27, 0.21, 0.33, 0.23, 0.28,
+  0.24, 0.30, 0.22, 0.27, 1.00,
+  0.26, 0.28, 0.24, 0.30, 0.22,
+]
 
 export function MazeQuantum() {
+  const [step, setStep] = useState(0)
+  const [qPhase, setQPhase] = useState<0 | 1>(0) // 0 = superposição uniforme, 1 = amplificado
+
+  // Clássico: avança uma célula a cada tick
+  useEffect(() => {
+    const t = setInterval(() => {
+      setStep(s => (s >= TOTAL + 5 ? 0 : s + 1))
+    }, 260)
+    return () => clearInterval(t)
+  }, [])
+
+  // Quântico: alterna entre exploração e amplificação
+  useEffect(() => {
+    const t = setInterval(() => {
+      setQPhase(p => (p === 0 ? 1 : 0))
+    }, 2400)
+    return () => clearInterval(t)
+  }, [])
+
+  const visited = Math.min(step, TOTAL)
+  const currentIdx = step > 0 && step <= TOTAL ? step - 1 : -1
+  const found = visited > TARGET
+
   return (
-    <div className="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-2xl bg-background border border-border">
-      {/* Classic Side */}
-      <div className="flex flex-col gap-4">
+    <div className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      {/* ── ABORDAGEM CLÁSSICA ── */}
+      <div className="rounded-xl border border-border bg-surface/30 p-5 flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-text-secondary" />
-          <h5 className="text-xs font-bold uppercase tracking-widest text-text-secondary">Abordagem Clássica</h5>
+          <div className="w-2 h-2 rounded-full bg-cyan/60" />
+          <span className="text-[11px] font-bold uppercase tracking-widest text-cyan/70">
+            Abordagem Clássica
+          </span>
         </div>
-        
-        <div className="relative aspect-video rounded-xl bg-surface/50 border border-border p-4 overflow-hidden">
-          <svg viewBox="0 0 200 120" className="w-full h-full">
-            {/* Simple Maze Walls */}
-            <g stroke="#1e1e30" strokeWidth="2" fill="none">
-              <rect x="10" y="10" width="180" height="100" rx="4" />
-              <path d="M40 10 v40 h40 M120 110 v-40 h-40 M80 60 h40" />
-            </g>
-            
-            {/* Classic "Cursor" trying paths */}
-            <circle cx="25" cy="95" r="3" fill="#f1f5f9">
-              <animate attributeName="cx" values="25;25;60;60;25;25;140;140;175" keyTimes="0;0.1;0.3;0.4;0.6;0.7;0.8;0.9;1" dur="4s" repeatCount="indefinite" />
-              <animate attributeName="cy" values="95;30;30;95;95;30;30;95;95" keyTimes="0;0.1;0.3;0.4;0.6;0.7;0.8;0.9;1" dur="4s" repeatCount="indefinite" />
-            </circle>
-            
-            <path d="M25 95 V30 H60 V95" stroke="#475569" strokeWidth="1" strokeDasharray="2,2" opacity="0.5" />
-          </svg>
-          <div className="absolute bottom-2 left-4 text-[10px] text-text-muted font-mono italic">Sequencial: Um caminho por vez</div>
+
+        {/* Grid */}
+        <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${GRID}, 1fr)` }}>
+          {Array.from({ length: TOTAL }).map((_, i) => {
+            const isTarget = i === TARGET
+            const isVisited = i < visited
+            const isCurrent = i === currentIdx
+
+            let bg = 'bg-surface/40 border-border/30'
+            if (isTarget && isVisited) bg = 'bg-emerald-500/80 border-emerald-400'
+            else if (isCurrent) bg = 'bg-cyan border-cyan scale-110'
+            else if (isVisited) bg = 'bg-cyan/15 border-cyan/25'
+
+            return (
+              <div
+                key={i}
+                className={`aspect-square rounded border transition-all duration-150 flex items-center justify-center text-[9px] font-bold ${bg}`}
+              >
+                {isTarget && isVisited && <span className="text-white">✓</span>}
+              </div>
+            )
+          })}
         </div>
-        <p className="text-xs text-text-secondary leading-relaxed">
-          O computador clássico testa cada ramificação individualmente. Se encontrar um beco sem saída, ele precisa retornar e recomeçar.
-        </p>
+
+        {/* Status */}
+        <div>
+          <p className="text-[11px] text-text-secondary">
+            Verificadas:{' '}
+            <span className="text-cyan font-bold">{visited}</span>/{TOTAL}{' '}
+            {found && <span className="text-emerald-400">— achada em {TARGET + 1} passos</span>}
+          </p>
+          <p className="text-[10px] text-text-muted mt-0.5">
+            Pior caso: <strong>N</strong> verificações sequenciais
+          </p>
+        </div>
       </div>
 
-      {/* Quantum Side */}
-      <div className="flex flex-col gap-4">
+      {/* ── ABORDAGEM QUÂNTICA ── */}
+      <div className="rounded-xl border border-purple/30 bg-surface/30 p-5 flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-purple animate-pulse" />
-          <h5 className="text-xs font-bold uppercase tracking-widest text-purple-light">Abordagem Quântica</h5>
+          <div className={`w-2 h-2 rounded-full bg-purple ${qPhase === 1 ? 'animate-pulse' : ''}`} />
+          <span className="text-[11px] font-bold uppercase tracking-widest text-purple-light/70">
+            Abordagem Quântica
+          </span>
         </div>
-        
-        <div className="relative aspect-video rounded-xl bg-surface/50 border border-purple/20 p-4 overflow-hidden">
-          <svg viewBox="0 0 200 120" className="w-full h-full">
-            {/* Simple Maze Walls */}
-            <g stroke="#1e1e30" strokeWidth="2" fill="none">
-              <rect x="10" y="10" width="180" height="100" rx="4" />
-              <path d="M40 10 v40 h40 M120 110 v-40 h-40 M80 60 h40" />
-            </g>
-            
-            {/* Quantum "Fog" spreading */}
-            <rect x="15" y="15" width="170" height="90" fill="url(#quantumFog)" rx="2">
-              <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite" />
-            </rect>
 
-            <defs>
-              <radialGradient id="quantumFog" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.2" />
-              </radialGradient>
-            </defs>
+        {/* Grid */}
+        <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${GRID}, 1fr)` }}>
+          {Array.from({ length: TOTAL }).map((_, i) => {
+            const isTarget = i === TARGET
+            const amp = BASE_AMPS[i]
 
-            {/* Path highlights */}
-            <path d="M25 95 V30 H140 V95 H175" stroke="#a78bfa" strokeWidth="2" fill="none" opacity="0.8" />
-            <circle cx="175" cy="95" r="4" fill="#a78bfa" className="animate-ping" />
-          </svg>
-          <div className="absolute bottom-2 left-4 text-[10px] text-purple-light/70 font-mono italic">Paralelo: Todos os caminhos agora</div>
+            if (qPhase === 1) {
+              // Fase amplificada: target brilha, outros somem
+              if (isTarget) {
+                return (
+                  <div
+                    key={i}
+                    className="aspect-square rounded border bg-purple border-purple-light scale-125 transition-all duration-500 flex items-center justify-center text-[9px] font-bold text-white"
+                  >
+                    ✓
+                  </div>
+                )
+              }
+              return (
+                <div
+                  key={i}
+                  className="aspect-square rounded border border-purple/10 bg-purple/5 transition-all duration-500"
+                  style={{ opacity: 0.12 }}
+                />
+              )
+            }
+
+            // Fase de superposição: todas as células com amplitude uniforme
+            return (
+              <div
+                key={i}
+                className="aspect-square rounded border border-purple/30 bg-purple/20 transition-all duration-500"
+                style={{ opacity: amp }}
+              />
+            )
+          })}
         </div>
-        <p className="text-xs text-text-secondary leading-relaxed">
-          Graças à superposição, o sistema explora todas as rotas simultaneamente. A interferência destrutiva cancela erros e a construtiva reforça a resposta correta.
-        </p>
+
+        {/* Status */}
+        <div>
+          <p className="text-[11px] text-text-secondary">
+            {qPhase === 0 ? (
+              <>
+                <span className="text-purple-light font-bold">Todas</span> as células exploradas{' '}
+                <span className="text-purple-light font-bold">simultaneamente</span>
+              </>
+            ) : (
+              <>
+                Interferência{' '}
+                <span className="text-purple-light font-bold">amplificou a solução</span> correta
+              </>
+            )}
+          </p>
+          <p className="text-[10px] text-text-muted mt-0.5">
+            Grover: apenas <strong>√N</strong> iterações necessárias
+          </p>
+        </div>
       </div>
+
     </div>
   )
 }

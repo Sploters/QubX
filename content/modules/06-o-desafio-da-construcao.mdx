@@ -48,7 +48,15 @@ O espaço sideral fica a cerca de 2,7 K. Os qubits supercondutores da IBM operam
 
 Para alcançar isso, usa-se um equipamento chamado **diluição criogênica** (dilution refrigerator) — um sistema de resfriamento especialíssimo, do tamanho de uma geladeira, que custa entre US$500.000 e US$2 milhões.
 
-![O interior de um refrigerador de diluição da IBM, mostrando a complexa fiação de micro-ondas](/images/ibm-device.png)
+<figure className="my-6 flex flex-col items-center gap-2">
+  <div className="rounded-xl overflow-hidden border border-border/50 bg-surface/20 p-2 max-w-lg w-full mx-auto">
+    <img src="/images/ibm-device.png" alt="Interior do refrigerador de diluição IBM" className="w-full rounded-lg block"/>
+  </div>
+  <figcaption className="text-xs text-text-secondary text-center max-w-md">
+    Interior de um refrigerador de diluição IBM — a complexa fiação de micro-ondas conecta os qubits supercondutores às camadas de controle.
+    <span className="text-text-muted"> — IBM Research</span>
+  </figcaption>
+</figure>
 
 <Callout type="deep-dive" title="Como funciona a Diluição?">
 Diferente de uma geladeira comum, esse equipamento usa uma mistura de dois isótopos de hélio (**Hélio-3** e **Hélio-4**). Quando resfriados abaixo de uma certa temperatura, eles se separam em duas fases. Ao forçar o Hélio-3 a "evaporar" de uma fase para a outra, ele remove calor do sistema — permitindo chegar a temperaturas de milikelvins.
@@ -106,41 +114,95 @@ A solução é o **Quantum Error Correction (QEC)**: distribuir a informação d
 | Código de Steane | 7 |
 | Código de Shor | 9 |
 
-<svg viewBox="0 0 700 220" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
-  {/* Lado esquerdo: qubits físicos ruidosos */}
-  <text x="160" y="22" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">~1.000 QUBITS FÍSICOS (ruidosos)</text>
-  {/* Grid de mini-qubits */}
-  {[0,1,2,3,4].map((row) =>
-    [0,1,2,3,4,5].map((col) => {
-      const x = 30 + col * 38
-      const y = 35 + row * 32
-      const isError = (row === 1 && col === 2) || (row === 3 && col === 4)
-      return (
-        <g key={`${row}-${col}`}>
-          <rect x={x} y={y} width="26" height="22" rx="4" fill="#1e1e30" stroke={isError ? "#ef4444" : "#334155"} strokeWidth={isError ? 1.5 : 1}/>
-          <text x={x+13} y={y+15} textAnchor="middle" fill={isError ? "#ef4444" : "#475569"} fontSize="9" fontFamily="monospace">{isError ? "✗" : "q"}</text>
-        </g>
-      )
-    })
-  )}
-  <text x="160" y="205" textAnchor="middle" fill="#ef4444" fontSize="9" fontFamily="Inter, sans-serif">erros acontecem (~0,1% por operação)</text>
+<svg viewBox="0 0 740 260" className="w-full my-8 rounded-xl" style={{background:'#0d1117', padding:'22px'}}>
 
-  {/* Seta */}
-  <line x1="340" y1="110" x2="395" y2="110" stroke="#a78bfa" strokeWidth="2.5"/>
-  <polygon points="395,104 408,110 395,116" fill="#a78bfa"/>
-  <text x="372" y="98" textAnchor="middle" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif">QEC</text>
-  <text x="372" y="130" textAnchor="middle" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif">correção</text>
+  {/* ── TÍTULO ── */}
+  <text x="370" y="18" textAnchor="middle" fill="#64748b" fontSize="11" fontFamily="Inter, sans-serif" letterSpacing="1">QUBITS FÍSICOS → QUBIT LÓGICO</text>
 
-  {/* Lado direito: 1 qubit lógico */}
-  <rect x="415" y="65" width="120" height="90" rx="10" fill="#1e1e30" stroke="#06b6d4" strokeWidth="2"/>
-  <text x="475" y="95" textAnchor="middle" fill="#06b6d4" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">1 QUBIT</text>
-  <text x="475" y="112" textAnchor="middle" fill="#06b6d4" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">LÓGICO</text>
-  <text x="475" y="130" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">livre de erros</text>
-  <text x="475" y="200" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif">tolerante a falhas</text>
+  {/* ══════ LADO ESQUERDO: grid de qubits físicos ══════ */}
+  <text x="148" y="38" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold">~1.000 QUBITS FÍSICOS</text>
+  <text x="148" y="52" textAnchor="middle" fill="#ef4444" fontSize="9" fontFamily="Inter, sans-serif">(ruidosos — erros ~0,1% por porta)</text>
 
-  {/* Balão explicativo */}
-  <text x="555" y="50" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">1.000 físicos</text>
-  <text x="555" y="62" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">→ 1 lógico</text>
+  {/* Grade 6 × 5 = 30 qubits representativos */}
+  {/* Linha 0 */}
+  <rect x="22"  y="62" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="36"  y="77" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="56"  y="62" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="70"  y="77" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="90"  y="62" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="104" y="77" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="124" y="62" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="138" y="77" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="158" y="62" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="172" y="77" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="192" y="62" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="206" y="77" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  {/* Linha 1 — com 1 erro */}
+  <rect x="22"  y="90" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="36"  y="105" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="56"  y="90" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="70"  y="105" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="90"  y="90" width="28" height="22" rx="4" fill="#2d0000" stroke="#ef4444" strokeWidth="1.5"/><text x="104" y="105" textAnchor="middle" fill="#ef4444" fontSize="10" fontFamily="monospace" fontWeight="bold">✗</text>
+  <rect x="124" y="90" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="138" y="105" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="158" y="90" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="172" y="105" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="192" y="90" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="206" y="105" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  {/* Linha 2 */}
+  <rect x="22"  y="118" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="36"  y="133" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="56"  y="118" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="70"  y="133" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="90"  y="118" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="104" y="133" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="124" y="118" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="138" y="133" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="158" y="118" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="172" y="133" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="192" y="118" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="206" y="133" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  {/* Linha 3 — com 1 erro */}
+  <rect x="22"  y="146" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="36"  y="161" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="56"  y="146" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="70"  y="161" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="90"  y="146" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="104" y="161" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="124" y="146" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="138" y="161" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="158" y="146" width="28" height="22" rx="4" fill="#2d0000" stroke="#ef4444" strokeWidth="1.5"/><text x="172" y="161" textAnchor="middle" fill="#ef4444" fontSize="10" fontFamily="monospace" fontWeight="bold">✗</text>
+  <rect x="192" y="146" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="206" y="161" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  {/* Linha 4 */}
+  <rect x="22"  y="174" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="36"  y="189" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="56"  y="174" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="70"  y="189" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="90"  y="174" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="104" y="189" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="124" y="174" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="138" y="189" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="158" y="174" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="172" y="189" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+  <rect x="192" y="174" width="28" height="22" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1"/><text x="206" y="189" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="monospace">q</text>
+
+  {/* Reticências */}
+  <text x="148" y="212" textAnchor="middle" fill="#475569" fontSize="14" fontFamily="Inter, sans-serif">· · ·  (×1.000)</text>
+
+  {/* Badge de erro */}
+  <rect x="44" y="228" width="210" height="22" rx="6" fill="#2d0000" stroke="#ef4444" strokeWidth="1"/>
+  <text x="149" y="243" textAnchor="middle" fill="#ef4444" fontSize="10" fontFamily="Inter, sans-serif">erros físicos → detectados pelo QEC</text>
+
+  {/* ══════ SETA QEC ══════ */}
+  <line x1="302" y1="130" x2="360" y2="130" stroke="#a78bfa" strokeWidth="2.5"/>
+  <polygon points="360,124 374,130 360,136" fill="#a78bfa"/>
+  <text x="336" y="118" textAnchor="middle" fill="#a78bfa" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold">QEC</text>
+  <text x="336" y="148" textAnchor="middle" fill="#64748b" fontSize="9"  fontFamily="Inter, sans-serif">Surface Code</text>
+
+  {/* ══════ LADO DIREITO: 1 qubit lógico ══════ */}
+  <rect x="380" y="52" width="164" height="180" rx="14" fill="#061020" stroke="#06b6d4" strokeWidth="2"/>
+
+  {/* Anel decorativo */}
+  <circle cx="462" cy="108" r="46" fill="none" stroke="#0e7490" strokeWidth="1" strokeDasharray="5 3" opacity="0.5"/>
+  <circle cx="462" cy="108" r="32" fill="none" stroke="#06b6d4" strokeWidth="1.2" opacity="0.4"/>
+
+  {/* Checkmark central */}
+  <circle cx="462" cy="108" r="22" fill="#0e7490" opacity="0.3"/>
+  <path d="M 450 108 l 8 9 l 14 -16" fill="none" stroke="#06b6d4" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+
+  <text x="462" y="168" textAnchor="middle" fill="#06b6d4" fontSize="13" fontFamily="Inter, sans-serif" fontWeight="bold">1 QUBIT LÓGICO</text>
+  <text x="462" y="184" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">livre de erros</text>
+  <text x="462" y="220" textAnchor="middle" fill="#06b6d4" fontSize="9"  fontFamily="Inter, sans-serif">tolerante a falhas</text>
+
+  {/* Badge de proporção */}
+  <rect x="390" y="240" width="144" height="20" rx="6" fill="#0a1628" stroke="#0e7490" strokeWidth="1"/>
+  <text x="462" y="254" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">~1.000 físicos → 1 lógico</text>
+
+  {/* ══════ BARRA DE PROPORÇÃO ══════ */}
+  <text x="570" y="38" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">escala atual</text>
+  <rect x="556" y="44" width="10" height="180" rx="3" fill="#1e293b" stroke="#334155" strokeWidth="1"/>
+  {/* Parte ruidosa (vermelho) */}
+  <rect x="558" y="46" width="6" height="170" rx="2" fill="#ef4444" opacity="0.5"/>
+  {/* Parte lógica (ciano) */}
+  <rect x="558" y="206" width="6" height="10" rx="2" fill="#06b6d4"/>
+  {/* Labels */}
+  <text x="574" y="56"  fill="#ef4444" fontSize="8" fontFamily="Inter, sans-serif">999 físicos</text>
+  <text x="574" y="215" fill="#06b6d4" fontSize="8" fontFamily="Inter, sans-serif">1 lógico</text>
+
 </svg>
 
 Na prática: para rodar um algoritmo útil que exigiria 1.000 qubits lógicos livres de erro, você precisaria de **1 milhão de qubits físicos** com os códigos atuais.

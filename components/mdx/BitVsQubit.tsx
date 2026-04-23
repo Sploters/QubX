@@ -1,124 +1,108 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export function BitVsQubit() {
+  const [bitValue, setBitValue] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBitValue(v => (v === 0 ? 1 : 0))
+    }, 1400)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <div className="my-10 flex flex-col md:flex-row items-center justify-around gap-8 p-8 rounded-2xl bg-surface/30 border border-border overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan/50 via-purple/50 to-cyan/50 opacity-20" />
-      
-      {/* Bit Clássico */}
-      <div className="flex flex-col items-center gap-4 group">
-        <div className="relative w-32 h-32 flex items-center justify-center">
-          <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]">
-            <circle 
-              cx="50" cy="50" r="45" 
-              fill="transparent" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              className="text-cyan/20"
-            />
-            <circle 
-              cx="50" cy="50" r="45" 
-              fill="url(#bitGradient)" 
-              stroke="currentColor" 
-              strokeWidth="1.5" 
-              className="text-cyan"
-            />
-            <defs>
-              <radialGradient id="bitGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                <stop offset="0%" stopColor="rgba(6,182,212,0.1)" />
-                <stop offset="100%" stopColor="rgba(6,182,212,0.05)" />
-              </radialGradient>
-            </defs>
-            <text 
-              x="50" y="58" 
-              textAnchor="middle" 
-              fontSize="28" 
-              fontWeight="bold" 
-              fill="currentColor" 
-              className="text-cyan font-mono animate-pulse"
-            >
-              0
-            </text>
-          </svg>
-          <div className="absolute -bottom-2 px-3 py-1 bg-cyan/10 border border-cyan/30 rounded-full text-[10px] uppercase tracking-widest text-cyan font-bold">
-            Binário
-          </div>
-        </div>
-        <div className="text-center">
-          <h4 className="text-text-primary font-bold">Bit Clássico</h4>
-          <p className="text-xs text-text-secondary">Apenas 0 ou 1</p>
+    <div className="my-10 flex flex-col md:flex-row items-stretch justify-center rounded-2xl overflow-hidden border border-border bg-surface/20">
+
+      {/* ── BIT CLÁSSICO ── */}
+      <div className="flex-1 flex flex-col items-center justify-center gap-6 p-8 border-b md:border-b-0 md:border-r border-border">
+        <p className="text-[11px] font-bold uppercase tracking-widest text-cyan/60">Bit Clássico</p>
+
+        <svg viewBox="0 0 160 160" className="w-32 h-32 drop-shadow-[0_0_18px_rgba(6,182,212,0.25)]">
+          <defs>
+            <radialGradient id="bitBg" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="#0e7490" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#042f3d" stopOpacity="0.15" />
+            </radialGradient>
+          </defs>
+          <circle cx="80" cy="80" r="70" fill="url(#bitBg)" stroke="#0891b2" strokeWidth="2" />
+          <circle cx="80" cy="80" r="55" fill="none" stroke="#0891b2" strokeWidth="0.8" strokeDasharray="4 3" opacity="0.35" />
+          {/* Valor alternando */}
+          <text
+            key={bitValue}
+            x="80" y="97"
+            textAnchor="middle"
+            fontSize="58"
+            fontWeight="bold"
+            fill="#06b6d4"
+            fontFamily="monospace"
+          >
+            {bitValue}
+          </text>
+        </svg>
+
+        <div className="text-center space-y-1">
+          <p className="text-sm font-semibold text-text-primary">Apenas 0 ou 1</p>
+          <p className="text-xs text-text-secondary">um estado definido por vez</p>
         </div>
       </div>
 
-      {/* Divisor */}
-      <div className="hidden md:block h-24 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent" />
+      {/* ── QUBIT QUÂNTICO ── */}
+      <div className="flex-1 flex flex-col items-center justify-center gap-6 p-8">
+        <p className="text-[11px] font-bold uppercase tracking-widest text-purple-light/60">Qubit Quântico</p>
 
-      {/* Qubit Quântico */}
-      <div className="flex flex-col items-center gap-4 group">
-        <div className="relative w-40 h-40 flex items-center justify-center">
-          <svg viewBox="0 0 120 120" className="w-full h-full drop-shadow-[0_0_20px_rgba(139,92,246,0.4)]">
-            {/* Esfera de Bloch */}
-            <circle 
-              cx="60" cy="60" r="50" 
-              fill="url(#qubitGradient)" 
-              stroke="currentColor" 
-              strokeWidth="0.5" 
-              className="text-purple/30"
-            />
-            
-            {/* Elipses (Eixos) */}
-            <ellipse 
-              cx="60" cy="60" rx="50" ry="15" 
-              fill="transparent" 
-              stroke="currentColor" 
-              strokeWidth="0.5" 
-              strokeDasharray="2,2" 
-              className="text-purple/40"
-            />
-            <ellipse 
-              cx="60" cy="60" rx="15" ry="50" 
-              fill="transparent" 
-              stroke="currentColor" 
-              strokeWidth="0.5" 
-              strokeDasharray="2,2" 
-              className="text-purple/40"
-            />
+        <svg viewBox="0 0 200 200" className="w-40 h-40 drop-shadow-[0_0_22px_rgba(139,92,246,0.35)]">
+          <defs>
+            <radialGradient id="qubitBg" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stopColor="#5b21b6" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#1e1b4b" stopOpacity="0.15" />
+            </radialGradient>
+          </defs>
 
-            {/* Vetor de Estado */}
-            <line 
-              x1="60" y1="60" x2="95" y2="35" 
-              stroke="currentColor" 
-              strokeWidth="2.5" 
-              className="text-purple-light"
+          {/* Esfera */}
+          <circle cx="100" cy="100" r="68" fill="url(#qubitBg)" stroke="#7c3aed" strokeWidth="1.5" />
+
+          {/* Equador tracejado */}
+          <ellipse cx="100" cy="100" rx="68" ry="20" fill="none" stroke="#6d28d9" strokeWidth="1" strokeDasharray="4 3" opacity="0.55" />
+
+          {/* Eixo vertical */}
+          <line x1="100" y1="30" x2="100" y2="170" stroke="#6d28d9" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+
+          {/* Polo Norte — label FORA da esfera (acima) */}
+          <text x="100" y="20" textAnchor="middle" fontSize="13" fill="#06b6d4" fontFamily="monospace" fontWeight="bold">|0⟩</text>
+
+          {/* Polo Sul — label FORA da esfera (abaixo) */}
+          <text x="100" y="192" textAnchor="middle" fontSize="13" fill="#8b5cf6" fontFamily="monospace" fontWeight="bold">|1⟩</text>
+
+          {/* Vetor de estado girando suavemente — agrupado para animar */}
+          <g>
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 100 100"
+              to="360 100 100"
+              dur="7s"
+              repeatCount="indefinite"
             />
-            <circle cx="95" cy="35" r="4" fill="currentColor" className="text-purple-light shadow-lg" />
-            
-            {/* Partículas de Brilho */}
-            <circle cx="30" cy="40" r="1" fill="currentColor" className="text-purple animate-ping" />
-            <circle cx="80" cy="85" r="1" fill="currentColor" className="text-purple animate-ping [animation-delay:1s]" />
+            <line x1="100" y1="100" x2="148" y2="58" stroke="#a78bfa" strokeWidth="3" strokeLinecap="round" />
+            {/* Ponta brilhante */}
+            <circle cx="148" cy="58" r="6" fill="#a78bfa" stroke="#c4b5fd" strokeWidth="1.5" />
+            {/* Projeção sutil no equador */}
+            <line x1="148" y1="58" x2="148" y2="100" stroke="#a78bfa" strokeWidth="0.8" strokeDasharray="3 2" opacity="0.4" />
+            <circle cx="148" cy="100" r="3" fill="#6d28d9" opacity="0.5" />
+          </g>
 
-            <defs>
-              <radialGradient id="qubitGradient" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="rgba(139,92,246,0.2)" />
-                <stop offset="70%" stopColor="rgba(139,92,246,0.05)" />
-                <stop offset="100%" stopColor="transparent" />
-              </radialGradient>
-            </defs>
+          {/* Label |ψ⟩ estático no canto */}
+          <text x="160" y="46" fontSize="11" fill="#c4b5fd" fontFamily="monospace" opacity="0.8">|ψ⟩</text>
+        </svg>
 
-            <text x="60" y="10" textAnchor="middle" fontSize="10" fill="currentColor" className="text-purple/60 font-mono">|0⟩</text>
-            <text x="60" y="118" textAnchor="middle" fontSize="10" fill="currentColor" className="text-purple/60 font-mono">|1⟩</text>
-          </svg>
-          <div className="absolute -bottom-2 px-3 py-1 bg-purple/10 border border-purple/30 rounded-full text-[10px] uppercase tracking-widest text-purple-light font-bold">
-            Superposição
-          </div>
-        </div>
-        <div className="text-center">
-          <h4 className="text-text-primary font-bold">Qubit</h4>
-          <p className="text-xs text-text-secondary">0, 1 e ambos ao mesmo tempo</p>
+        <div className="text-center space-y-1">
+          <p className="text-sm font-semibold text-text-primary">0, 1 e qualquer superposição</p>
+          <p className="text-xs text-text-secondary">vetor de estado na Esfera de Bloch</p>
         </div>
       </div>
+
     </div>
   )
 }

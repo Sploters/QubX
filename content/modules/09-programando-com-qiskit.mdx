@@ -7,7 +7,45 @@ Qiskit é o SDK open-source da IBM para computação quântica, lançado em 2017
 - Executar em hardware quântico real via IBM Quantum Cloud
 - Visualizar estados quânticos e resultados
 
-![Linguagem de programação quântica](/images/linguagem-quantica.png)
+<svg viewBox="0 0 720 120" className="w-full my-6 rounded-xl" style={{background:'#0d1117', padding:'20px'}}>
+  <text x="360" y="16" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif" letterSpacing="2">ECOSSISTEMA QISKIT</text>
+
+  {/* Pacote 1 */}
+  <rect x="16"  y="28" width="154" height="64" rx="8" fill="#0f172a" stroke="#8b5cf6" strokeWidth="1.5"/>
+  <text x="93"  y="52" textAnchor="middle" fill="#a78bfa" fontSize="11" fontFamily="monospace" fontWeight="bold">qiskit</text>
+  <text x="93"  y="68" textAnchor="middle" fill="#64748b" fontSize="9"  fontFamily="Inter, sans-serif">criar circuitos</text>
+  <text x="93"  y="82" textAnchor="middle" fill="#475569" fontSize="8"  fontFamily="Inter, sans-serif">portas · medições</text>
+
+  {/* Seta → */}
+  <line x1="170" y1="60" x2="192" y2="60" stroke="#334155" strokeWidth="1.5"/>
+  <polygon points="192,55 200,60 192,65" fill="#334155"/>
+
+  {/* Pacote 2 */}
+  <rect x="200" y="28" width="154" height="64" rx="8" fill="#0f172a" stroke="#06b6d4" strokeWidth="1.5"/>
+  <text x="277" y="52" textAnchor="middle" fill="#67e8f9" fontSize="11" fontFamily="monospace" fontWeight="bold">qiskit-aer</text>
+  <text x="277" y="68" textAnchor="middle" fill="#64748b" fontSize="9"  fontFamily="Inter, sans-serif">simular localmente</text>
+  <text x="277" y="82" textAnchor="middle" fill="#475569" fontSize="8"  fontFamily="Inter, sans-serif">ruído realista · shots</text>
+
+  {/* Seta → */}
+  <line x1="354" y1="60" x2="376" y2="60" stroke="#334155" strokeWidth="1.5"/>
+  <polygon points="376,55 384,60 376,65" fill="#334155"/>
+
+  {/* Pacote 3 */}
+  <rect x="384" y="28" width="160" height="64" rx="8" fill="#0f172a" stroke="#f59e0b" strokeWidth="1.5"/>
+  <text x="464" y="46" textAnchor="middle" fill="#fbbf24" fontSize="10" fontFamily="monospace" fontWeight="bold">qiskit-ibm-runtime</text>
+  <text x="464" y="63" textAnchor="middle" fill="#64748b" fontSize="9"  fontFamily="Inter, sans-serif">executar em hardware real</text>
+  <text x="464" y="79" textAnchor="middle" fill="#475569" fontSize="8"  fontFamily="Inter, sans-serif">IBM Quantum Cloud</text>
+
+  {/* Seta → */}
+  <line x1="544" y1="60" x2="566" y2="60" stroke="#334155" strokeWidth="1.5"/>
+  <polygon points="566,55 574,60 566,65" fill="#334155"/>
+
+  {/* Pacote 4 */}
+  <rect x="574" y="28" width="132" height="64" rx="8" fill="#0f172a" stroke="#34d399" strokeWidth="1.5"/>
+  <text x="640" y="50" textAnchor="middle" fill="#6ee7b7" fontSize="10" fontFamily="monospace" fontWeight="bold">matplotlib</text>
+  <text x="640" y="65" textAnchor="middle" fill="#64748b" fontSize="9"  fontFamily="Inter, sans-serif">visualizar resultados</text>
+  <text x="640" y="80" textAnchor="middle" fill="#475569" fontSize="8"  fontFamily="Inter, sans-serif">histogramas · circuitos</text>
+</svg>
 
 ## Instalação
 
