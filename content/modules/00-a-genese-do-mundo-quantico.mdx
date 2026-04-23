@@ -1,0 +1,62 @@
+## Por que Computadores Quânticos?
+
+A história da computação quântica não começou com engenheiros, mas com um desafio da física: a natureza é complexa demais para ser simulada por bits comuns.
+
+Imagine que você quer simular o comportamento de uma única molécula de cafeína. Embora pareça simples, o número de estados possíveis é tão grande que um computador clássico precisaria ser maior que o planeta Terra para processar todos os dados.
+
+## Richard Feynman e o "Click" de 1981
+
+Em 1981, durante uma conferência organizada pela IBM e pelo MIT, o físico **Richard Feynman** deu o pontapé inicial. Ele percebeu que, se quiséssemos entender o universo em nível atômico, precisaríamos de um novo tipo de máquina.
+
+> *"A natureza não é clássica, dammit, e se você quer fazer uma simulação da natureza, é melhor fazê-la mecânico-quântica."*
+> — Richard Feynman
+
+Ele propôs que, em vez de lutar contra as leis "estranhas" da física quântica, deveríamos usá-las como ferramentas de cálculo.
+
+## O Fim da Linha para o Silício
+
+Por décadas, seguimos a **<Term id="lei-de-moore">Lei de Moore</Term>**, dobrando o número de transistores em um chip a cada dois anos. Mas chegamos a um limite físico.
+
+Quando um transistor fica do tamanho de poucos átomos, os elétrons param de se comportar como "bolinhas" e começam a se comportar como ondas. Eles sofrem o **<Term id="efeito-tunel">Efeito Túnel</Term>**: atravessam as barreiras físicas do chip como se elas não estivessem lá.
+
+Isso causa vazamento de energia e torna os bits não confiáveis. A computação quântica não é apenas uma "melhoria" do computador atual; é uma solução para quando o computador de silício não puder mais encolher.
+
+## Por que Agora?
+
+Após décadas de teoria, três fatores tornaram a computação quântica uma realidade prática nesta década:
+
+1. <Term id="hardware">**Hardware**</Term> — processadores com mais qubits e menos erros a cada ano.
+2. <Term id="software">**Software**</Term> — frameworks acessíveis que permitem programar sem ser um PhD em física.
+3. <Term id="nuvem">**Nuvem**</Term> — o acesso democratizado via internet a máquinas quânticas reais.
+
+## O Conceito de Quantização
+
+O termo "Quântico" vem de *quantum* (pacote). Na física clássica, imaginamos a energia como uma **rampa** contínua. Na física quântica, ela é como uma **escada**.
+
+<svg viewBox="0 0 680 260" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
+  <text x="170" y="24" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">ENERGIA CONTÍNUA (clássico)</text>
+  <text x="510" y="24" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="Inter, sans-serif">ENERGIA QUANTIZADA (quântico)</text>
+  <line x1="340" y1="10" x2="340" y2="250" stroke="#1e1e30" strokeWidth="1"/>
+
+  <line x1="60" y1="220" x2="280" y2="60" stroke="#475569" strokeWidth="3" strokeLinecap="round"/>
+  <text x="170" y="240" textAnchor="middle" fill="#475569" fontSize="10" fontFamily="Inter, sans-serif">qualquer valor de energia</text>
+
+  <line x1="380" y1="220" x2="450" y2="220" stroke="#8b5cf6" strokeWidth="2.5"/>
+  <line x1="450" y1="220" x2="450" y2="185" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="3"/>
+  <line x1="450" y1="185" x2="520" y2="185" stroke="#8b5cf6" strokeWidth="2.5"/>
+  <line x1="520" y1="185" x2="520" y2="150" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="3"/>
+  <line x1="520" y1="150" x2="590" y2="150" stroke="#8b5cf6" strokeWidth="2.5"/>
+  <line x1="590" y1="150" x2="590" y2="115" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="3"/>
+  <line x1="590" y1="115" x2="650" y2="115" stroke="#8b5cf6" strokeWidth="2.5"/>
+
+  <text x="365" y="215" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">n=1</text>
+  <text x="455" y="180" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">n=2</text>
+  <text x="525" y="145" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">n=3</text>
+  <text x="595" y="110" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">n=4</text>
+
+  <text x="510" y="240" textAnchor="middle" fill="#8b5cf6" fontSize="10" fontFamily="Inter, sans-serif">apenas valores específicos</text>
+</svg>
+
+Essa natureza discreta da energia é o que permite criar os estados estáveis (0 e 1) que usamos para processar informação.
+
+<GlossaryIndex terms={['lei-de-moore', 'efeito-tunel', 'hardware', 'software', 'nuvem']} />

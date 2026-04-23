@@ -70,4 +70,14 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
     definition: 'A temperatura teórica mais baixa possível, onde o movimento térmico dos átomos cessa. Essencial para manter a estabilidade dos qubits supercondutores.',
     slug: 'zero-absoluto',
   },
+  'lei-de-moore': {
+    term: 'Lei de Moore',
+    definition: 'Observação de que o número de transistores em um chip dobra aproximadamente a cada dois anos, resultando em um aumento exponencial do poder de processamento.',
+    slug: 'lei-de-moore',
+  },
+  'efeito-tunel': {
+    term: 'Efeito Túnel',
+    definition: 'Fenômeno quântico onde uma partícula atravessa uma barreira de energia que, segundo a física clássica, seria intransponível.',
+    slug: 'efeito-tunel',
+  },
 }

@@ -16,6 +16,19 @@ export interface Module {
 
 export const MODULES: Module[] = [
   {
+    slug: '00-a-genese-do-mundo-quantico',
+    order: 0,
+    title: 'A Gênese do Mundo Quântico',
+    description: 'De Richard Feynman ao limite do silício. Descubra por que precisamos de computadores quânticos e como chegamos até aqui.',
+    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO',
+    images: [],
+    references: [
+      { title: 'Richard Feynman: Simulating Physics with Computers (1981)', url: 'https://pma.vub.ac.be/courses/quantum-computing/Feynman1981.pdf', type: 'paper' },
+      { title: 'The Feynman Lectures on Physics: Quantum Behavior', url: 'https://www.feynmanlectures.caltech.edu/III_01.html', type: 'book' },
+      { title: 'Veritasium: Why Silicon Valley is called Silicon Valley (vídeo)', url: 'https://www.youtube.com/watch?v=amWqS7u9N2A', type: 'video' },
+    ]
+  },
+  {
     slug: '01-a-nova-era-da-computacao',
     order: 1,
     title: 'A Nova Era da Computação',
