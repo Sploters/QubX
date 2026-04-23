@@ -31,30 +31,57 @@ Se α = β = 1/√2, o qubit tem 50% de chance de ser 0 e 50% de chance de ser 1
 
 A Esfera de Bloch é a representação visual mais intuitiva de um qubit. Cada ponto na superfície da esfera representa um estado quântico possível.
 
-<svg viewBox="0 0 340 340" className="w-full max-w-sm mx-auto my-8">
-  <ellipse cx="170" cy="170" rx="130" ry="130" fill="none" stroke="#1e1e30" strokeWidth="2"/>
-  <ellipse cx="170" cy="170" rx="130" ry="40" fill="none" stroke="#1e1e30" strokeWidth="1.5" strokeDasharray="6"/>
-  <line x1="170" y1="30" x2="170" y2="310" stroke="#1e1e30" strokeWidth="1.5" strokeDasharray="6"/>
-  <line x1="30" y1="170" x2="310" y2="170" stroke="#1e1e30" strokeWidth="1.5" strokeDasharray="6"/>
+<svg viewBox="0 0 360 360" className="w-full max-w-sm mx-auto my-8 rounded-xl" style={{background:'#13131f', padding:'16px'}}>
+  {/* Sombra da esfera para efeito 3D */}
+  <defs>
+    <radialGradient id="sphereGrad" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stopColor="#1e293b" stopOpacity="1"/>
+      <stop offset="100%" stopColor="#0f172a" stopOpacity="1"/>
+    </radialGradient>
+  </defs>
 
-  <circle cx="170" cy="38" r="6" fill="#06b6d4"/>
-  <text x="188" y="34" fill="#06b6d4" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="bold">|0⟩</text>
-  <text x="188" y="48" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">polo norte</text>
+  {/* Esfera preenchida */}
+  <circle cx="180" cy="180" r="130" fill="url(#sphereGrad)" stroke="#334155" strokeWidth="1.5"/>
 
-  <circle cx="170" cy="302" r="6" fill="#8b5cf6"/>
-  <text x="188" y="298" fill="#8b5cf6" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="bold">|1⟩</text>
-  <text x="188" y="312" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">polo sul</text>
+  {/* Meridianos tracejados */}
+  <ellipse cx="180" cy="180" rx="130" ry="42" fill="none" stroke="#334155" strokeWidth="1.2" strokeDasharray="5 3"/>
+  <ellipse cx="180" cy="180" rx="50" ry="130" fill="none" stroke="#1e293b" strokeWidth="1" strokeDasharray="4 3"/>
 
-  <circle cx="240" cy="110" r="6" fill="#a78bfa"/>
-  <line x1="170" y1="170" x2="240" y2="110" stroke="#a78bfa" strokeWidth="2.5"/>
-  <text x="248" y="108" fill="#a78bfa" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold">|ψ⟩</text>
-  <text x="248" y="122" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">superposição</text>
+  {/* Eixo vertical */}
+  <line x1="180" y1="44" x2="180" y2="316" stroke="#334155" strokeWidth="1.2" strokeDasharray="5 3"/>
+  {/* Eixo horizontal */}
+  <line x1="44" y1="180" x2="316" y2="180" stroke="#334155" strokeWidth="1.2" strokeDasharray="5 3"/>
 
-  <path d="M 170 170 Q 185 145 195 138" fill="none" stroke="#475569" strokeWidth="1"/>
-  <text x="195" y="155" fill="#475569" fontSize="11" fontFamily="Inter, sans-serif">θ</text>
+  {/* Polo Norte |0⟩ */}
+  <circle cx="180" cy="50" r="7" fill="#06b6d4" stroke="#0e7490" strokeWidth="1"/>
+  <text x="196" y="46" fill="#06b6d4" fontSize="15" fontFamily="monospace" fontWeight="bold">|0⟩</text>
+  <text x="196" y="62" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">polo norte</text>
 
-  <text x="32" y="165" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">equador</text>
-  <text x="32" y="178" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">50/50</text>
+  {/* Polo Sul |1⟩ */}
+  <circle cx="180" cy="310" r="7" fill="#8b5cf6" stroke="#6d28d9" strokeWidth="1"/>
+  <text x="196" y="306" fill="#8b5cf6" fontSize="15" fontFamily="monospace" fontWeight="bold">|1⟩</text>
+  <text x="196" y="322" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">polo sul</text>
+
+  {/* Vetor de estado |ψ⟩ */}
+  <line x1="180" y1="180" x2="252" y2="112" stroke="#a78bfa" strokeWidth="2.5" strokeLinecap="round"/>
+  <circle cx="252" cy="112" r="7" fill="#a78bfa" stroke="#7c3aed" strokeWidth="1"/>
+  <text x="262" y="108" fill="#a78bfa" fontSize="13" fontFamily="monospace" fontWeight="bold">|ψ⟩</text>
+  <text x="262" y="124" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">superposição</text>
+
+  {/* Ângulo θ */}
+  <path d="M 180 180 Q 192 155 202 148" fill="none" stroke="#64748b" strokeWidth="1.2"/>
+  <text x="204" y="164" fill="#64748b" fontSize="12" fontFamily="Inter, sans-serif" fontStyle="italic">θ</text>
+
+  {/* Projeção pontilhada do vetor */}
+  <line x1="252" y1="112" x2="252" y2="180" stroke="#a78bfa" strokeWidth="1" strokeDasharray="4 3" opacity="0.5"/>
+  <line x1="180" y1="180" x2="252" y2="180" stroke="#a78bfa" strokeWidth="1" strokeDasharray="4 3" opacity="0.5"/>
+
+  {/* Label equador */}
+  <text x="36" y="174" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">equador</text>
+  <text x="36" y="186" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">50 / 50</text>
+
+  {/* Label centro */}
+  <circle cx="180" cy="180" r="4" fill="#475569"/>
 </svg>
 
 - **Polo norte** → |0⟩ (certeza de medir 0)

@@ -79,32 +79,40 @@ Infelizmente, existe uma estratégia chamada **Harvest Now, Decrypt Later** (Col
 
 Atores maliciosos estão salvando seus dados criptografados hoje, mesmo sem conseguir abri-los, apenas esperando o dia em que um computador quântico forte o suficiente seja ligado. É um sequestro de dados onde o resgate é o próprio tempo.
 
-<svg viewBox="0 0 700 250" className="w-full my-8 rounded-xl" style={{background:'#0a0a0f', border:'1px solid #3b1e1e', padding:'20px'}}>
-  {/* Data Flow */}
-  <rect x="50" y="100" width="80" height="50" fill="#1e1e30" stroke="#475569" rx="5" />
-  <text x="90" y="130" textAnchor="middle" fill="#94a3b8" fontSize="10">DADOS HOJE</text>
-  
-  <line x1="130" y1="125" x2="300" y2="125" stroke="#475569" strokeWidth="2" strokeDasharray="5 5" />
-  <text x="215" y="115" textAnchor="middle" fill="#475569" fontSize="9">INTERNET (HTTPS)</text>
+<svg viewBox="0 0 700 270" className="w-full my-8 rounded-xl" style={{background:'#0a0a0f', border:'1px solid #3b1e1e', padding:'20px'}}>
+  {/* Dados hoje */}
+  <rect x="20" y="90" width="100" height="56" fill="#1e1e30" stroke="#475569" strokeWidth="1.5" rx="6"/>
+  <text x="70" y="112" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold">SEUS DADOS</text>
+  <text x="70" y="128" textAnchor="middle" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">cifrados com RSA</text>
+  <text x="70" y="160" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">hoje — 2024</text>
 
-  {/* Attacker Server */}
-  <rect x="300" y="80" width="120" height="90" fill="#3b1e1e" stroke="#ef4444" rx="8" />
-  <text x="360" y="105" textAnchor="middle" fill="#ef4444" fontSize="10" fontWeight="bold">STORAGE MALICIOSO</text>
-  <text x="360" y="130" textAnchor="middle" fill="#f1f5f9" fontSize="18">💾</text>
-  <text x="360" y="155" textAnchor="middle" fill="#94a3b8" fontSize="9">COLETANDO DADOS...</text>
+  {/* Linha da internet */}
+  <line x1="120" y1="118" x2="280" y2="118" stroke="#334155" strokeWidth="2" strokeDasharray="5 4"/>
+  <text x="200" y="108" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">INTERNET (HTTPS)</text>
 
-  {/* Future Arrow */}
-  <path d="M420 125 Q 500 125, 550 180" stroke="#ef4444" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#ef4444" />
-    </marker>
-  </defs>
+  {/* Storage malicioso */}
+  <rect x="280" y="68" width="140" height="100" fill="#2d0a0a" stroke="#ef4444" strokeWidth="1.5" rx="8"/>
+  <text x="350" y="92" textAnchor="middle" fill="#ef4444" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold">STORAGE MALICIOSO</text>
+  {/* Ícone de disco */}
+  <rect x="322" y="100" width="56" height="40" rx="4" fill="#1e1e1e" stroke="#ef4444" strokeWidth="1"/>
+  <ellipse cx="350" cy="100" rx="28" ry="8" fill="#3b1212" stroke="#ef4444" strokeWidth="1"/>
+  <ellipse cx="350" cy="100" rx="10" ry="3" fill="#ef4444" opacity="0.4"/>
+  <text x="350" y="152" textAnchor="middle" fill="#ef4444" fontSize="9" fontFamily="Inter, sans-serif">coletando agora...</text>
 
-  {/* Future Quantum Computer */}
-  <rect x="530" y="180" width="120" height="50" fill="#13131f" stroke="#06b6d4" rx="5" />
-  <text x="590" y="210" textAnchor="middle" fill="#06b6d4" fontSize="10" fontWeight="bold">Q-DAY (FUTURO)</text>
-  <text x="590" y="245" textAnchor="middle" fill="#94a3b8" fontSize="9">DESCRIPTOGRAFANDO...</text>
+  {/* Seta curvada para Q-Day */}
+  <path d="M 420 118 Q 500 118 530 192" fill="none" stroke="#ef4444" strokeWidth="2" strokeDasharray="6 3"/>
+  {/* Ponta de seta explícita */}
+  <polygon points="524,188 536,196 522,200" fill="#ef4444"/>
+  <text x="490" y="148" textAnchor="middle" fill="#ef4444" fontSize="9" fontFamily="Inter, sans-serif">Q-Day chega...</text>
+
+  {/* Computador quântico futuro */}
+  <rect x="520" y="198" width="158" height="58" fill="#0a1628" stroke="#06b6d4" strokeWidth="1.5" rx="8"/>
+  <text x="599" y="220" textAnchor="middle" fill="#06b6d4" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="bold">Q-DAY (FUTURO)</text>
+  <text x="599" y="238" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">descriptografando tudo</text>
+  <text x="599" y="252" textAnchor="middle" fill="#64748b" fontSize="8" fontFamily="Inter, sans-serif">que foi coletado</text>
+
+  {/* Timeline label */}
+  <text x="350" y="250" textAnchor="middle" fill="#334155" fontSize="9" fontFamily="Inter, sans-serif">► dados coletados hoje podem ser abertos no futuro</text>
 </svg>
 </Callout>
 
