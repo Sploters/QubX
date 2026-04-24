@@ -96,11 +96,19 @@ O termo "Quântico" vem de *quantum* (pacote). Na física clássica, imaginamos 
     </g>
   ))}
 
-  {/* Seta de transição entre n=2 e n=3 */}
-  <line x1="560" y1="174" x2="560" y2="142" stroke="#f59e0b" strokeWidth="1.5"/>
-  <polygon points="555,143 560,133 565,143" fill="#f59e0b"/>
-  <text x="572" y="160" fill="#f59e0b" fontSize="8" fontFamily="Inter, sans-serif">fóton</text>
-  <text x="572" y="170" fill="#f59e0b" fontSize="8" fontFamily="Inter, sans-serif">emitido</text>
+  {/* Transição ABSORÇÃO: n=1 → n=2 (elétron ganha energia, absorve fóton) */}
+  <line x1="455" y1="216" x2="455" y2="183" stroke="#38bdf8" strokeWidth="1.5"/>
+  <polygon points="450,184 455,174 460,184" fill="#38bdf8"/>
+  <text x="464" y="197" fill="#38bdf8" fontSize="8" fontFamily="Inter, sans-serif">fóton</text>
+  <text x="464" y="208" fill="#38bdf8" fontSize="8" fontFamily="Inter, sans-serif">absorvido</text>
+  <text x="424" y="201" textAnchor="middle" fill="#0ea5e9" fontSize="7" fontFamily="Inter, sans-serif" opacity="0.7">hν</text>
+
+  {/* Transição EMISSÃO: n=3 → n=2 (elétron perde energia, emite fóton) */}
+  <line x1="568" y1="140" x2="568" y2="173" stroke="#f59e0b" strokeWidth="1.5"/>
+  <polygon points="563,172 568,182 573,172" fill="#f59e0b"/>
+  <text x="578" y="153" fill="#f59e0b" fontSize="8" fontFamily="Inter, sans-serif">fóton</text>
+  <text x="578" y="164" fill="#f59e0b" fontSize="8" fontFamily="Inter, sans-serif">emitido</text>
+  <text x="548" y="158" textAnchor="middle" fill="#f59e0b" fontSize="7" fontFamily="Inter, sans-serif" opacity="0.7">hν</text>
 
   <text x="540" y="258" textAnchor="middle" fill="#8b5cf6" fontSize="10" fontFamily="Inter, sans-serif" opacity="0.7">apenas valores específicos permitidos</text>
 </svg>

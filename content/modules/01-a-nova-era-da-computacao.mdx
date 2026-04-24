@@ -27,6 +27,8 @@ A computação quântica é considerada tão estratégica quanto a corrida espac
 | 🇪🇺 União Europeia | €1B (Quantum Flagship) | Programa de 10 anos |
 | 🇧🇷 Brasil | Em desenvolvimento | CBPF e universidades federais |
 
+![Processador criogênico de computador quântico — interior de um sistema de diluição refrigerada](/images/Hardware-QC.webp)
+
 ## Linha do Tempo: Marcos Históricos
 
 <svg viewBox="0 0 760 260" className="w-full my-8 rounded-xl" style={{background:'#13131f', padding:'20px'}}>
@@ -36,8 +38,8 @@ A computação quântica é considerada tão estratégica quanto a corrida espac
   <circle cx="80" cy="130" r="6" fill="#8b5cf6"/>
   <line x1="80" y1="124" x2="80" y2="60" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4"/>
   <text x="80" y="52" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">1981</text>
-  <text x="80" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">Feynman propõe</text>
-  <text x="80" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">computação quântica</text>
+  <text x="80" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">Feynman propõe</text>
+  <text x="80" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">computação quântica</text>
 
   <circle cx="210" cy="130" r="6" fill="#8b5cf6"/>
   <line x1="210" y1="136" x2="210" y2="200" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4"/>
@@ -48,8 +50,8 @@ A computação quântica é considerada tão estratégica quanto a corrida espac
   <circle cx="330" cy="130" r="6" fill="#8b5cf6"/>
   <line x1="330" y1="124" x2="330" y2="60" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4"/>
   <text x="330" y="52" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">2001</text>
-  <text x="330" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">IBM executa Shor</text>
-  <text x="330" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">em 7 qubits</text>
+  <text x="330" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">IBM executa Shor</text>
+  <text x="330" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">em 7 qubits</text>
 
   <circle cx="500" cy="130" r="8" fill="#06b6d4"/>
   <line x1="500" y1="136" x2="500" y2="200" stroke="#06b6d4" strokeWidth="1" strokeDasharray="4"/>
@@ -60,8 +62,8 @@ A computação quântica é considerada tão estratégica quanto a corrida espac
   <circle cx="630" cy="130" r="8" fill="#06b6d4"/>
   <line x1="630" y1="124" x2="630" y2="60" stroke="#06b6d4" strokeWidth="1" strokeDasharray="4"/>
   <text x="630" y="52" textAnchor="middle" fill="#f1f5f9" fontSize="11" fontFamily="Inter, sans-serif">2024</text>
-  <text x="630" y="38" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">Google Willow</text>
-  <text x="630" y="26" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">QEC milestone</text>
+  <text x="630" y="26" textAnchor="middle" fill="#06b6d4" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">Google Willow</text>
+  <text x="630" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">QEC milestone</text>
 </svg>
 
 ## Por que Agora?
@@ -74,11 +76,23 @@ Após décadas de teoria, três fatores convergiram para tornar a computação q
 
 ## Áreas de Impacto
 
-Diferente do que muitos pensam, o computador quântico não fará o Windows rodar mais rápido. Ele brilha em três áreas principais:
+Diferente do que muitos pensam, o computador quântico não fará o Windows rodar mais rápido. Ele brilha em problemas onde o número de possibilidades é astronomicamente grande.
 
-- **Simulação Molecular:** Descobrir novos remédios e materiais simulando a natureza em nível atômico.
-- **Otimização:** Resolver problemas de logística e finanças impossíveis para máquinas atuais.
-- **Criptografia:** Proteger (e desafiar) a segurança de toda a informação digital do planeta.
+> *"Imagine que você só tem cinco minutos para encontrar um 'X' escrito em uma página de um livro na Biblioteca do Congresso (que tem 50 milhões de livros). Seria impossível. Mas se você estivesse em 50 milhões de realidades paralelas, e em cada realidade pudesse folhear as páginas de um livro diferente, em uma dessas realidades você encontraria o 'X'."*
+>
+> — **Eric Ladizinsky**, cofundador da D-Wave Systems
+
+Em outras palavras: um computador comum é *você* correndo como um louco tentando olhar o máximo de livros possível em cinco minutos. Um computador quântico é você dividido em 50 milhões de instâncias, folheando calmamente um livro em cada realidade.
+
+Para acelerar os cálculos, os computadores quânticos acessam diretamente um tecido da realidade imensamente vasto — o estranho e contraintuitivo mundo da mecânica quântica. Um único qubit pode representar 0, 1 ou qualquer superposição quântica desses dois estados. Um par de qubits pode estar em qualquer superposição de 4 estados. Três qubits, em qualquer superposição de 8 estados. Com 300 qubits, o número de estados simultâneos supera o total de átomos no universo observável.
+
+As principais áreas revolucionadas pela computação quântica:
+
+- **Segurança Digital:** O algoritmo de Shor, executado em um computador quântico de grande escala, poderia quebrar a criptografia RSA que protege hoje toda a internet. Em contrapartida, a distribuição quântica de chaves (QKD) oferece comunicação matematicamente inquebrável.
+- **Inteligência Artificial:** O processamento de informação necessário para melhorar o aprendizado de máquina é ideal para computação quântica. Computadores quânticos podem analisar grandes volumes de dados para fornecer feedback a sistemas de IA com velocidade sem precedentes.
+- **Desenvolvimento de Medicamentos:** Como podem revisar múltiplas moléculas, proteínas e compostos simultaneamente, computadores quânticos permitem que químicos identifiquem candidatos a fármacos em uma fração do tempo atual.
+- **Logística e Tráfego:** Calcular rotas ótimas de forma concorrente permite scheduling eficiente e redução de congestionamentos — aplicável a tráfego urbano, aviação, frotas e cadeias de suprimento.
+- **Previsão do Tempo e Clima:** Como podem analisar todos os dados meteorológicos de uma vez, os computadores quânticos darão aos cientistas previsões muito mais precisas sobre eventos climáticos extremos, salvando vidas e recursos.
 
 <Callout type="info" title="Mito vs Fato">
 **Mito:** O computador quântico vai substituir o meu notebook em alguns anos.
