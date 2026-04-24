@@ -23,94 +23,98 @@ Isso causa vazamento de energia e torna os bits não confiáveis. A computação
 
 ## O Conceito de Quantização
 
-O termo "Quântico" vem de *quantum* (pacote). Na física clássica, imaginamos a energia como uma **rampa** contínua. Na física quântica, ela é como uma **escada**.
+O termo "Quântico" vem de *quantum* (pacote, porção). Imagine um dimmer de luz: no modo clássico, você pode ajustá-lo para **qualquer** intensidade — 34%, 67%, 91.3%... No modo quântico, só existem **posições fixas** — 0%, 25%, 50%, 75%, 100%. Valores intermediários são fisicamente impossíveis.
 
-<svg viewBox="0 0 720 280" className="w-full my-8 rounded-xl" style={{background:'#0d1117', padding:'24px'}}>
+Na física, isso significa que um elétron num átomo não pode ter "qualquer" quantidade de energia — ele só pode ocupar **níveis específicos** (E₁, E₂, E₃...). As zonas entre esses níveis são **proibidas**: a partícula simplesmente não pode estar lá.
+
+<svg viewBox="0 0 720 290" className="w-full my-8 rounded-xl" style={{background:'#0d1117', padding:'20px'}}>
   <defs>
-    <linearGradient id="rampGrad" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0%" stopColor="#1e3a5f"/>
-      <stop offset="100%" stopColor="#0ea5e9"/>
-    </linearGradient>
-    <linearGradient id="stepGrad0" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stopColor="#4c1d95"/>
-      <stop offset="100%" stopColor="#7c3aed"/>
+    <pattern id="forbidHatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#2d1b4e" strokeWidth="2.5"/>
+    </pattern>
+    <linearGradient id="classicBar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stopColor="#0c4a6e"/>
+      <stop offset="60%" stopColor="#0284c7"/>
+      <stop offset="100%" stopColor="#38bdf8"/>
     </linearGradient>
   </defs>
 
   {/* ── DIVISOR ── */}
-  <line x1="360" y1="8" x2="360" y2="272" stroke="#1e293b" strokeWidth="1.5"/>
+  <line x1="360" y1="8" x2="360" y2="282" stroke="#1e293b" strokeWidth="1.5"/>
 
-  {/* ── LADO CLÁSSICO ── */}
-  <text x="180" y="26" textAnchor="middle" fill="#0ea5e9" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">CLÁSSICO</text>
-  <text x="180" y="40" textAnchor="middle" fill="#475569" fontSize="10" fontFamily="Inter, sans-serif">energia contínua — qualquer valor</text>
+  {/* ════════ LADO CLÁSSICO ════════ */}
+  <text x="180" y="24" textAnchor="middle" fill="#0ea5e9" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">CLÁSSICO</text>
+  <text x="180" y="38" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">qualquer valor de energia permitido</text>
 
-  {/* Eixos */}
-  <line x1="50" y1="240" x2="320" y2="240" stroke="#334155" strokeWidth="1.5"/>
-  <line x1="50" y1="240" x2="50" y2="60" stroke="#334155" strokeWidth="1.5"/>
-  <text x="42" y="58" textAnchor="end" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">E</text>
-  <polygon points="46,58 50,48 54,58" fill="#334155"/>
-  <text x="322" y="244" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">t</text>
+  {/* Eixo E (vertical) */}
+  <line x1="80" y1="258" x2="80" y2="52" stroke="#334155" strokeWidth="1.5"/>
+  <polygon points="76,53 80,43 84,53" fill="#334155"/>
+  <text x="70" y="44" textAnchor="end" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif">E</text>
 
-  {/* Rampa contínua */}
-  <path d="M 60 230 L 300 80" stroke="url(#rampGrad)" strokeWidth="3" strokeLinecap="round"/>
+  {/* Barra contínua de energia (termômetro) */}
+  <rect x="110" y="62" width="55" height="192" rx="6" fill="url(#classicBar)" opacity="0.85"/>
 
-  {/* Pontos na rampa (qualquer posição) */}
-  {[[80,218],[130,191],[175,166],[220,141],[265,116],[300,92]].map(([x,y],i) => (
-    <circle key={i} cx={x} cy={y} r="4" fill="#0ea5e9" opacity={0.5 + i*0.08}/>
+  {/* Marcações laterais — qualquer valor */}
+  {[70, 100, 130, 160, 190, 220, 248].map((y, i) => (
+    <line key={i} x1="107" y1={y} x2="113" y2={y} stroke="#0ea5e9" strokeWidth="1" opacity="0.4"/>
   ))}
 
-  <text x="180" y="258" textAnchor="middle" fill="#0ea5e9" fontSize="10" fontFamily="Inter, sans-serif" opacity="0.7">energia pode assumir qualquer valor</text>
+  {/* Partícula pode estar em QUALQUER posição */}
+  <circle cx="137" cy="155" r="9" fill="#0ea5e9" stroke="#7dd3fc" strokeWidth="2"/>
 
-  {/* ── LADO QUÂNTICO ── */}
-  <text x="540" y="26" textAnchor="middle" fill="#a78bfa" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">QUÂNTICO</text>
-  <text x="540" y="40" textAnchor="middle" fill="#475569" fontSize="10" fontFamily="Inter, sans-serif">energia quantizada — só valores fixos</text>
+  {/* Seta dupla indicando liberdade de posição */}
+  <line x1="175" y1="68" x2="175" y2="248" stroke="#334155" strokeWidth="1.2" strokeDasharray="3 2"/>
+  <polygon points="171,70 175,60 179,70" fill="#334155"/>
+  <polygon points="171,246 175,256 179,246" fill="#334155"/>
+  <text x="210" y="152" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">qualquer</text>
+  <text x="210" y="164" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">posição</text>
 
-  {/* Eixos */}
-  <line x1="390" y1="240" x2="690" y2="240" stroke="#334155" strokeWidth="1.5"/>
-  <line x1="390" y1="240" x2="390" y2="60" stroke="#334155" strokeWidth="1.5"/>
-  <text x="382" y="58" textAnchor="end" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">E</text>
-  <polygon points="386,58 390,48 394,58" fill="#334155"/>
-  <text x="692" y="244" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">t</text>
+  <text x="180" y="275" textAnchor="middle" fill="#0ea5e9" fontSize="9" fontFamily="Inter, sans-serif" opacity="0.7">energia varia de forma contínua</text>
 
-  {/* Degraus quânticos */}
-  {[
-    {x1:400, x2:480, y:220, label:'n=1'},
-    {x1:480, x2:560, y:178, label:'n=2'},
-    {x1:560, x2:640, y:136, label:'n=3'},
-    {x1:640, x2:685, y: 94, label:'n=4'},
-  ].map(({x1,x2,y,label},i) => (
-    <g key={i}>
-      {/* Degrau horizontal */}
-      <line x1={x1} y1={y} x2={x2} y2={y} stroke="#8b5cf6" strokeWidth="3" strokeLinecap="round"/>
-      {/* Risers verticais tracejados */}
-      {i < 3 && (
-        <line x1={x2} y1={y} x2={x2} y2={y - 42}
-          stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4 3" opacity="0.5"/>
-      )}
-      {/* Ponto brilhante no degrau */}
-      <circle cx={(x1+x2)/2} cy={y} r="5" fill="#a78bfa" stroke="#7c3aed" strokeWidth="1"/>
-      {/* Label */}
-      <text x={x2 + 6} y={y + 4} fill="#94a3b8" fontSize="10" fontFamily="Inter, sans-serif">{label}</text>
-      {/* Energia do nível */}
-      <text x={x1 - 4} y={y - 6} textAnchor="end" fill="#475569" fontSize="8" fontFamily="Inter, sans-serif">{`E${i+1}`}</text>
-    </g>
-  ))}
+  {/* ════════ LADO QUÂNTICO ════════ */}
+  <text x="540" y="24" textAnchor="middle" fill="#a78bfa" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">QUÂNTICO</text>
+  <text x="540" y="38" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">apenas níveis discretos são permitidos</text>
 
-  {/* Transição ABSORÇÃO: n=1 → n=2 (elétron ganha energia, absorve fóton) */}
-  <line x1="455" y1="216" x2="455" y2="183" stroke="#38bdf8" strokeWidth="1.5"/>
-  <polygon points="450,184 455,174 460,184" fill="#38bdf8"/>
-  <text x="464" y="197" fill="#38bdf8" fontSize="8" fontFamily="Inter, sans-serif">fóton</text>
-  <text x="464" y="208" fill="#38bdf8" fontSize="8" fontFamily="Inter, sans-serif">absorvido</text>
-  <text x="424" y="201" textAnchor="middle" fill="#0ea5e9" fontSize="7" fontFamily="Inter, sans-serif" opacity="0.7">hν</text>
+  {/* Eixo E (vertical) */}
+  <line x1="390" y1="258" x2="390" y2="52" stroke="#334155" strokeWidth="1.5"/>
+  <polygon points="386,53 390,43 394,53" fill="#334155"/>
+  <text x="380" y="44" textAnchor="end" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif">E</text>
 
-  {/* Transição EMISSÃO: n=3 → n=2 (elétron perde energia, emite fóton) */}
-  <line x1="568" y1="140" x2="568" y2="173" stroke="#f59e0b" strokeWidth="1.5"/>
-  <polygon points="563,172 568,182 573,172" fill="#f59e0b"/>
-  <text x="578" y="153" fill="#f59e0b" fontSize="8" fontFamily="Inter, sans-serif">fóton</text>
-  <text x="578" y="164" fill="#f59e0b" fontSize="8" fontFamily="Inter, sans-serif">emitido</text>
-  <text x="548" y="158" textAnchor="middle" fill="#f59e0b" fontSize="7" fontFamily="Inter, sans-serif" opacity="0.7">hν</text>
+  {/* ── Zonas PROIBIDAS (hachuradas) ── */}
+  <rect x="402" y="75" width="130" height="42" rx="2" fill="url(#forbidHatch)" opacity="0.9"/>
+  <rect x="402" y="137" width="130" height="42" rx="2" fill="url(#forbidHatch)" opacity="0.9"/>
+  <rect x="402" y="199" width="130" height="42" rx="2" fill="url(#forbidHatch)" opacity="0.9"/>
 
-  <text x="540" y="258" textAnchor="middle" fill="#8b5cf6" fontSize="10" fontFamily="Inter, sans-serif" opacity="0.7">apenas valores específicos permitidos</text>
+  <text x="467" y="101" textAnchor="middle" fill="#581c87" fontSize="8" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">PROIBIDO</text>
+  <text x="467" y="163" textAnchor="middle" fill="#581c87" fontSize="8" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">PROIBIDO</text>
+  <text x="467" y="225" textAnchor="middle" fill="#581c87" fontSize="8" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">PROIBIDO</text>
+
+  {/* ── Níveis de energia permitidos ── */}
+  <line x1="402" y1="73" x2="532" y2="73" stroke="#a78bfa" strokeWidth="3.5" strokeLinecap="round"/>
+  <text x="538" y="77" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">E₄</text>
+
+  <line x1="402" y1="135" x2="532" y2="135" stroke="#8b5cf6" strokeWidth="3.5" strokeLinecap="round"/>
+  <text x="538" y="139" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">E₃</text>
+
+  <line x1="402" y1="197" x2="532" y2="197" stroke="#7c3aed" strokeWidth="3.5" strokeLinecap="round"/>
+  <text x="538" y="201" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">E₂</text>
+
+  <line x1="402" y1="243" x2="532" y2="243" stroke="#6d28d9" strokeWidth="3.5" strokeLinecap="round"/>
+  <text x="538" y="247" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">E₁</text>
+
+  {/* Partícula no nível E₃ */}
+  <circle cx="448" cy="135" r="9" fill="#8b5cf6" stroke="#c4b5fd" strokeWidth="2"/>
+
+  {/* ── Transição E₃ → E₂: emissão de fóton ── */}
+  <line x1="480" y1="139" x2="480" y2="193" stroke="#f59e0b" strokeWidth="2"/>
+  <polygon points="475,192 480,202 485,192" fill="#f59e0b"/>
+  <text x="558" y="164" textAnchor="middle" fill="#f59e0b" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">hν emitido</text>
+  <text x="558" y="177" textAnchor="middle" fill="#64748b" fontSize="8" fontFamily="Inter, sans-serif">(salto exato)</text>
+
+  {/* Linha de conexão ao label */}
+  <line x1="484" y1="168" x2="530" y2="168" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3 2" opacity="0.5"/>
+
+  <text x="540" y="275" textAnchor="middle" fill="#8b5cf6" fontSize="9" fontFamily="Inter, sans-serif" opacity="0.7">saltos discretos — sem valores intermediários</text>
 </svg>
 
 Essa natureza discreta da energia é o que permite criar os estados estáveis (0 e 1) que usamos para processar informação.
