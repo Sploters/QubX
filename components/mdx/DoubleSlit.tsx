@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 
 interface Hit { y: number; id: number }
 
@@ -11,6 +11,7 @@ const SOURCE_X = 60, SOURCE_Y = H / 2
 const WAVELENGTH = 14
 
 export function DoubleSlit() {
+  const hitIdRef = useRef(0)
   const [observed, setObserved] = useState(false)
   const [hits, setHits] = useState<Hit[]>([])
   const [running, setRunning] = useState(true)
@@ -44,7 +45,7 @@ export function DoubleSlit() {
     if (!running) return
     const id = setInterval(() => {
       setHits(h => {
-        const fresh = Array.from({ length: 6 }, () => ({ y: sampleY(), id: Math.random() }))
+        const fresh = Array.from({ length: 6 }, () => ({ y: sampleY(), id: hitIdRef.current++ }))
         return [...h, ...fresh].slice(-1500)
       })
     }, 60)
@@ -56,11 +57,20 @@ export function DoubleSlit() {
 
   // Animation tick for wavefronts
   useEffect(() => {
+    if (!running) return
     let raf: number
     const step = () => { setTick(t => t + 0.02); raf = requestAnimationFrame(step) }
     raf = requestAnimationFrame(step)
     return () => cancelAnimationFrame(raf)
-  }, [])
+  }, [running])
+
+  const intensityBars = useMemo(
+    () => Array.from({ length: 80 }, (_, i) => {
+      const y = (i / 80) * H
+      return { y, w: Math.max(2, screenIntensity(y) * 60) }
+    }),
+    [screenIntensity]
+  )
 
   const color = observed ? '#ef4444' : '#06b6d4'
 
@@ -122,14 +132,9 @@ export function DoubleSlit() {
 
         {/* Predicted intensity profile */}
         <g transform={`translate(${SCREEN_X + 8}, 0)`}>
-          {Array.from({ length: 80 }, (_, i) => {
-            const y = (i / 80) * H
-            return (
-              <rect key={i} x={0} y={y}
-                    width={Math.max(2, screenIntensity(y) * 60)}
-                    height={H / 80} fill={color} opacity="0.35" />
-            )
-          })}
+          {intensityBars.map(({ y, w }, i) => (
+            <rect key={i} x={0} y={y} width={w} height={H / 80} fill={color} opacity="0.35" />
+          ))}
         </g>
 
         {/* Accumulated hits */}
