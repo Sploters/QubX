@@ -11,6 +11,10 @@ interface TermProps {
 export * from './BitVsQubit'
 export * from './SuperdenseCoding'
 export * from './MazeQuantum'
+export * from './BlochSphere'
+export * from './EntanglementBell'
+export * from './DoubleSlit'
+export * from './QuantumWalk'
 export function Term({ id, children }: TermProps) {
   const [isVisible, setIsVisible] = useState(false)
   const entry = GLOSSARY[id]
