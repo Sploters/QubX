@@ -211,6 +211,12 @@ O IBM Condor tem 1.121 qubits físicos. Estamos no início.
 
 > 💡 **Por que isso importa:** a diferença entre os qubits "ruidosos" de hoje e os qubits lógicos com correção de erro total é a diferença entre uma calculadora quebrada e um supercomputador. Os próximos 10 anos são sobre fechar esse gap.
 
+**Tempo de coerência** é o tempo que um qubit mantém sua fase quântica antes de ser perturbado pelo ambiente. É medido por dois parâmetros: T₁ (tempo de relaxamento energético) e T₂ (tempo de defasagem). Máquinas modernas de supercondutores (IBM, Google) atingem T₂ de 100–500 microssegundos — tempo suficiente para centenas de portas, mas não para algoritmos complexos sem correção de erros.
+
+**Surface code** é o esquema de correção de erros mais promissor. Organiza qubits em grade 2D e usa medições de paridade para detectar (mas não colapsar) erros. O *threshold* de erro físico é ~1% por porta — abaixo disso, adicionar mais qubits físicos **reduz** a taxa de erro lógico exponencialmente. O custo: ~1.000 qubits físicos por qubit lógico com taxa de erro confortável.
+
+Isso explica o salto entre "qubits físicos" dos anúncios (IBM Eagle: 127, Condor: 1.121) e "qubits lógicos úteis" para algoritmos práticos — ainda décadas de distância para a maioria dos problemas.
+
 ## Conteúdo Recomendado
 
 - [**Kurzgesagt: Quantum Computers Explained** (YouTube)](https://www.youtube.com/watch?v=JhHMJCUmq28) — introdução visual e acessível ao que torna os computadores quânticos especiais

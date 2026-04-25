@@ -48,6 +48,12 @@ O catch: o algoritmo de Shor precisa de um computador quântico com **milhões d
 
 **Ainda estamos seguros? Sim — por enquanto.** Mas o relógio está contando.
 
+**Algoritmo de Shor (1994):** fatoração de N em **O((log N)³)** operações quânticas. Comparado ao melhor algoritmo clássico conhecido (crivo geral de campos de números: exponencial sub-quadrático), é uma aceleração exponencial. Para N de 2048 bits (chave RSA padrão atual), um computador quântico com ~4.000 qubits lógicos perfeitos quebraria em horas.
+
+O mecanismo central: encontrar o período de f(x) = aˣ mod N usando a Transformada de Fourier Quântica — que calcula todos os períodos em superposição.
+
+**BB84 — Distribuição Quântica de Chave:** protocolo de 1984 que distribui uma chave criptográfica usando fótons polarizados. A segurança é física, não computacional: qualquer espião que intercepte os fótons colapsa seus estados e introduz erros detectáveis. Alice e Bob verificam uma amostra — se a taxa de erro excede ~11%, abortam e assumem que a comunicação foi comprometida. BB84 não requer computador quântico — só canal quântico (fibra óptica ou link de satélite).
+
 ## Y2Q: O Prazo que Ninguém Sabe Ao Certo
 
 Y2Q (Years to Quantum) é o termo para o momento em que computadores quânticos serão capazes de quebrar criptografias atuais. Estimativas variam drasticamente:

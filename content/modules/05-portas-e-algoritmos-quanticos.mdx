@@ -54,6 +54,19 @@ O primeiro qubit é o controle: só inverte o segundo se o primeiro for |1⟩.
 
 **Portas de Fase (S, T)** — rotacionam a fase do qubit na esfera de Bloch sem alterar as probabilidades de medição. Essenciais para algoritmos mais avançados.
 
+Toda porta quântica é uma **matriz unitária** (U†U = I), o que garante reversibilidade — ao contrário das portas clássicas NAND/OR que são irreversíveis. Exemplos fundamentais:
+
+| Porta | Matriz | Efeito na Esfera de Bloch |
+|-------|--------|--------------------------|
+| X (NOT quântico) | [[0,1],[1,0]] | Rotação 180° em torno do eixo x — troca |0⟩ ↔ |1⟩ |
+| H (Hadamard) | [[1,1],[1,-1]]/√2 | Leva |0⟩ → |+⟩, cria superposição 50/50 |
+| Z (fase) | [[1,0],[0,-1]] | Rotação 180° em torno do eixo z — inverte a fase de |1⟩ |
+| CNOT | 4×4 | Porta de 2 qubits: inverte o alvo se o controle é |1⟩ |
+
+**Interferência em circuitos:** aplicar H duas vezes cancela: H·H = I. As amplitudes dos caminhos somam (interferência construtiva) ou se cancelam (interferência destrutiva) antes de medir. Algoritmos quânticos exploram isso para amplificar os caminhos corretos e cancelar os errados.
+
+**Busca de Grover:** encontrar um item em N não-estruturados em **√N** passos — contra N/2 clássico. A aceleração é quadrática, não exponencial, mas se aplica a qualquer problema de busca sem estrutura conhecida.
+
 ## Codificação Superdensa
 
 A Codificação Superdensa usa emaranhamento para transmitir **2 bits clássicos** usando apenas **1 qubit**:

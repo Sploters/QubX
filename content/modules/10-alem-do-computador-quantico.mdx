@@ -174,4 +174,22 @@ A janela para aprender computação quântica está aberta agora. As primeiras g
 
 A computação quântica não vai substituir o programador — vai criar uma nova categoria de profissional. E o melhor momento para se preparar é antes da demanda explodir.
 
+## Teleporte Quântico
+
+O teleporte quântico transfere o **estado** de um qubit (não a matéria) para outro local em 3 passos:
+
+1. Alice e Bob compartilham um par de Bell (emaranhamento preparado antecipadamente)
+2. Alice realiza uma medição de Bell conjunta entre o qubit a teleportar e sua metade do par — obtém 2 bits clássicos de resultado
+3. Alice envia esses 2 bits para Bob (canal clássico); Bob aplica uma correção condicional — e o estado original aparece no qubit de Bob
+
+O estado original de Alice é destruído ao ser medido (teorema da não-clonagem respeitado). O resultado não viola a relatividade: os 2 bits clássicos precisam ser enviados antes que Bob possa reconstruir o estado — nenhuma informação viaja mais rápido que a luz.
+
+## Caminhada Quântica
+
+<QuantumWalk />
+
+Na caminhada aleatória clássica com N passos, a posição se distribui como gaussiana com desvio padrão **σ ∼ √N** — dispersão difusiva. Na caminhada quântica com moeda de Hadamard, as amplitudes dos caminhos interferem e criam **dois picos balísticos** nas extremidades, com **σ ∼ N** — dispersão quadraticamente mais rápida.
+
+As franjas visíveis dentro dos lobos quânticos são assinatura da interferência construtiva e destrutiva entre superposições de caminhos. Caminhadas quânticas são primitivas para algoritmos (busca em grafos em O(√N)), mostraram ser universais para computação quântica, e aparecem em modelos de transferência de energia em complexos de antena na fotossíntese.
+
 <GlossaryIndex terms={['qubit', 'superposicao', 'emaranhamento', 'teletransporte-quantico']} />
