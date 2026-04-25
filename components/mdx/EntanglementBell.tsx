@@ -70,26 +70,34 @@ export function EntanglementBell() {
   const [history, setHistory] = useState<[number, number][]>([])
   const [tick, setTick] = useState(0)
   const rafRef = useRef<number | null>(null)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    if (phase !== 'ready') return
+    if (phase === 'done') return
     const step = () => { setTick(v => v + 0.015); rafRef.current = requestAnimationFrame(step) }
     rafRef.current = requestAnimationFrame(step)
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
   }, [phase])
 
+  useEffect(() => {
+    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
+  }, [])
+
   const measure = () => {
     const r = Math.random() < 0.5 ? 0 : 1
     setAliceResult(r)
     setPhase('measuringA')
-    setTimeout(() => {
+    timerRef.current = setTimeout(() => {
       setBobResult(r)
       setPhase('done')
       setHistory(h => ([[r, r] as [number, number], ...h]).slice(0, 64))
     }, 700)
   }
 
-  const reset = () => { setPhase('ready'); setAliceResult(null); setBobResult(null) }
+  const reset = () => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+    setPhase('ready'); setAliceResult(null); setBobResult(null)
+  }
 
   const runMany = () => {
     const trials: [number, number][] = Array.from({ length: 200 }, () => {
@@ -153,8 +161,8 @@ export function EntanglementBell() {
         <button onClick={reset}
           className="px-4 py-2 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:border-purple/50 transition-colors"
         >↺ Reemaranhar</button>
-        <button onClick={runMany}
-          className="px-4 py-2 rounded-lg text-sm font-medium border border-[#ec4899] bg-[#ec4899]/10 text-[#ec4899] hover:bg-[#ec4899]/20 transition-colors"
+        <button onClick={runMany} disabled={phase === 'measuringA'}
+          className="px-4 py-2 rounded-lg text-sm font-medium border border-[#ec4899] bg-[#ec4899]/10 text-[#ec4899] hover:bg-[#ec4899]/20 disabled:opacity-40 transition-colors"
         >Rodar 200×</button>
       </div>
 
