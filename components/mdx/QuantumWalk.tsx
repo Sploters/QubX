@@ -115,7 +115,8 @@ export function QuantumWalk() {
         >▶ Recomeçar</button>
         <button
           onClick={() => setRunning(r => !r)}
-          className="px-4 py-2 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:border-purple/50 transition-colors"
+          disabled={step >= STEPS_MAX}
+          className="px-4 py-2 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:border-purple/50 transition-colors disabled:opacity-40"
         >{running ? '⏸ Pausar' : '▶ Continuar'}</button>
       </div>
     </div>
