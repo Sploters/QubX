@@ -106,9 +106,9 @@ export function BlochSphere() {
   return (
     <div className="my-10 rounded-2xl border border-border bg-surface/20 p-6 flex flex-col items-center gap-4">
       <svg
-        width="360" height="360"
-        viewBox="-180 -180 360 360"
-        style={{ cursor: dragging ? 'grabbing' : 'grab', maxWidth: '100%' }}
+        width="460" height="460"
+        viewBox="-230 -230 460 460"
+        style={{ cursor: dragging ? 'grabbing' : 'grab', maxWidth: 460, width: '100%' }}
         onMouseDown={onMouseDown}
       >
         <defs>
