@@ -4,26 +4,30 @@
 Um **qubit** (quantum bit) é a unidade básica de informação quântica. Um bit clássico pode ser 0 ou 1. Um qubit pode ser |0⟩, |1⟩ **ou** qualquer superposição α|0⟩ + β|1⟩ dos dois simultaneamente — essa terceira possibilidade não existe na computação clássica.
 </ConceptBlock>
 
-<VisualDivider />
-
 ## Superposição: Estar em Dois Lugares ao Mesmo Tempo
 
-<ConceptBlock visual="superposition" title="A Equação da Superposição">
-|ψ⟩ = α|0⟩ + β|1⟩, onde α e β são números complexos com |α|² + |β|² = 1. |α|² é a chance de medir 0, |β|² é a chance de medir 1. Se α = β = 1/√2, o qubit tem 50% de chance para cada — mas **enquanto não é medido, ele é os dois ao mesmo tempo**.
-</ConceptBlock>
+Matematicamente, um qubit em superposição é descrito por:
+
+```
+|ψ⟩ = α|0⟩ + β|1⟩
+```
+
+Onde α e β são números complexos com |α|² + |β|² = 1. |α|² é a probabilidade de medir 0, |β|² é a de medir 1. Se α = β = 1/√2, o qubit tem 50% de chance para cada — mas **enquanto não é medido, ele é os dois ao mesmo tempo**.
 
 <VisualDivider variant="line" />
 
 ## A Esfera de Bloch
 
-<ConceptBlock visual="measurement" title="O Mapa do Qubit">
-A Esfera de Bloch é a representação visual mais intuitiva de um qubit. Cada ponto na superfície representa um estado quântico possível. Dois ângulos descrevem qualquer estado: θ (latitude, 0 a π) e φ (longitude, 0 a 2π).
-</ConceptBlock>
+A Esfera de Bloch é a representação visual mais intuitiva de um qubit. Cada ponto na superfície representa um estado quântico possível. Dois ângulos descrevem qualquer estado puro: θ (latitude, 0 a π) e φ (longitude, 0 a 2π).
+
+```
+|ψ⟩ = cos(θ/2)|0⟩ + e^(iφ) sin(θ/2)|1⟩
+```
 
 <BlochSphere />
 
 <KeyInsight>
-**Portas quânticas são rotações nessa esfera.** A porta X gira 180° em torno do eixo x (troca |0⟩↔|1⟩). A porta H leva |0⟩ → |+⟩ (aponta o vetor para o equador).
+**Portas quânticas são rotações na esfera.** A porta X gira 180° em torno do eixo x (troca |0⟩↔|1⟩). A porta H leva |0⟩ → |+⟩ (aponta o vetor para o equador).
 </KeyInsight>
 
 <VisualDivider />
@@ -44,9 +48,7 @@ Dois qubits emaranhados compartilham um único estado quântico. Medir um deles 
 
 ## Decoerência: O Inimigo do Qubit
 
-<ConceptBlock visual="collapse" title="Superposição Frágil">
-Qualquer interação com o ambiente — vibração, calor, campo eletromagnético — faz o qubit "esquecer" a superposição e colapsar. Por isso computadores quânticos operam próximo do **zero absoluto (−273°C)**.
-</ConceptBlock>
+A superposição é extremamente frágil. Qualquer interação com o ambiente — vibração, calor, campo eletromagnético — faz o qubit "esquecer" a superposição e colapsar. Por isso computadores quânticos operam próximo do **zero absoluto (−273°C)**.
 
 | Tipo de Qubit | Tempo de Coerência Típico |
 |---------------|--------------------------|
@@ -59,8 +61,8 @@ Qualquer interação com o ambiente — vibração, calor, campo eletromagnétic
 
 ## Desigualdade de Bell e Não-Clonagem
 
-<ConceptBlock visual="measurement" title="O Teste que Provou a Mecânica Quântica">
-Bell (1964) formulou um teste estatístico que distingue correlações quânticas de teorias clássicas. A mecânica clássica permite no máximo 75% de concordância num certo jogo; a quântica chega a ~85,4%. Isso foi verificado experimentalmente — e ganhou o **Nobel de Física 2022**. Já o teorema da não-clonagem diz que não existe operação quântica que copie um estado desconhecido sem destruir o original — a base da segurança quântica.
-</ConceptBlock>
+**Bell (1964)** formulou um teste estatístico que distingue correlações quânticas de teorias clássicas. A mecânica clássica permite no máximo 75% de concordância num certo jogo; a quântica chega a ~85,4%. Isso foi verificado experimentalmente — e ganhou o **Nobel de Física 2022**.
+
+**Teorema da não-clonagem:** não existe operação quântica que copie um estado desconhecido |ψ⟩ para outro qubit sem destruir o original — a base da segurança quântica.
 
 <GlossaryIndex terms={['qubit', 'superposicao', 'emaranhamento', 'decoerencia', 'nobel-2022', 'spukhafte-fernwirkung', 'zero-absoluto']} />

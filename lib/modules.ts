@@ -20,12 +20,12 @@ export const MODULES: Module[] = [
     order: 0,
     title: 'A Gênese do Mundo Quântico',
     description: 'De Richard Feynman ao limite do silício. Descubra por que precisamos de computadores quânticos e como chegamos até aqui.',
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO',
+    videoUrl: 'https://www.youtube.com/embed/JhHMJCUmq28',
     images: [],
     references: [
       { title: 'Richard Feynman: Simulating Physics with Computers (1981)', url: 'https://pma.vub.ac.be/courses/quantum-computing/Feynman1981.pdf', type: 'paper' },
       { title: 'The Feynman Lectures on Physics: Quantum Behavior', url: 'https://www.feynmanlectures.caltech.edu/III_01.html', type: 'book' },
-      { title: 'Veritasium: Why Silicon Valley is called Silicon Valley (vídeo)', url: 'https://www.youtube.com/watch?v=amWqS7u9N2A', type: 'video' },
+      { title: 'Kurzgesagt: Quantum Computers Explained (vídeo)', url: 'https://www.youtube.com/watch?v=JhHMJCUmq28', type: 'video' },
     ]
   },
   {
@@ -63,7 +63,7 @@ export const MODULES: Module[] = [
     order: 3,
     title: 'Qubits: Além do Bit',
     description: 'Superposição, emaranhamento e decoerência — os três fenômenos que definem o que um qubit pode (e não pode) fazer.',
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO',
+    videoUrl: 'https://www.youtube.com/embed/zOGNoDO7mcU',
     images: ['/images/esfera-de-bloch.png', '/images/quantum-bits-qubits1.gif', '/images/quantum-bits-qubits2.gif'],
     references: [
       { title: 'Aspect et al.: Experimental Tests of Bell\'s Inequalities (PRL, 1982)', url: 'https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.49.91', type: 'paper' },
@@ -78,7 +78,7 @@ export const MODULES: Module[] = [
     order: 4,
     title: 'A Linguagem Quântica',
     description: 'A notação de Dirac é o idioma da mecânica quântica. Aprenda a ler e escrever estados quânticos como um físico.',
-    videoUrl: 'https://www.youtube.com/embed/videoseries?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO',
+    videoUrl: 'https://www.youtube.com/embed/spUNpyF58BY',
     images: [],
     references: [
       { title: '3Blue1Brown: Quantum Computing (vídeo)', url: 'https://www.youtube.com/watch?v=spUNpyF58BY', type: 'video' },
@@ -107,6 +107,7 @@ export const MODULES: Module[] = [
     order: 6,
     title: 'O Desafio da Construção',
     description: 'Construir um computador quântico é um dos maiores desafios de engenharia da história. Criogenia, decoerência, correção de erros e as 4 tecnologias que competem pelo futuro.',
+    videoUrl: 'https://www.youtube.com/embed/2B680SL4K1I',
     images: [],
     references: [
       { title: 'Kjaergaard et al.: Superconducting Qubits: Current State of Play (2020)', url: 'https://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031119-050605', type: 'paper' },

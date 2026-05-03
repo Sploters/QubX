@@ -82,10 +82,20 @@ export function DoubleSlit() {
   const color = observed ? '#FF2D78' : '#00D4FF'
 
   return (
-    <div className="my-10 rounded-2xl border border-white/5 bg-gradient-to-br from-surface/60 to-background p-4 flex flex-col items-center gap-4">
+    <div className="my-10 rounded-2xl border border-white/5 bg-gradient-to-br from-surface/60 to-background overflow-hidden">
+      <div className="px-4 pt-3 pb-1 flex items-center justify-between border-b border-white/5">
+        <div className="flex items-center gap-2">
+          <span className={`w-2 h-2 rounded-full ${observed ? 'bg-accent-pink' : 'bg-accent-cyan'}`} />
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted">
+            {observed ? 'MODO: DOIS BORRÕES' : 'MODO: INTERFERÊNCIA'}
+          </span>
+        </div>
+        <span className="text-[10px] text-text-muted font-mono">{hits.length} elétrons</span>
+      </div>
+
       <svg
         width="100%"
-        style={{ maxWidth: W }}
+        style={{ maxWidth: W, display: 'block' }}
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid meet"
       >
@@ -100,35 +110,36 @@ export function DoubleSlit() {
           {`
             @keyframes waveExpand {
               0% { opacity: 0.35; }
-              100% { opacity: 0; transform: scale(var(--scale, 1)); }
+              100% { opacity: 0; }
             }
             @keyframes sourcePulse {
-              0%, 100% { opacity: 0.5; r: 6; }
-              50% { opacity: 1; r: 7; }
+              0%, 100% { opacity: 0.5; }
+              50% { opacity: 1; }
             }
             .wave-source { animation: waveExpand 2s ease-out infinite; transform-origin: ${SOURCE_X}px ${SOURCE_Y}px; }
-            .wave-source:nth-child(1) { animation-delay: 0s; --scale: 1.3; }
-            .wave-source:nth-child(2) { animation-delay: 0.4s; --scale: 1.6; }
-            .wave-source:nth-child(3) { animation-delay: 0.8s; --scale: 2; }
-            .wave-source:nth-child(4) { animation-delay: 1.2s; --scale: 2.3; }
-            .wave-source:nth-child(5) { animation-delay: 1.6s; --scale: 2.6; }
+            .wave-source:nth-child(1) { animation-delay: 0s; }
+            .wave-source:nth-child(2) { animation-delay: 0.4s; }
+            .wave-source:nth-child(3) { animation-delay: 0.8s; }
+            .wave-source:nth-child(4) { animation-delay: 1.2s; }
+            .wave-source:nth-child(5) { animation-delay: 1.6s; }
             .wave-slit { animation: waveExpand 2.5s ease-out infinite; transform-origin: ${SLIT_X}px var(--sy); }
-            .wave-slit:nth-child(1) { animation-delay: 0s; --scale: 1.3; --sy: ${SLIT1_Y}px; }
-            .wave-slit:nth-child(2) { animation-delay: 0.3s; --scale: 1.6; --sy: ${SLIT1_Y}px; }
-            .wave-slit:nth-child(3) { animation-delay: 0.6s; --scale: 2; --sy: ${SLIT1_Y}px; }
-            .wave-slit:nth-child(4) { animation-delay: 0.9s; --scale: 2.3; --sy: ${SLIT1_Y}px; }
-            .wave-slit:nth-child(5) { animation-delay: 1.2s; --scale: 2.6; --sy: ${SLIT1_Y}px; }
-            .wave-slit:nth-child(6) { animation-delay: 0s; --scale: 1.3; --sy: ${SLIT2_Y}px; }
-            .wave-slit:nth-child(7) { animation-delay: 0.3s; --scale: 1.6; --sy: ${SLIT2_Y}px; }
-            .wave-slit:nth-child(8) { animation-delay: 0.6s; --scale: 2; --sy: ${SLIT2_Y}px; }
-            .wave-slit:nth-child(9) { animation-delay: 0.9s; --scale: 2.3; --sy: ${SLIT2_Y}px; }
-            .wave-slit:nth-child(10) { animation-delay: 1.2s; --scale: 2.6; --sy: ${SLIT2_Y}px; }
-            .source-glow { animation: sourcePulse 2s ease-in-out infinite; }
+            .wave-slit:nth-child(1) { animation-delay: 0s; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(2) { animation-delay: 0.3s; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(3) { animation-delay: 0.6s; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(4) { animation-delay: 0.9s; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(5) { animation-delay: 1.2s; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(6) { animation-delay: 0s; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(7) { animation-delay: 0.3s; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(8) { animation-delay: 0.6s; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(9) { animation-delay: 0.9s; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(10) { animation-delay: 1.2s; --sy: ${SLIT2_Y}px; }
           `}
         </style>
 
-        <circle cx={SOURCE_X} cy={SOURCE_Y} r="20" fill="url(#srcGlow)" />
-        <circle cx={SOURCE_X} cy={SOURCE_Y} r="6" fill="#FF6B35" className="source-glow" />
+        <circle cx={SOURCE_X} cy={SOURCE_Y} r="24" fill="url(#srcGlow)" />
+        <circle cx={SOURCE_X} cy={SOURCE_Y} r="6" fill="#FF6B35">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+        </circle>
         <text x={SOURCE_X} y={SOURCE_Y - 16} textAnchor="middle"
               fill="#FF6B35" fontFamily="ui-monospace,monospace" fontSize="10" fontWeight="bold">e⁻</text>
 
@@ -136,17 +147,17 @@ export function DoubleSlit() {
           <>
             {[1, 2, 3, 4, 5].map(i => (
               <circle key={`sw${i}`} className="wave-source"
-                      cx={SOURCE_X} cy={SOURCE_Y} r={20 + i * 25}
+                      cx={SOURCE_X} cy={SOURCE_Y} r={20 + i * 28}
                       fill="none" stroke="#00D4FF" strokeWidth="0.7" />
             ))}
             {[1, 2, 3, 4, 5].map(i => (
               <circle key={`s1-${i}`} className="wave-slit"
-                      cx={SLIT_X} cy={SLIT1_Y} r={30 + i * 25}
+                      cx={SLIT_X} cy={SLIT1_Y} r={30 + i * 30}
                       fill="none" stroke="#00D4FF" strokeWidth="0.6" />
             ))}
             {[1, 2, 3, 4, 5].map(i => (
               <circle key={`s2-${i}`} className="wave-slit"
-                      cx={SLIT_X} cy={SLIT2_Y} r={30 + i * 25}
+                      cx={SLIT_X} cy={SLIT2_Y} r={30 + i * 30}
                       fill="none" stroke="#00D4FF" strokeWidth="0.6" />
             ))}
           </>
@@ -173,13 +184,30 @@ export function DoubleSlit() {
 
         <HitCircles hits={hits} color={color} />
 
-        <text x={W - 14} y={H - 14} textAnchor="end"
-              fill="#6B6B80" fontFamily="ui-monospace,monospace" fontSize="10">
-          {hits.length} elétrons
-        </text>
+        {/* Legend: constructive / destructive */}
+        {!observed && (
+          <g>
+            <rect x={SCREEN_X + 10} y="4" width="6" height="6" rx="1" fill={color} opacity="0.5" />
+            <text x={SCREEN_X + 20} y="10" fill="#6B6B80" fontSize="7" fontFamily="monospace">construtiva</text>
+            <rect x={SCREEN_X + 10} y="16" width="6" height="4" rx="1" fill={color} opacity="0.12" />
+            <text x={SCREEN_X + 20} y="22" fill="#6B6B80" fontSize="7" fontFamily="monospace">destrutiva</text>
+          </g>
+        )}
+
+        {/* Mode label on screen */}
+        {!observed && (
+          <text x={SCREEN_X} y="340" textAnchor="middle" fill="#00D4FF" fontSize="7" fontFamily="monospace" opacity="0.6">
+            P(y) ∝ |ψ₁ + ψ₂|²
+          </text>
+        )}
+        {observed && (
+          <text x={SCREEN_X} y="340" textAnchor="middle" fill="#FF2D78" fontSize="7" fontFamily="monospace" opacity="0.6">
+            P(y) = |ψ₁|² + |ψ₂|²
+          </text>
+        )}
       </svg>
 
-      <div className="flex flex-wrap gap-2 justify-center">
+      <div className="p-3 flex flex-wrap gap-2 justify-center border-t border-white/5">
         <button
           onClick={() => setObserved(false)}
           className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${
@@ -210,6 +238,26 @@ export function DoubleSlit() {
         <button onClick={() => setRunning(r => !r)}
           className="px-4 py-2 rounded-lg text-xs font-medium text-text-muted bg-elevated border border-white/5 hover:text-text-secondary transition-all"
         >{running ? 'Pausar' : 'Continuar'}</button>
+      </div>
+
+      {/* Info panel */}
+      <div className="px-4 pb-4">
+        <div className={`rounded-xl p-3 border ${observed ? 'bg-accent-pink/5 border-accent-pink/10' : 'bg-accent-cyan/5 border-accent-cyan/10'}`}>
+          <div className="flex items-start gap-3">
+            <span className="text-base flex-shrink-0 mt-0.5">{observed ? '🔍' : '🌊'}</span>
+            <div className="text-[11px] text-text-secondary leading-relaxed">
+              {observed ? (
+                <>
+                  <strong className="text-accent-pink">Com detector:</strong> as ondas colapsam em partículas. Cada elétron passa por <strong>uma</strong> fenda. O padrão na tela é a <strong>soma das probabilidades individuais</strong>: P(y) = |ψ₁|² + |ψ₂|². Sem interferência.
+                </>
+              ) : (
+                <>
+                  <strong className="text-accent-cyan">Sem detector:</strong> cada elétron passa pelas <strong>duas fendas</strong> ao mesmo tempo. As ondas se somam antes de atingir a tela: P(y) ∝ |ψ₁ + ψ₂|². O resultado é o <strong>padrão de interferência</strong> — crista + crista = brilho, crista + vale = escuro.
+                </>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
