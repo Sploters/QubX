@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef, memo } from 'react'
 
 interface Hit { y: number; id: number }
 
@@ -10,12 +10,30 @@ const SLIT1_Y = H / 2 - 32, SLIT2_Y = H / 2 + 32
 const SOURCE_X = 60, SOURCE_Y = H / 2
 const WAVELENGTH = 14
 
+const HitCircles = memo(function HitCircles({ hits, color }: { hits: Hit[]; color: string }) {
+  return (
+    <>
+      {hits.map(h => (
+        <circle key={h.id} cx={SCREEN_X - 1} cy={h.y} r="1.5" fill={color} opacity="0.8" />
+      ))}
+    </>
+  )
+})
+
+const staticElements = (
+  <>
+    <rect x={SLIT_X - 4} y={0} width="8" height={SLIT1_Y - 16} fill="#2A2E42" rx="1" />
+    <rect x={SLIT_X - 4} y={SLIT1_Y + 16} width="8" height={SLIT2_Y - SLIT1_Y - 32} fill="#2A2E42" rx="1" />
+    <rect x={SLIT_X - 4} y={SLIT2_Y + 16} width="8" height={H - SLIT2_Y - 16} fill="#2A2E42" rx="1" />
+    <line x1={SCREEN_X} y1={0} x2={SCREEN_X} y2={H} stroke="#2A2E42" strokeWidth="1.5" />
+  </>
+)
+
 export function DoubleSlit() {
   const hitIdRef = useRef(0)
   const [observed, setObserved] = useState(false)
   const [hits, setHits] = useState<Hit[]>([])
   const [running, setRunning] = useState(true)
-  const [tick, setTick] = useState(0)
 
   const screenIntensity = useCallback((y: number): number => {
     if (observed) {
@@ -33,7 +51,7 @@ export function DoubleSlit() {
   }, [observed])
 
   const sampleY = useCallback((): number => {
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 15; i++) {
       const y = Math.random() * H
       if (Math.random() < screenIntensity(y)) return y
     }
@@ -44,22 +62,14 @@ export function DoubleSlit() {
     if (!running) return
     const id = setInterval(() => {
       setHits(h => {
-        const fresh = Array.from({ length: 6 }, () => ({ y: sampleY(), id: hitIdRef.current++ }))
+        const fresh = Array.from({ length: 5 }, () => ({ y: sampleY(), id: hitIdRef.current++ }))
         return [...h, ...fresh].slice(-1500)
       })
-    }, 60)
+    }, 80)
     return () => clearInterval(id)
   }, [running, sampleY])
 
   useEffect(() => { setHits([]) }, [observed])
-
-  useEffect(() => {
-    if (!running) return
-    let raf: number
-    const step = () => { setTick(t => t + 0.02); raf = requestAnimationFrame(step) }
-    raf = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(raf)
-  }, [running])
 
   const intensityBars = useMemo(
     () => Array.from({ length: 80 }, (_, i) => {
@@ -70,7 +80,6 @@ export function DoubleSlit() {
   )
 
   const color = observed ? '#FF2D78' : '#00D4FF'
-  const glowFilter = observed ? 'url(#ds-glow-pink)' : 'url(#ds-glow-cyan)'
 
   return (
     <div className="my-10 rounded-2xl border border-white/5 bg-gradient-to-br from-surface/60 to-background p-4 flex flex-col items-center gap-4">
@@ -81,41 +90,69 @@ export function DoubleSlit() {
         preserveAspectRatio="xMidYMid meet"
       >
         <defs>
-          <filter id="ds-glow-cyan">
-            <feGaussianBlur stdDeviation="2" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-          <filter id="ds-glow-pink">
-            <feGaussianBlur stdDeviation="2" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-          <filter id="ds-glow-strong">
-            <feGaussianBlur stdDeviation="3" />
-          </filter>
-          <radialGradient id="sourceGlow">
+          <radialGradient id="srcGlow">
             <stop offset="0%" stopColor="#FF6B35" stopOpacity="0.3" />
             <stop offset="100%" stopColor="#FF6B35" stopOpacity="0" />
           </radialGradient>
         </defs>
 
-        <circle cx={SOURCE_X} cy={SOURCE_Y} r="20" fill="url(#sourceGlow)" />
-        <circle cx={SOURCE_X} cy={SOURCE_Y} r="6" fill="#FF6B35" filter="url(#ds-glow-strong)" />
+        <style>
+          {`
+            @keyframes waveExpand {
+              0% { opacity: 0.35; }
+              100% { opacity: 0; transform: scale(var(--scale, 1)); }
+            }
+            @keyframes sourcePulse {
+              0%, 100% { opacity: 0.5; r: 6; }
+              50% { opacity: 1; r: 7; }
+            }
+            .wave-source { animation: waveExpand 2s ease-out infinite; transform-origin: ${SOURCE_X}px ${SOURCE_Y}px; }
+            .wave-source:nth-child(1) { animation-delay: 0s; --scale: 1.3; }
+            .wave-source:nth-child(2) { animation-delay: 0.4s; --scale: 1.6; }
+            .wave-source:nth-child(3) { animation-delay: 0.8s; --scale: 2; }
+            .wave-source:nth-child(4) { animation-delay: 1.2s; --scale: 2.3; }
+            .wave-source:nth-child(5) { animation-delay: 1.6s; --scale: 2.6; }
+            .wave-slit { animation: waveExpand 2.5s ease-out infinite; transform-origin: ${SLIT_X}px var(--sy); }
+            .wave-slit:nth-child(1) { animation-delay: 0s; --scale: 1.3; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(2) { animation-delay: 0.3s; --scale: 1.6; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(3) { animation-delay: 0.6s; --scale: 2; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(4) { animation-delay: 0.9s; --scale: 2.3; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(5) { animation-delay: 1.2s; --scale: 2.6; --sy: ${SLIT1_Y}px; }
+            .wave-slit:nth-child(6) { animation-delay: 0s; --scale: 1.3; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(7) { animation-delay: 0.3s; --scale: 1.6; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(8) { animation-delay: 0.6s; --scale: 2; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(9) { animation-delay: 0.9s; --scale: 2.3; --sy: ${SLIT2_Y}px; }
+            .wave-slit:nth-child(10) { animation-delay: 1.2s; --scale: 2.6; --sy: ${SLIT2_Y}px; }
+            .source-glow { animation: sourcePulse 2s ease-in-out infinite; }
+          `}
+        </style>
+
+        <circle cx={SOURCE_X} cy={SOURCE_Y} r="20" fill="url(#srcGlow)" />
+        <circle cx={SOURCE_X} cy={SOURCE_Y} r="6" fill="#FF6B35" className="source-glow" />
         <text x={SOURCE_X} y={SOURCE_Y - 16} textAnchor="middle"
               fill="#FF6B35" fontFamily="ui-monospace,monospace" fontSize="10" fontWeight="bold">e⁻</text>
 
-        {!observed && [30, 60, 90, 120, 150].map(r => {
-          const phase = (tick * 60 - r) / 200
-          if (phase <= 0 || phase >= 1) return null
-          return (
-            <circle key={r} cx={SOURCE_X} cy={SOURCE_Y}
-                    r={r + (tick * 60 % 28)}
-                    fill="none" stroke="#00D4FF" strokeWidth="0.7" opacity={0.25 * (1 - phase)} />
-          )
-        })}
+        {!observed && (
+          <>
+            {[1, 2, 3, 4, 5].map(i => (
+              <circle key={`sw${i}`} className="wave-source"
+                      cx={SOURCE_X} cy={SOURCE_Y} r={20 + i * 25}
+                      fill="none" stroke="#00D4FF" strokeWidth="0.7" />
+            ))}
+            {[1, 2, 3, 4, 5].map(i => (
+              <circle key={`s1-${i}`} className="wave-slit"
+                      cx={SLIT_X} cy={SLIT1_Y} r={30 + i * 25}
+                      fill="none" stroke="#00D4FF" strokeWidth="0.6" />
+            ))}
+            {[1, 2, 3, 4, 5].map(i => (
+              <circle key={`s2-${i}`} className="wave-slit"
+                      cx={SLIT_X} cy={SLIT2_Y} r={30 + i * 25}
+                      fill="none" stroke="#00D4FF" strokeWidth="0.6" />
+            ))}
+          </>
+        )}
 
-        <rect x={SLIT_X - 4} y={0}              width="8" height={SLIT1_Y - 16} fill="#2A2E42" rx="1" />
-        <rect x={SLIT_X - 4} y={SLIT1_Y + 16}  width="8" height={SLIT2_Y - SLIT1_Y - 32} fill="#2A2E42" rx="1" />
-        <rect x={SLIT_X - 4} y={SLIT2_Y + 16}  width="8" height={H - SLIT2_Y - 16} fill="#2A2E42" rx="1" />
+        {staticElements}
 
         {observed && (
           <>
@@ -128,30 +165,13 @@ export function DoubleSlit() {
           </>
         )}
 
-        {!observed && [SLIT1_Y, SLIT2_Y].map((sy, si) => (
-          <g key={si}>
-            {[40, 70, 100, 130, 160, 190, 220, 250].map(r => {
-              const phase = (tick * 60 - r) / 280
-              if (phase <= 0 || phase >= 1) return null
-              return (
-                <circle key={r} cx={SLIT_X} cy={sy} r={r}
-                        fill="none" stroke="#00D4FF" strokeWidth="0.6" opacity={0.3 * (1 - phase)} />
-              )
-            })}
-          </g>
-        ))}
-
-        <line x1={SCREEN_X} y1={0} x2={SCREEN_X} y2={H} stroke="#2A2E42" strokeWidth="1.5" />
-
         <g transform={`translate(${SCREEN_X + 8}, 0)`}>
           {intensityBars.map(({ y, w }, i) => (
             <rect key={i} x={0} y={y} width={w} height={H / 80} fill={color} opacity="0.3" rx="1" />
           ))}
         </g>
 
-        {hits.map(h => (
-          <circle key={h.id} cx={SCREEN_X - 1} cy={h.y} r="2" fill={color} opacity="0.8" filter={glowFilter} />
-        ))}
+        <HitCircles hits={hits} color={color} />
 
         <text x={W - 14} y={H - 14} textAnchor="end"
               fill="#6B6B80" fontFamily="ui-monospace,monospace" fontSize="10">

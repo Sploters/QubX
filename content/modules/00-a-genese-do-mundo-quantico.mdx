@@ -1,31 +1,35 @@
 ## Por que Computadores Quânticos?
 
-A história da computação quântica não começou com engenheiros, mas com um desafio da física: a natureza é complexa demais para ser simulada por bits comuns.
+<ConceptBlock visual="qubit" title="O Desafio de Simular a Natureza">
+A história da computação quântica não começou com engenheiros, mas com um desafio da física: simular uma única molécula de cafeína exigiria um computador clássico maior que o planeta Terra. A natureza é complexa demais para bits comuns.
+</ConceptBlock>
 
-Imagine que você quer simular o comportamento de uma única molécula de cafeína. Embora pareça simples, o número de estados possíveis é tão grande que um computador clássico precisaria ser maior que o planeta Terra para processar todos os dados.
+<VisualDivider />
 
 ## Richard Feynman e o "Click" de 1981
-
-Em 1981, durante uma conferência organizada pela IBM e pelo MIT, o físico **Richard Feynman** deu o pontapé inicial. Ele percebeu que, se quiséssemos entender o universo em nível atômico, precisaríamos de um novo tipo de máquina.
 
 > *"A natureza não é clássica, dammit, e se você quer fazer uma simulação da natureza, é melhor fazê-la mecânico-quântica."*
 > — Richard Feynman
 
-Ele propôs que, em vez de lutar contra as leis "estranhas" da física quântica, deveríamos usá-las como ferramentas de cálculo.
+<KeyInsight>
+Em 1981, Feynman percebeu que, em vez de lutar contra as leis "estranhas" da física quântica, deveríamos usá-las como ferramentas de cálculo.
+</KeyInsight>
+
+<VisualDivider variant="line" />
 
 ## O Fim da Linha para o Silício
 
-Por décadas, seguimos a **<Term id="lei-de-moore">Lei de Moore</Term>**, dobrando o número de transistores em um chip a cada dois anos. Mas chegamos a um limite físico.
+<ConceptBlock visual="measurement" title="O Limite Físico dos Transistores">
+Por décadas, seguimos a <Term id="lei-de-moore">Lei de Moore</Term> dobrando transistores a cada dois anos. Mas quando um transistor fica do tamanho de poucos átomos, os elétrons sofrem **<Term id="efeito-tunel">Efeito Túnel</Term>**: atravessam barreiras como se não existissem. Isso causa vazamento e torna os bits não confiáveis. A computação quântica não é uma "melhoria" — é a solução para quando o silício não puder mais encolher.
+</ConceptBlock>
 
-Quando um transistor fica do tamanho de poucos átomos, os elétrons param de se comportar como "bolinhas" e começam a se comportar como ondas. Eles sofrem o **<Term id="efeito-tunel">Efeito Túnel</Term>**: atravessam as barreiras físicas do chip como se elas não estivessem lá.
-
-Isso causa vazamento de energia e torna os bits não confiáveis. A computação quântica não é apenas uma "melhoria" do computador atual; é uma solução para quando o computador de silício não puder mais encolher.
+<VisualDivider />
 
 ## O Conceito de Quantização
 
-O termo "Quântico" vem de *quantum* (pacote, porção). Imagine um dimmer de luz: no modo clássico, você pode ajustá-lo para **qualquer** intensidade — 34%, 67%, 91.3%... No modo quântico, só existem **posições fixas** — 0%, 25%, 50%, 75%, 100%. Valores intermediários são fisicamente impossíveis.
-
-Na física, isso significa que um elétron num átomo não pode ter "qualquer" quantidade de energia — ele só pode ocupar **níveis específicos** (E₁, E₂, E₃...). As zonas entre esses níveis são **proibidas**: a partícula simplesmente não pode estar lá.
+<ConceptBlock visual="wave" title="Pacotes, Não Contínuos">
+"Quântico" vem de *quantum* (pacote). Imagine um dimmer de luz: no modo clássico, você ajusta para **qualquer** intensidade. No modo quântico, só existem **posições fixas** — 0%, 25%, 50%, 75%, 100%. Valores intermediários são fisicamente impossíveis.
+</ConceptBlock>
 
 <svg viewBox="0 0 720 290" className="w-full my-8 rounded-xl" style={{background:'#0d1117', padding:'20px'}}>
   <defs>
@@ -39,30 +43,23 @@ Na física, isso significa que um elétron num átomo não pode ter "qualquer" q
     </linearGradient>
   </defs>
 
-  {/* ── DIVISOR ── */}
   <line x1="360" y1="8" x2="360" y2="282" stroke="#1e293b" strokeWidth="1.5"/>
 
-  {/* ════════ LADO CLÁSSICO ════════ */}
   <text x="180" y="24" textAnchor="middle" fill="#0ea5e9" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">CLÁSSICO</text>
   <text x="180" y="38" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">qualquer valor de energia permitido</text>
 
-  {/* Eixo E (vertical) */}
   <line x1="80" y1="258" x2="80" y2="52" stroke="#334155" strokeWidth="1.5"/>
   <polygon points="76,53 80,43 84,53" fill="#334155"/>
   <text x="70" y="44" textAnchor="end" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif">E</text>
 
-  {/* Barra contínua de energia (termômetro) */}
   <rect x="110" y="62" width="55" height="192" rx="6" fill="url(#classicBar)" opacity="0.85"/>
 
-  {/* Marcações laterais — qualquer valor */}
   {[70, 100, 130, 160, 190, 220, 248].map((y, i) => (
     <line key={i} x1="107" y1={y} x2="113" y2={y} stroke="#0ea5e9" strokeWidth="1" opacity="0.4"/>
   ))}
 
-  {/* Partícula pode estar em QUALQUER posição */}
   <circle cx="137" cy="155" r="9" fill="#0ea5e9" stroke="#7dd3fc" strokeWidth="2"/>
 
-  {/* Seta dupla indicando liberdade de posição */}
   <line x1="175" y1="68" x2="175" y2="248" stroke="#334155" strokeWidth="1.2" strokeDasharray="3 2"/>
   <polygon points="171,70 175,60 179,70" fill="#334155"/>
   <polygon points="171,246 175,256 179,246" fill="#334155"/>
@@ -71,16 +68,13 @@ Na física, isso significa que um elétron num átomo não pode ter "qualquer" q
 
   <text x="180" y="275" textAnchor="middle" fill="#0ea5e9" fontSize="9" fontFamily="Inter, sans-serif" opacity="0.7">energia varia de forma contínua</text>
 
-  {/* ════════ LADO QUÂNTICO ════════ */}
   <text x="540" y="24" textAnchor="middle" fill="#a78bfa" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">QUÂNTICO</text>
   <text x="540" y="38" textAnchor="middle" fill="#475569" fontSize="9" fontFamily="Inter, sans-serif">apenas níveis discretos são permitidos</text>
 
-  {/* Eixo E (vertical) */}
   <line x1="390" y1="258" x2="390" y2="52" stroke="#334155" strokeWidth="1.5"/>
   <polygon points="386,53 390,43 394,53" fill="#334155"/>
   <text x="380" y="44" textAnchor="end" fill="#64748b" fontSize="10" fontFamily="Inter, sans-serif">E</text>
 
-  {/* ── Zonas PROIBIDAS (hachuradas) ── */}
   <rect x="402" y="75" width="130" height="42" rx="2" fill="url(#forbidHatch)" opacity="0.9"/>
   <rect x="402" y="137" width="130" height="42" rx="2" fill="url(#forbidHatch)" opacity="0.9"/>
   <rect x="402" y="199" width="130" height="42" rx="2" fill="url(#forbidHatch)" opacity="0.9"/>
@@ -89,7 +83,6 @@ Na física, isso significa que um elétron num átomo não pode ter "qualquer" q
   <text x="467" y="163" textAnchor="middle" fill="#581c87" fontSize="8" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">PROIBIDO</text>
   <text x="467" y="225" textAnchor="middle" fill="#581c87" fontSize="8" fontFamily="Inter, sans-serif" fontWeight="bold" letterSpacing="1">PROIBIDO</text>
 
-  {/* ── Níveis de energia permitidos ── */}
   <line x1="402" y1="73" x2="532" y2="73" stroke="#a78bfa" strokeWidth="3.5" strokeLinecap="round"/>
   <text x="538" y="77" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">E₄</text>
 
@@ -102,23 +95,22 @@ Na física, isso significa que um elétron num átomo não pode ter "qualquer" q
   <line x1="402" y1="243" x2="532" y2="243" stroke="#6d28d9" strokeWidth="3.5" strokeLinecap="round"/>
   <text x="538" y="247" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">E₁</text>
 
-  {/* Partícula no nível E₃ */}
   <circle cx="448" cy="135" r="9" fill="#8b5cf6" stroke="#c4b5fd" strokeWidth="2"/>
 
-  {/* ── Transição E₃ → E₂: emissão de fóton ── */}
   <line x1="480" y1="139" x2="480" y2="193" stroke="#f59e0b" strokeWidth="2"/>
   <polygon points="475,192 480,202 485,192" fill="#f59e0b"/>
   <text x="558" y="164" textAnchor="middle" fill="#f59e0b" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="bold">hν emitido</text>
   <text x="558" y="177" textAnchor="middle" fill="#64748b" fontSize="8" fontFamily="Inter, sans-serif">(salto exato)</text>
 
-  {/* Linha de conexão ao label */}
   <line x1="484" y1="168" x2="530" y2="168" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3 2" opacity="0.5"/>
 
   <text x="540" y="275" textAnchor="middle" fill="#8b5cf6" fontSize="9" fontFamily="Inter, sans-serif" opacity="0.7">saltos discretos — sem valores intermediários</text>
 </svg>
 
-Essa natureza discreta da energia é o que permite criar os estados estáveis (0 e 1) que usamos para processar informação.
+<KeyInsight>
+Os níveis discretos de energia são o que permitem criar estados estáveis (|0⟩ e |1⟩) para processar informação quântica.
+</KeyInsight>
 
-Mas entender o *porquê* de precisarmos de computadores quânticos é só o começo. No próximo módulo, você verá onde a corrida quântica está hoje — quem está investindo, o que já foi conquistado e o que está em jogo.
+No próximo módulo, você verá onde a corrida quântica está hoje — quem está investindo, o que já foi conquistado e o que está em jogo.
 
 <GlossaryIndex terms={['lei-de-moore', 'efeito-tunel']} />

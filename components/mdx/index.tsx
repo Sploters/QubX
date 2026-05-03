@@ -20,6 +20,10 @@ export { PerspectiveToggle, PerspectiveWrapper } from '@/components/PerspectiveT
 export { QuantumTheater, TheaterScene, TheaterAnimation, TheaterQubit, TheaterSplitScreen } from '@/components/QuantumTheater'
 export { QuantumVsClassical, GroverSearchSimulation, DeutschJozsaSimulation } from '@/components/QuantumVsClassical'
 export { CircuitBuilder } from '@/components/CircuitBuilder'
+export { VisualDivider } from '@/components/VisualDivider'
+export { ConceptBlock } from '@/components/ConceptBlock'
+export { StepFlow } from '@/components/StepFlow'
+export { KeyInsight } from '@/components/KeyInsight'
 
 export function Term({ id, children }: TermProps) {
   const [isVisible, setIsVisible] = useState(false)

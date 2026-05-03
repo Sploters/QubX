@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm'
 import { MODULES, getModuleBySlug, getAdjacentModules } from '@/lib/modules'
 import { getModuleContent } from '@/lib/mdx'
 import { ModuleLayout } from '@/components/ModuleLayout'
-import { Term, Callout, GlossaryIndex, BitVsQubit, SuperdenseCoding, MazeQuantum, BlochSphere, EntanglementBell, DoubleSlit, QuantumWalk } from '@/components/mdx'
+import { Term, Callout, GlossaryIndex, BitVsQubit, SuperdenseCoding, MazeQuantum, BlochSphere, EntanglementBell, DoubleSlit, QuantumWalk, VisualDivider, ConceptBlock, StepFlow, KeyInsight } from '@/components/mdx'
 import type { Metadata } from 'next'
 
 const mdxComponents = {
@@ -18,6 +18,10 @@ const mdxComponents = {
   EntanglementBell,
   DoubleSlit,
   QuantumWalk,
+  VisualDivider,
+  ConceptBlock,
+  StepFlow,
+  KeyInsight,
 }
 
 interface PageProps {

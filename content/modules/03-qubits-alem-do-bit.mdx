@@ -1,76 +1,52 @@
 ## O que é um Qubit?
 
-Um **qubit** (quantum bit) é a unidade básica de informação quântica. Assim como um bit clássico pode ser 0 ou 1, um qubit pode ser:
+<ConceptBlock visual="qubit" title="Bit Quântico, Muito Mais que 0 ou 1">
+Um **qubit** (quantum bit) é a unidade básica de informação quântica. Um bit clássico pode ser 0 ou 1. Um qubit pode ser |0⟩, |1⟩ **ou** qualquer superposição α|0⟩ + β|1⟩ dos dois simultaneamente — essa terceira possibilidade não existe na computação clássica.
+</ConceptBlock>
 
-- **|0⟩** — estado base (análogo ao 0 clássico)
-- **|1⟩** — estado excitado (análogo ao 1 clássico)
-- **α|0⟩ + β|1⟩** — qualquer superposição dos dois, simultaneamente
-
-Essa terceira possibilidade não existe na computação clássica. É ela que dá ao qubit seu poder.
+<VisualDivider />
 
 ## Superposição: Estar em Dois Lugares ao Mesmo Tempo
 
-Matematicamente, um qubit em superposição é descrito por:
+<ConceptBlock visual="superposition" title="A Equação da Superposição">
+|ψ⟩ = α|0⟩ + β|1⟩, onde α e β são números complexos com |α|² + |β|² = 1. |α|² é a chance de medir 0, |β|² é a chance de medir 1. Se α = β = 1/√2, o qubit tem 50% de chance para cada — mas **enquanto não é medido, ele é os dois ao mesmo tempo**.
+</ConceptBlock>
 
-```
-|ψ⟩ = α|0⟩ + β|1⟩
-```
-
-Onde α e β são números complexos com |α|² + |β|² = 1.
-
-- **|α|²** é a probabilidade de medir 0
-- **|β|²** é a probabilidade de medir 1
-
-Se α = β = 1/√2, o qubit tem 50% de chance de ser 0 e 50% de chance de ser 1. Mas enquanto não é medido, ele **é os dois ao mesmo tempo**.
+<VisualDivider variant="line" />
 
 ## A Esfera de Bloch
 
-A Esfera de Bloch é a representação visual mais intuitiva de um qubit. Cada ponto na superfície da esfera representa um estado quântico possível.
+<ConceptBlock visual="measurement" title="O Mapa do Qubit">
+A Esfera de Bloch é a representação visual mais intuitiva de um qubit. Cada ponto na superfície representa um estado quântico possível. Dois ângulos descrevem qualquer estado: θ (latitude, 0 a π) e φ (longitude, 0 a 2π).
+</ConceptBlock>
 
 <BlochSphere />
 
-Dois ângulos descrevem completamente qualquer estado puro de 1 qubit na Esfera de Bloch:
+<KeyInsight>
+**Portas quânticas são rotações nessa esfera.** A porta X gira 180° em torno do eixo x (troca |0⟩↔|1⟩). A porta H leva |0⟩ → |+⟩ (aponta o vetor para o equador).
+</KeyInsight>
 
-- **θ** (polar, 0 a π): latitude — vai do polo |0⟩ ao polo |1⟩
-- **φ** (azimutal, 0 a 2π): longitude — a fase relativa entre as amplitudes
-
-```
-|ψ⟩ = cos(θ/2)|0⟩ + e^(iφ) sin(θ/2)|1⟩
-```
-
-**Pontos notáveis:** |0⟩ e |1⟩ nos polos; |+⟩ e |−⟩ no eixo x (superposição com fases opostas); |+i⟩ e |−i⟩ no eixo y (fase ±90°). **Portas quânticas são rotações** nessa esfera: a porta X gira 180° em torno do eixo x (troca |0⟩ ↔ |1⟩); a porta H leva |0⟩ → |+⟩ (aponta o vetor para o equador).
+<VisualDivider />
 
 ## Emaranhamento: A "Ação Fantasmagórica"
 
-Albert Einstein chamou o emaranhamento de <Term id="spukhafte-fernwirkung">*Spukhafte Fernwirkung*</Term> — "ação fantasmagórica à distância". Ele achava impossível.
-
-Estava errado.
-
-Dois qubits emaranhados compartilham um único estado quântico. Medir um deles **instantaneamente** determina o estado do outro — independente da distância entre eles.
+<ConceptBlock visual="entanglement" title="Destinos Amarrados">
+Dois qubits emaranhados compartilham um único estado quântico. Medir um deles **instantaneamente** determina o estado do outro — independente da distância. Einstein chamou isso de *Spukhafte Fernwirkung* ("ação fantasmagórica à distância"). Ele achava impossível. Estava errado.
+</ConceptBlock>
 
 <EntanglementBell />
 
-O estado de Bell preparado acima é **|Φ+⟩ = (|00⟩ + |11⟩) / √2** — os dois qubits estão em superposição e seus destinos estão amarrados:
+<KeyInsight>
+**Não viola a relatividade:** o emaranhamento não transmite informação mais rápido que a luz. A correlação existe, mas cada medição individual é aleatória — você só descobre a correlação comparando resultados pelo canal clássico.
+</KeyInsight>
 
-```
-P(00) = P(11) = 50%    P(01) = P(10) = 0
-```
-
-Medir Alice e obter 0 garante que Bob também verá 0 — mas Alice não controlou qual resultado saiu. Para Bob, olhar sozinho parece ruído 50/50. A correlação só aparece **depois** que os dois comparam notas via canal clássico.
-
-Einstein chamou isso de *"ação fantasmagórica à distância"* e achou que a mecânica quântica estava incompleta. Os experimentos de Bell (1964), Aspect (1982) e o <Term id="nobel-2022">**Nobel de Física 2022**</Term> mostraram que a natureza é, de fato, fantasmagórica — não há variáveis ocultas locais que expliquem as correlações.
-
-**Experimento de Aspect (1982):** Alain Aspect e sua equipe em Paris confirmaram experimentalmente que o emaranhamento é real. Fótons separados por dezenas de metros mostraram correlações que nenhuma teoria clássica consegue explicar. Aspect ganhou o <Term id="nobel-2022">**Nobel de Física em 2022**</Term> por isso.
-
-> ⚠️ **Importante:** O emaranhamento não permite transmissão de informação mais rápida que a luz. A correlação existe, mas o resultado de cada medição ainda é aleatório — você só descobre a correlação quando compara os resultados pelo canal clássico.
+<VisualDivider variant="line" />
 
 ## Decoerência: O Inimigo do Qubit
 
-***A superposição é extremamente frágil.*** Qualquer interação com o ambiente — uma vibração, um fóton de calor, um campo eletromagnético — pode fazer o qubit "esquecer" que estava em superposição e colapsar para 0 ou 1.
-
-Isso se chama **decoerência**.
-
-É por isso que computadores quânticos operam a temperaturas próximas do <Term id="zero-absoluto">**zero absoluto (−273°C)**</Term>: reduzir ao máximo qualquer fonte de perturbação.
+<ConceptBlock visual="collapse" title="Superposição Frágil">
+Qualquer interação com o ambiente — vibração, calor, campo eletromagnético — faz o qubit "esquecer" a superposição e colapsar. Por isso computadores quânticos operam próximo do **zero absoluto (−273°C)**.
+</ConceptBlock>
 
 | Tipo de Qubit | Tempo de Coerência Típico |
 |---------------|--------------------------|
@@ -79,12 +55,12 @@ Isso se chama **decoerência**.
 | Fotônico | Femtossegundos a picossegundos |
 | Spin nuclear (NMR) | Milissegundos a segundos |
 
-Tempo de coerência maior = mais tempo para executar cálculos antes do qubit "desfazer" a superposição.
+<VisualDivider />
 
 ## Desigualdade de Bell e Não-Clonagem
 
-**Bell (1964)** formulou um teste estatístico que distingue correlações quânticas de qualquer teoria clássica de variáveis ocultas. No jogo CHSH, Alice e Bob escolhem perguntas aleatórias e tentam maximizar a concordância sem comunicação. A mecânica clássica permite no máximo 75% de concordância; a quântica chega a ≈ 85,4% — violando a desigualdade de Bell. Isso foi verificado experimentalmente com fótons, elétrons e átomos.
-
-**Teorema da não-clonagem:** não existe operação quântica que copie um estado desconhecido |ψ⟩ para outro qubit sem destruir o original. A prova é direta pela linearidade da mecânica quântica — supor que a cópia existe leva a uma contradição com a unitariedade. Uma consequência: um espião não pode interceptar um qubit, copiar seu estado e repassá-lo sem deixar rastro — fundamento da segurança quântica.
+<ConceptBlock visual="measurement" title="O Teste que Provou a Mecânica Quântica">
+Bell (1964) formulou um teste estatístico que distingue correlações quânticas de teorias clássicas. A mecânica clássica permite no máximo 75% de concordância num certo jogo; a quântica chega a ~85,4%. Isso foi verificado experimentalmente — e ganhou o **Nobel de Física 2022**. Já o teorema da não-clonagem diz que não existe operação quântica que copie um estado desconhecido sem destruir o original — a base da segurança quântica.
+</ConceptBlock>
 
 <GlossaryIndex terms={['qubit', 'superposicao', 'emaranhamento', 'decoerencia', 'nobel-2022', 'spukhafte-fernwirkung', 'zero-absoluto']} />
