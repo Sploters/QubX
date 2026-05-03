@@ -15,6 +15,12 @@ export * from './BlochSphere'
 export * from './EntanglementBell'
 export * from './DoubleSlit'
 export * from './QuantumWalk'
+
+export { PerspectiveToggle, PerspectiveWrapper } from '@/components/PerspectiveToggle'
+export { QuantumTheater, TheaterScene, TheaterAnimation, TheaterQubit, TheaterSplitScreen } from '@/components/QuantumTheater'
+export { QuantumVsClassical, GroverSearchSimulation, DeutschJozsaSimulation } from '@/components/QuantumVsClassical'
+export { CircuitBuilder } from '@/components/CircuitBuilder'
+
 export function Term({ id, children }: TermProps) {
   const [isVisible, setIsVisible] = useState(false)
   const entry = GLOSSARY[id]
@@ -27,32 +33,22 @@ export function Term({ id, children }: TermProps) {
     <>
       <strong className="block text-text-primary mb-1">{entry.term}</strong>
       {entry.definition}
-      {id === 'nobel-2022' && (
-        <a 
-          href="https://www.nobelprize.org/prizes/physics/2022/summary/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block mt-2 text-purple-light hover:underline font-bold"
-        >
-          Ver anúncio oficial →
-        </a>
-      )}
       <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-surface" />
     </>
   )
 
   return (
-    <span 
+    <span
       className="relative group cursor-help inline-block"
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
-      <span className="text-purple border-b border-purple/40 font-medium hover:border-purple transition-all">
+      <span className="text-accent-cyan border-b border-accent-cyan/40 font-medium hover:border-accent-cyan transition-all">
         {children || entry.term}
       </span>
-      
+
       {isVisible && (
-        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface border border-border rounded-lg shadow-xl z-50 text-xs text-text-secondary animate-in fade-in slide-in-from-bottom-1 duration-200">
+        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface border border-white/5 rounded-xl shadow-xl z-50 text-xs text-text-secondary animate-in fade-in slide-in-from-bottom-1 duration-200">
           {content}
         </span>
       )}
@@ -63,33 +59,33 @@ export function Term({ id, children }: TermProps) {
 export function Callout({ children, type = 'info', title }: { children: React.ReactNode, type?: 'info' | 'warning' | 'tip' | 'deep-dive', title?: string }) {
   const styles = {
     info: {
-      bg: 'bg-cyan/10',
-      border: 'border-cyan/30',
+      bg: 'bg-accent-cyan/10',
+      border: 'border-accent-cyan/20',
       icon: '💡',
-      text: 'text-cyan-light'
+      text: 'text-accent-cyan'
     },
     warning: {
-      bg: 'bg-red-500/10',
-      border: 'border-red-500/30',
+      bg: 'bg-accent-orange/10',
+      border: 'border-accent-orange/20',
       icon: '⚠️',
-      text: 'text-red-400'
+      text: 'text-accent-orange'
     },
     tip: {
-      bg: 'bg-purple/10',
-      border: 'border-purple/30',
+      bg: 'bg-accent-pink/10',
+      border: 'border-accent-pink/20',
       icon: '✨',
-      text: 'text-purple-light'
+      text: 'text-accent-pink'
     },
     'deep-dive': {
-      bg: 'bg-slate-800/50',
-      border: 'border-slate-700',
-      icon: '🧪',
-      text: 'text-slate-300'
+      bg: 'bg-elevated/50',
+      border: 'border-white/5',
+      icon: '🔬',
+      text: 'text-text-secondary'
     }
   }[type]
 
   return (
-    <div className={`my-6 p-4 rounded-xl border ${styles.bg} ${styles.border} relative overflow-hidden group`}>
+    <div className={`my-6 p-4 rounded-2xl border ${styles.bg} ${styles.border} relative overflow-hidden`}>
       <div className="flex gap-3">
         <span className="text-xl flex-shrink-0">{styles.icon}</span>
         <div>
@@ -107,22 +103,26 @@ export function GlossaryIndex({ terms }: { terms: string[] }) {
   if (!terms || !Array.isArray(terms)) return null
 
   return (
-    <div className="mt-12 p-6 rounded-xl border border-border bg-surface/30">
-      <h3 className="text-lg font-bold text-text-primary mb-4 flex items-center gap-2">
-        <span className="text-purple">#</span> Glossário do Módulo
+    <div className="mt-12 p-6 rounded-2xl card">
+      <h3 className="text-lg font-display font-bold text-text-primary mb-4 flex items-center gap-2">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent-cyan">
+          <path d="M4 4h12v12H4z" />
+          <path d="M8 4v12M12 4v12M4 8h12M4 12h12" />
+        </svg>
+        Glossário do Módulo
       </h3>
-      <dl className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         {terms.map(id => {
           const entry = GLOSSARY[id]
           if (!entry) return null
           return (
-            <div key={id} className="border-l-2 border-purple/20 pl-4">
-              <dt className="text-sm font-bold text-purple-light mb-1">{entry.term}</dt>
+            <div key={id} className="border-l-2 border-accent-orange/20 pl-4">
+              <dt className="text-sm font-bold text-accent-orange mb-1">{entry.term}</dt>
               <dd className="text-xs text-text-secondary leading-relaxed">{entry.definition}</dd>
             </div>
           )
         })}
-      </dl>
+      </div>
     </div>
   )
 }

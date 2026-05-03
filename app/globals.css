@@ -1,23 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-background text-text-primary font-sans;
+    @apply bg-background text-text-primary font-sans antialiased;
+    overflow-x: hidden;
   }
 
-  h1 { @apply text-4xl font-bold; }
-  h2 { @apply text-2xl font-semibold; }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  h1 { @apply text-4xl md:text-5xl font-bold; }
+  h2 { @apply text-2xl md:text-3xl font-semibold; }
   h3 { @apply text-xl font-semibold; }
   p  { @apply text-text-secondary leading-relaxed; }
 
   a {
-    @apply text-purple hover:text-purple-light transition-colors;
+    @apply text-accent-cyan hover:text-accent-cyan/80 transition-colors;
   }
 
   code {
-    @apply bg-surface text-cyan px-1.5 py-0.5 rounded text-sm font-mono;
+    @apply bg-elevated text-accent-cyan px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  ::selection {
+    @apply bg-accent-orange/30 text-white;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface/60 backdrop-blur-xl border border-white/5;
+  }
+
+  .glass-hover {
+    @apply hover:bg-elevated/60 hover:border-accent-orange/20 transition-all duration-300;
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.15);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+  }
+
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent-orange via-accent-pink to-accent-cyan;
+  }
+
+  .prose-custom {
+    @apply prose prose-invert max-w-none
+      prose-headings:text-text-primary prose-headings:font-display
+      prose-p:text-text-secondary prose-p:leading-relaxed
+      prose-a:text-accent-cyan prose-a:no-underline hover:prose-a:text-accent-cyan/80
+      prose-code:text-accent-cyan prose-code:bg-elevated prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+      prose-pre:bg-surface prose-pre:border prose-pre:border-border
+      prose-img:rounded-xl prose-img:border prose-img:border-border prose-img:w-full
+      prose-table:text-sm prose-th:text-text-primary prose-td:text-text-secondary
+      prose-strong:text-text-primary
+      prose-blockquote:border-accent-orange prose-blockquote:text-text-secondary;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-2xl transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:border-accent-orange/30 hover:bg-elevated hover:-translate-y-0.5;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white
+      bg-gradient-to-r from-accent-orange to-accent-pink
+      hover:from-accent-orange/90 hover:to-accent-pink/90
+      active:scale-95 transition-all duration-200
+      shadow-lg shadow-accent-orange/20;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold
+      text-text-primary border border-border bg-surface/50
+      hover:bg-elevated hover:border-accent-cyan/30
+      active:scale-95 transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-orange {
+    @apply badge bg-accent-orange/10 text-accent-orange border border-accent-orange/20;
+  }
+
+  .badge-cyan {
+    @apply badge bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20;
+  }
+
+  .badge-pink {
+    @apply badge bg-accent-pink/10 text-accent-pink border border-accent-pink/20;
+  }
+
+  .badge-yellow {
+    @apply badge bg-accent-yellow/10 text-accent-yellow border border-accent-yellow/20;
+  }
+
+  .section-gradient {
+    @apply relative overflow-hidden;
+  }
+
+  .section-gradient::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,107,53,0.08), transparent 60%);
   }
 }
