@@ -40,7 +40,6 @@ export function DoubleSlit() {
     return H / 2
   }, [screenIntensity])
 
-  // Accumulate hits
   useEffect(() => {
     if (!running) return
     const id = setInterval(() => {
@@ -52,10 +51,8 @@ export function DoubleSlit() {
     return () => clearInterval(id)
   }, [running, sampleY])
 
-  // Clear hits when observer toggled
   useEffect(() => { setHits([]) }, [observed])
 
-  // Animation tick for wavefronts
   useEffect(() => {
     if (!running) return
     let raf: number
@@ -72,102 +69,127 @@ export function DoubleSlit() {
     [screenIntensity]
   )
 
-  const color = observed ? '#ef4444' : '#06b6d4'
+  const color = observed ? '#FF2D78' : '#00D4FF'
+  const glowFilter = observed ? 'url(#ds-glow-pink)' : 'url(#ds-glow-cyan)'
 
   return (
-    <div className="my-10 rounded-2xl border border-border bg-surface/20 p-4 flex flex-col items-center gap-4">
+    <div className="my-10 rounded-2xl border border-white/5 bg-gradient-to-br from-surface/60 to-background p-4 flex flex-col items-center gap-4">
       <svg
         width="100%"
         style={{ maxWidth: W }}
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Electron source */}
-        <circle cx={SOURCE_X} cy={SOURCE_Y} r="6" fill="#f59e0b" />
-        <text x={SOURCE_X} y={SOURCE_Y - 14} textAnchor="middle"
-              fill="#f59e0b" fontFamily="ui-monospace,monospace" fontSize="10">e⁻</text>
+        <defs>
+          <filter id="ds-glow-cyan">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="ds-glow-pink">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="ds-glow-strong">
+            <feGaussianBlur stdDeviation="3" />
+          </filter>
+          <radialGradient id="sourceGlow">
+            <stop offset="0%" stopColor="#FF6B35" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#FF6B35" stopOpacity="0" />
+          </radialGradient>
+        </defs>
 
-        {/* Wavefronts from source */}
+        <circle cx={SOURCE_X} cy={SOURCE_Y} r="20" fill="url(#sourceGlow)" />
+        <circle cx={SOURCE_X} cy={SOURCE_Y} r="6" fill="#FF6B35" filter="url(#ds-glow-strong)" />
+        <text x={SOURCE_X} y={SOURCE_Y - 16} textAnchor="middle"
+              fill="#FF6B35" fontFamily="ui-monospace,monospace" fontSize="10" fontWeight="bold">e⁻</text>
+
         {!observed && [30, 60, 90, 120, 150].map(r => {
           const phase = (tick * 60 - r) / 200
           if (phase <= 0 || phase >= 1) return null
           return (
             <circle key={r} cx={SOURCE_X} cy={SOURCE_Y}
                     r={r + (tick * 60 % 28)}
-                    fill="none" stroke="#06b6d4" strokeWidth="0.6" opacity={0.3 * (1 - phase)} />
+                    fill="none" stroke="#00D4FF" strokeWidth="0.7" opacity={0.25 * (1 - phase)} />
           )
         })}
 
-        {/* Barrier */}
-        <rect x={SLIT_X - 4} y={0}              width="8" height={SLIT1_Y - 16}               fill="#475569" />
-        <rect x={SLIT_X - 4} y={SLIT1_Y + 16}  width="8" height={SLIT2_Y - SLIT1_Y - 32}     fill="#475569" />
-        <rect x={SLIT_X - 4} y={SLIT2_Y + 16}  width="8" height={H - SLIT2_Y - 16}            fill="#475569" />
+        <rect x={SLIT_X - 4} y={0}              width="8" height={SLIT1_Y - 16} fill="#2A2E42" rx="1" />
+        <rect x={SLIT_X - 4} y={SLIT1_Y + 16}  width="8" height={SLIT2_Y - SLIT1_Y - 32} fill="#2A2E42" rx="1" />
+        <rect x={SLIT_X - 4} y={SLIT2_Y + 16}  width="8" height={H - SLIT2_Y - 16} fill="#2A2E42" rx="1" />
 
-        {/* Which-path detectors */}
         {observed && (
           <>
-            <rect x={SLIT_X-14} y={SLIT1_Y-14} width="28" height="28"
-                  fill="none" stroke="#ef4444" strokeWidth="1.2" strokeDasharray="2 3" />
-            <rect x={SLIT_X-14} y={SLIT2_Y-14} width="28" height="28"
-                  fill="none" stroke="#ef4444" strokeWidth="1.2" strokeDasharray="2 3" />
-            <text x={SLIT_X} y={16} textAnchor="middle"
-                  fill="#ef4444" fontFamily="ui-monospace,monospace" fontSize="9">DETECTORES</text>
+            <rect x={SLIT_X - 16} y={SLIT1_Y - 16} width="32" height="32"
+                  fill="none" stroke="#FF2D78" strokeWidth="1" strokeDasharray="3,4" rx="2" opacity="0.7" />
+            <rect x={SLIT_X - 16} y={SLIT2_Y - 16} width="32" height="32"
+                  fill="none" stroke="#FF2D78" strokeWidth="1" strokeDasharray="3,4" rx="2" opacity="0.7" />
+            <text x={SLIT_X} y={14} textAnchor="middle"
+                  fill="#FF2D78" fontFamily="ui-monospace,monospace" fontSize="8" fontWeight="bold">DETECTOR ATIVO</text>
           </>
         )}
 
-        {/* Wavefronts after slits */}
         {!observed && [SLIT1_Y, SLIT2_Y].map((sy, si) => (
           <g key={si}>
             {[40, 70, 100, 130, 160, 190, 220, 250].map(r => {
               const phase = (tick * 60 - r) / 280
               if (phase <= 0 || phase >= 1) return null
-              return <circle key={r} cx={SLIT_X} cy={sy} r={r}
-                             fill="none" stroke="#06b6d4" strokeWidth="0.6" opacity={0.35 * (1 - phase)} />
+              return (
+                <circle key={r} cx={SLIT_X} cy={sy} r={r}
+                        fill="none" stroke="#00D4FF" strokeWidth="0.6" opacity={0.3 * (1 - phase)} />
+              )
             })}
           </g>
         ))}
 
-        {/* Detection screen */}
-        <line x1={SCREEN_X} y1={0} x2={SCREEN_X} y2={H} stroke="#2d2d45" strokeWidth="1.5" />
+        <line x1={SCREEN_X} y1={0} x2={SCREEN_X} y2={H} stroke="#2A2E42" strokeWidth="1.5" />
 
-        {/* Predicted intensity profile */}
         <g transform={`translate(${SCREEN_X + 8}, 0)`}>
           {intensityBars.map(({ y, w }, i) => (
-            <rect key={i} x={0} y={y} width={w} height={H / 80} fill={color} opacity="0.35" />
+            <rect key={i} x={0} y={y} width={w} height={H / 80} fill={color} opacity="0.3" rx="1" />
           ))}
         </g>
 
-        {/* Accumulated hits */}
         {hits.map(h => (
-          <circle key={h.id} cx={SCREEN_X - 1} cy={h.y} r="1.5" fill={color} opacity="0.85" />
+          <circle key={h.id} cx={SCREEN_X - 1} cy={h.y} r="2" fill={color} opacity="0.8" filter={glowFilter} />
         ))}
 
         <text x={W - 14} y={H - 14} textAnchor="end"
-              fill="#475569" fontFamily="ui-monospace,monospace" fontSize="11">
+              fill="#6B6B80" fontFamily="ui-monospace,monospace" fontSize="10">
           {hits.length} elétrons
         </text>
       </svg>
 
-      {/* Controls */}
       <div className="flex flex-wrap gap-2 justify-center">
         <button
           onClick={() => setObserved(false)}
-          className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
-            !observed ? 'bg-purple border-purple text-white' : 'border-border bg-surface text-text-secondary hover:border-purple/50'
+          className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${
+            !observed
+              ? 'text-white shadow-lg'
+              : 'text-text-muted bg-elevated border border-white/5 hover:text-text-secondary'
           }`}
+          style={!observed ? {
+            background: 'linear-gradient(135deg, #00D4FF, #8b5cf6)',
+            boxShadow: '0 0 20px #00D4FF40',
+          } : undefined}
         >Sem medir fenda</button>
         <button
           onClick={() => setObserved(true)}
-          className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
-            observed ? 'bg-[#ef4444] border-[#ef4444] text-white' : 'border-border bg-surface text-text-secondary hover:border-[#ef4444]/50'
+          className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${
+            observed
+              ? 'text-white shadow-lg'
+              : 'text-text-muted bg-elevated border border-white/5 hover:text-text-secondary'
           }`}
+          style={observed ? {
+            background: 'linear-gradient(135deg, #FF2D78, #FF6B35)',
+            boxShadow: '0 0 20px #FF2D7840',
+          } : undefined}
         >Medir &quot;qual fenda?&quot;</button>
         <button onClick={() => setHits([])}
-          className="px-4 py-2 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:border-purple/50 transition-colors"
-        >↺ Limpar</button>
+          className="px-4 py-2 rounded-lg text-xs font-medium text-text-muted bg-elevated border border-white/5 hover:text-text-secondary transition-all"
+        >Limpar</button>
         <button onClick={() => setRunning(r => !r)}
-          className="px-4 py-2 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:border-purple/50 transition-colors"
-        >{running ? '⏸ Pausar' : '▶ Disparar'}</button>
+          className="px-4 py-2 rounded-lg text-xs font-medium text-text-muted bg-elevated border border-white/5 hover:text-text-secondary transition-all"
+        >{running ? 'Pausar' : 'Continuar'}</button>
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import type { Module } from '@/lib/modules'
 import { Sidebar } from './Sidebar'
+import { ModuleHero } from './ModuleHero'
 import { useProgress } from '@/hooks/useProgress'
 
 interface ModuleLayoutProps {
@@ -25,36 +26,17 @@ export function ModuleLayout({ module, prev, next, children }: ModuleLayoutProps
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="flex gap-8">
         <article className="flex-1 min-w-0">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+          <Link
+            href="/trilha"
+            className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-accent-cyan no-underline transition-colors mb-6"
           >
-            <Link
-              href="/trilha"
-              className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-accent-cyan no-underline transition-colors mb-6"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M10 12l-4-4 4-4" />
-              </svg>
-              Voltar à trilha
-            </Link>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M10 12l-4-4 4-4" />
+            </svg>
+            Voltar à trilha
+          </Link>
 
-            <div className="flex items-center gap-4 mb-3">
-              <span
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold font-display text-white flex-shrink-0"
-                style={{
-                  background: module.order === 0
-                    ? 'linear-gradient(135deg, #00D4FF, #8b5cf6)'
-                    : 'linear-gradient(135deg, #FF6B35, #FF2D78)',
-                }}
-              >
-                {String(module.order).padStart(2, '0')}
-              </span>
-              <h1 className="text-3xl md:text-4xl font-display font-bold text-text-primary">{module.title}</h1>
-            </div>
-            <p className="text-text-secondary mt-2 ml-14">{module.description}</p>
-          </motion.div>
+          <ModuleHero module={module} />
 
           <div className="prose-custom mt-8">
             {children}

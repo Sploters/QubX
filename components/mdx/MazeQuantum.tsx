@@ -1,13 +1,11 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const GRID = 5
 const TOTAL = GRID * GRID
-// Índice da célula-alvo (linha 3, coluna 4 = índice 19)
 const TARGET = 19
 
-// Amplitudes de base para o lado quântico — determinísticas, sem Math.random()
 const BASE_AMPS = [
   0.28, 0.24, 0.30, 0.22, 0.26,
   0.25, 0.32, 0.20, 0.29, 0.24,
@@ -18,9 +16,8 @@ const BASE_AMPS = [
 
 export function MazeQuantum() {
   const [step, setStep] = useState(0)
-  const [qPhase, setQPhase] = useState<0 | 1>(0) // 0 = superposição uniforme, 1 = amplificado
+  const [qPhase, setQPhase] = useState<0 | 1>(0)
 
-  // Clássico: avança uma célula a cada tick
   useEffect(() => {
     const t = setInterval(() => {
       setStep(s => (s >= TOTAL + 5 ? 0 : s + 1))
@@ -28,7 +25,6 @@ export function MazeQuantum() {
     return () => clearInterval(t)
   }, [])
 
-  // Quântico: alterna entre exploração e amplificação
   useEffect(() => {
     const t = setInterval(() => {
       setQPhase(p => (p === 0 ? 1 : 0))
@@ -43,31 +39,29 @@ export function MazeQuantum() {
   return (
     <div className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
 
-      {/* ── ABORDAGEM CLÁSSICA ── */}
-      <div className="rounded-xl border border-border bg-surface/30 p-5 flex flex-col gap-4">
+      <div className="rounded-2xl border border-white/5 bg-gradient-to-br from-surface/60 to-background p-5 flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-cyan/60" />
-          <span className="text-[11px] font-bold uppercase tracking-widest text-cyan/70">
+          <div className="w-2 h-2 rounded-full bg-accent-pink" />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-text-muted">
             Abordagem Clássica
           </span>
         </div>
 
-        {/* Grid */}
         <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${GRID}, 1fr)` }}>
           {Array.from({ length: TOTAL }).map((_, i) => {
             const isTarget = i === TARGET
             const isVisited = i < visited
             const isCurrent = i === currentIdx
 
-            let bg = 'bg-surface/40 border-border/30'
-            if (isTarget && isVisited) bg = 'bg-emerald-500/80 border-emerald-400'
-            else if (isCurrent) bg = 'bg-cyan border-cyan scale-110'
-            else if (isVisited) bg = 'bg-cyan/15 border-cyan/25'
+            let cls = 'bg-elevated/50 border-white/5'
+            if (isTarget && isVisited) cls = 'bg-gradient-to-br from-accent-orange to-accent-pink border-accent-orange text-white shadow-lg'
+            else if (isCurrent) cls = 'bg-accent-cyan border-accent-cyan scale-110 shadow-lg shadow-accent-cyan/20'
+            else if (isVisited) cls = 'bg-accent-cyan/15 border-accent-cyan/25'
 
             return (
               <div
                 key={i}
-                className={`aspect-square rounded border transition-all duration-150 flex items-center justify-center text-[9px] font-bold ${bg}`}
+                className={`aspect-square rounded-lg border transition-all duration-150 flex items-center justify-center text-[9px] font-bold ${cls}`}
               >
                 {isTarget && isVisited && <span className="text-white">✓</span>}
               </div>
@@ -75,12 +69,11 @@ export function MazeQuantum() {
           })}
         </div>
 
-        {/* Status */}
         <div>
           <p className="text-sm text-text-secondary">
             Verificadas:{' '}
-            <span className="text-cyan font-bold">{visited}</span>/{TOTAL}{' '}
-            {found && <span className="text-emerald-400">— achada em {TARGET + 1} passos</span>}
+            <span className="text-accent-cyan font-bold">{visited}</span>/{TOTAL}{' '}
+            {found && <span className="text-accent-orange">— encontrada em {TARGET + 1} passos</span>}
           </p>
           <p className="text-xs text-text-muted mt-1">
             Pior caso: <strong>N</strong> verificações sequenciais
@@ -88,28 +81,25 @@ export function MazeQuantum() {
         </div>
       </div>
 
-      {/* ── ABORDAGEM QUÂNTICA ── */}
-      <div className="rounded-xl border border-purple/30 bg-surface/30 p-5 flex flex-col gap-4">
+      <div className="rounded-2xl border border-accent-orange/10 bg-gradient-to-br from-accent-orange/5 to-accent-pink/5 p-5 flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <div className={`w-2 h-2 rounded-full bg-purple ${qPhase === 1 ? 'animate-pulse' : ''}`} />
-          <span className="text-[11px] font-bold uppercase tracking-widest text-purple-light/70">
+          <div className={`w-2 h-2 rounded-full bg-accent-orange ${qPhase === 1 ? 'animate-pulse' : ''}`} />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-accent-orange/70">
             Abordagem Quântica
           </span>
         </div>
 
-        {/* Grid */}
         <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${GRID}, 1fr)` }}>
           {Array.from({ length: TOTAL }).map((_, i) => {
             const isTarget = i === TARGET
             const amp = BASE_AMPS[i]
 
             if (qPhase === 1) {
-              // Fase amplificada: target brilha, outros somem
               if (isTarget) {
                 return (
                   <div
                     key={i}
-                    className="aspect-square rounded border bg-purple border-purple-light scale-125 transition-all duration-500 flex items-center justify-center text-[9px] font-bold text-white"
+                    className="aspect-square rounded-lg border bg-gradient-to-br from-accent-orange to-accent-pink border-accent-orange scale-110 transition-all duration-500 flex items-center justify-center text-[9px] font-bold text-white shadow-lg shadow-accent-orange/30"
                   >
                     ✓
                   </div>
@@ -118,35 +108,33 @@ export function MazeQuantum() {
               return (
                 <div
                   key={i}
-                  className="aspect-square rounded border border-purple/10 bg-purple/5 transition-all duration-500"
+                  className="aspect-square rounded-lg border border-accent-orange/10 bg-accent-orange/5 transition-all duration-500"
                   style={{ opacity: 0.12 }}
                 />
               )
             }
 
-            // Fase de superposição: todas as células com amplitude uniforme
             return (
               <div
                 key={i}
-                className="aspect-square rounded border border-purple/30 bg-purple/20 transition-all duration-500"
-                style={{ opacity: amp }}
+                className="aspect-square rounded-lg border border-accent-orange/20 bg-accent-orange/10 transition-all duration-500"
+                style={{ opacity: 0.3 + amp * 0.5 }}
               />
             )
           })}
         </div>
 
-        {/* Status */}
         <div>
           <p className="text-sm text-text-secondary">
             {qPhase === 0 ? (
               <>
-                <span className="text-purple-light font-bold">Todas</span> as células exploradas{' '}
-                <span className="text-purple-light font-bold">simultaneamente</span>
+                <span className="text-accent-orange font-bold">Todas</span> as células exploradas{' '}
+                <span className="text-accent-orange font-bold">simultaneamente</span>
               </>
             ) : (
               <>
                 Interferência{' '}
-                <span className="text-purple-light font-bold">amplificou a solução</span> correta
+                <span className="text-accent-orange font-bold">amplificou a solução</span> correta
               </>
             )}
           </p>

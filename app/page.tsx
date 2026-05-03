@@ -2,10 +2,12 @@ import Link from 'next/link'
 import { StatsSection } from '@/components/StatsSection'
 import { FeatureCards } from '@/components/FeatureCards'
 import { CtaSection } from '@/components/CtaSection'
+import { BackgroundParticles } from '@/components/BackgroundParticles'
 
 export default function HomePage() {
   return (
     <div className="relative">
+      <BackgroundParticles />
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">

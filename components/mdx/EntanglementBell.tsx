@@ -16,49 +16,57 @@ function QubitNode({
   delayed?: boolean
 }) {
   const resolved = result !== null && !delayed
-  const border = resolved ? (result === 0 ? '#06b6d4' : '#ec4899') : '#2d2d45'
-  const bg = resolved
-    ? `radial-gradient(circle at 35% 30%, ${result === 0 ? 'rgba(6,182,212,0.3)' : 'rgba(236,72,153,0.3)'}, #13131f)`
-    : '#13131f'
+  const color = resolved ? (result === 0 ? '#00D4FF' : '#FF2D78') : '#2A2E42'
+  const activeColor = resolved ? (result === 0 ? '#00D4FF' : '#FF2D78') : '#FF6B35'
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <div style={{
-        width: 100, height: 100, borderRadius: '50%',
-        border: `1.5px solid ${border}`,
-        background: bg,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        position: 'relative',
-        transition: 'all 400ms',
-        boxShadow: measuring ? '0 0 30px #f59e0b' : 'none',
-        margin: '0 auto',
-      }}>
+    <div className="text-center">
+      <div
+        className="relative w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center mx-auto transition-all duration-500"
+        style={{
+          border: `2px solid ${measuring ? '#FFD166' : color}`,
+          background: `radial-gradient(circle at 35% 30%, ${activeColor}25, #13131f 80%)`,
+          boxShadow: measuring
+            ? `0 0 40px ${activeColor}40, inset 0 0 40px ${activeColor}10`
+            : resolved
+            ? `0 0 30px ${activeColor}30, inset 0 0 20px ${activeColor}10`
+            : 'none',
+        }}
+      >
         {superposed && (
           <>
-            <span style={{
-              position: 'absolute', fontFamily: 'ui-monospace,monospace', fontSize: 20, color: '#06b6d4',
-              transform: `translate(${-14 + Math.sin(tick * 2) * 2}px, ${-6 + Math.cos(tick * 2) * 2}px)`,
-              opacity: 0.85,
-            }}>|0⟩</span>
-            <span style={{
-              position: 'absolute', fontFamily: 'ui-monospace,monospace', fontSize: 20, color: '#ec4899',
-              transform: `translate(${14 + Math.sin(tick * 2 + 2) * 2}px, ${6 + Math.cos(tick * 2 + 2) * 2}px)`,
-              opacity: 0.85,
-            }}>|1⟩</span>
+            <span
+              className="absolute font-mono text-lg transition-all duration-300"
+              style={{
+                color: '#00D4FF',
+                transform: `translate(${-12 + Math.sin(tick * 2) * 3}px, ${-8 + Math.cos(tick * 2) * 3}px)`,
+                opacity: 0.8,
+                textShadow: '0 0 10px #00D4FF40',
+              }}
+            >|0⟩</span>
+            <span
+              className="absolute font-mono text-lg transition-all duration-300"
+              style={{
+                color: '#FF2D78',
+                transform: `translate(${12 + Math.sin(tick * 2 + 2) * 3}px, ${8 + Math.cos(tick * 2 + 2) * 3}px)`,
+                opacity: 0.8,
+                textShadow: '0 0 10px #FF2D7840',
+              }}
+            >|1⟩</span>
           </>
         )}
         {resolved && (
-          <span style={{
-            fontFamily: 'ui-monospace,monospace', fontSize: 42,
-            color: result === 0 ? '#06b6d4' : '#ec4899',
-          }}>|{result}⟩</span>
+          <span
+            className="font-mono font-bold transition-all duration-500"
+            style={{
+              fontSize: 36,
+              color: result === 0 ? '#00D4FF' : '#FF2D78',
+              textShadow: `0 0 30px ${result === 0 ? '#00D4FF' : '#FF2D78'}40`,
+            }}
+          >|{result}⟩</span>
         )}
       </div>
-      <p style={{
-        marginTop: 8,
-        fontFamily: 'ui-monospace,monospace', fontSize: 11,
-        color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.12em',
-      }}>{label}</p>
+      <p className="mt-2 text-[10px] font-mono text-text-muted uppercase tracking-widest">{label}</p>
     </div>
   )
 }
@@ -111,78 +119,88 @@ export function EntanglementBell() {
   const disagree = history.length - agree
 
   return (
-    <div className="my-10 rounded-2xl border border-border bg-surface/20 p-6 flex flex-col items-center gap-6">
-
-      {/* Qubits + entanglement link */}
-      <div style={{ position: 'relative', width: '100%', maxWidth: 500, height: 160 }}>
-        <svg width="100%" height="160" viewBox="0 0 500 160"
-             style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+    <div className="my-10 rounded-2xl border border-white/5 bg-gradient-to-br from-surface/60 to-background p-6 flex flex-col items-center gap-6">
+      <div className="relative w-full max-w-[500px] h-40 md:h-44">
+        <svg width="100%" height="100%" viewBox="0 0 500 180"
+             className="absolute inset-0 pointer-events-none">
           <defs>
             <linearGradient id="bellLinkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stopColor="#06b6d4" />
-              <stop offset="50%"  stopColor="#f59e0b" />
-              <stop offset="100%" stopColor="#ec4899" />
+              <stop offset="0%"   stopColor="#00D4FF" />
+              <stop offset="50%"  stopColor="#FFD166" />
+              <stop offset="100%" stopColor="#FF2D78" />
             </linearGradient>
+            <filter id="bell-glow">
+              <feGaussianBlur stdDeviation="2" result="blur" />
+              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
           </defs>
+
           {phase === 'ready' && (
             <>
-              <path d={`M 100 80 Q ${250 + Math.sin(tick*2)*16} ${60+Math.sin(tick*3)*24} 400 80`}
-                    fill="none" stroke="url(#bellLinkGrad)" strokeWidth="1.8" opacity="0.7" strokeDasharray="4 4"/>
-              <path d={`M 100 80 Q ${250+Math.sin(tick*2+1)*16} ${100+Math.cos(tick*3)*24} 400 80`}
-                    fill="none" stroke="url(#bellLinkGrad)" strokeWidth="1.8" opacity="0.4" strokeDasharray="4 4"/>
+              <path d={`M 120 90 Q ${250 + Math.sin(tick*2)*20} ${60+Math.sin(tick*3)*30} 380 90`}
+                    fill="none" stroke="url(#bellLinkGrad)" strokeWidth="1.5" opacity="0.6" strokeDasharray="4,5" filter="url(#bell-glow)"/>
+              <path d={`M 120 90 Q ${250+Math.sin(tick*2+1)*20} ${120+Math.cos(tick*3)*30} 380 90`}
+                    fill="none" stroke="url(#bellLinkGrad)" strokeWidth="1.5" opacity="0.3" strokeDasharray="4,5" filter="url(#bell-glow)"/>
             </>
           )}
           {phase === 'measuringA' && (
-            <line x1="100" y1="80" x2="400" y2="80"
-                  stroke="#f59e0b" strokeWidth="2" opacity={Math.abs(Math.sin(tick * 15))} />
+            <line x1="120" y1="90" x2="380" y2="90"
+                  stroke="#FFD166" strokeWidth="2.5" opacity={Math.abs(Math.sin(tick * 15))} filter="url(#bell-glow)" />
           )}
           {phase === 'done' && (
-            <line x1="100" y1="80" x2="400" y2="80"
-                  stroke="#2d2d45" strokeWidth="1" strokeDasharray="4 6" opacity="0.4" />
+            <line x1="120" y1="90" x2="380" y2="90"
+                  stroke="#2A2E42" strokeWidth="1" strokeDasharray="4,8" opacity="0.4" />
           )}
         </svg>
-        <div style={{ position: 'absolute', left: 50,  top: 30 }}>
+        <div className="absolute left-4 md:left-8 top-4">
           <QubitNode label="Alice" result={aliceResult}
             measuring={phase === 'measuringA'} superposed={phase === 'ready'} tick={tick} />
         </div>
-        <div style={{ position: 'absolute', right: 50, top: 30 }}>
+        <div className="absolute right-4 md:right-8 top-4">
           <QubitNode label="Bob" result={bobResult} measuring={false}
             superposed={phase === 'ready' || phase === 'measuringA'}
             tick={tick + 1.3} delayed={phase === 'measuringA'} />
         </div>
       </div>
 
-      {/* Controls */}
       <div className="flex flex-wrap gap-2 justify-center">
         <button
           onClick={measure} disabled={phase !== 'ready'}
-          className="px-4 py-2 rounded-lg text-sm font-medium bg-purple text-white disabled:opacity-40 transition-opacity"
+          className="px-4 py-2 rounded-lg text-xs font-medium text-white transition-all duration-200 disabled:opacity-30"
+          style={phase === 'ready' ? {
+            background: 'linear-gradient(135deg, #FF6B35, #FF2D78)',
+            boxShadow: '0 0 20px #FF6B3540',
+          } : {
+            background: '#242840',
+          }}
         >Medir Alice</button>
         <button onClick={reset}
-          className="px-4 py-2 rounded-lg text-sm font-medium border border-border bg-surface text-text-secondary hover:border-purple/50 transition-colors"
-        >↺ Reemaranhar</button>
+          className="px-4 py-2 rounded-lg text-xs font-medium text-text-muted bg-elevated border border-white/5 hover:text-text-secondary transition-all"
+        >Reemaranhar</button>
         <button onClick={runMany} disabled={phase === 'measuringA'}
-          className="px-4 py-2 rounded-lg text-sm font-medium border border-[#ec4899] bg-[#ec4899]/10 text-[#ec4899] hover:bg-[#ec4899]/20 disabled:opacity-40 transition-colors"
+          className="px-4 py-2 rounded-lg text-xs font-medium text-accent-pink bg-accent-pink/10 border border-accent-pink/20 hover:bg-accent-pink/20 disabled:opacity-30 transition-all"
         >Rodar 200×</button>
       </div>
 
-      {/* Histogram */}
       {history.length > 0 && (
-        <div style={{ width: '100%', maxWidth: 420 }}>
+        <div className="w-full max-w-[420px]">
           <p className="text-xs text-text-muted font-mono mb-3">
-            {history.length} medições · Alice e Bob sempre concordam em |Φ+⟩
+            {history.length} medições · Alice e Bob sempre concordam
           </p>
-          <ProbBar label="concordam (00 ou 11)" value={agree / history.length} color="#22c55e" highlight />
-          <div style={{ height: 6 }} />
-          <ProbBar label="discordam (01 ou 10)" value={disagree / history.length} color="#ef4444" />
-          <div style={{ display: 'flex', gap: 2, marginTop: 16, height: 36, alignItems: 'flex-end' }}>
+          <ProbBar label="concordam (00 ou 11)" value={agree / history.length} color="#FF6B35" highlight />
+          <div className="h-1.5" />
+          <ProbBar label="discordam (01 ou 10)" value={disagree / history.length} color="#2A2E42" />
+          <div className="flex gap-[2px] mt-4 h-8 items-end">
             {history.slice(0, 80).map((p, i) => (
-              <div key={i} style={{
-                flex: 1,
-                height: p[0] === p[1] ? (p[0] === 0 ? 22 : 36) : 16,
-                background: p[0] === p[1] ? (p[0] === 0 ? '#06b6d4' : '#ec4899') : '#ef4444',
-                borderRadius: 1, opacity: 0.8,
-              }} />
+              <div key={i} className="flex-1 rounded-sm transition-all duration-300"
+                style={{
+                  height: p[0] === p[1] ? (p[0] === 0 ? 22 : 32) : 12,
+                  background: p[0] === p[1]
+                    ? (p[0] === 0 ? '#00D4FF' : '#FF2D78')
+                    : '#2A2E42',
+                  opacity: 0.8,
+                }}
+              />
             ))}
           </div>
         </div>
