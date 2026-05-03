@@ -81,10 +81,10 @@ export function MazeQuantum() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-accent-orange/10 bg-gradient-to-br from-accent-orange/5 to-accent-pink/5 p-5 flex flex-col gap-4">
+      <div className="rounded-2xl border border-accent-orange/20 bg-gradient-to-br from-accent-orange/10 to-accent-pink/10 p-5 flex flex-col gap-4">
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full bg-accent-orange ${qPhase === 1 ? 'animate-pulse' : ''}`} />
-          <span className="text-[10px] font-bold uppercase tracking-widest text-accent-orange/70">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-accent-orange">
             Abordagem Quântica
           </span>
         </div>
@@ -108,8 +108,8 @@ export function MazeQuantum() {
               return (
                 <div
                   key={i}
-                  className="aspect-square rounded-lg border border-accent-orange/10 bg-accent-orange/5 transition-all duration-500"
-                  style={{ opacity: 0.12 }}
+                  className="aspect-square rounded-lg border border-accent-orange/20 bg-background transition-all duration-500"
+                  style={{ opacity: 0.2 }}
                 />
               )
             }
@@ -117,8 +117,8 @@ export function MazeQuantum() {
             return (
               <div
                 key={i}
-                className="aspect-square rounded-lg border border-accent-orange/20 bg-accent-orange/10 transition-all duration-500"
-                style={{ opacity: 0.3 + amp * 0.5 }}
+                className="aspect-square rounded-lg border border-accent-orange/30 bg-accent-orange/20 transition-all duration-500"
+                style={{ opacity: 0.4 + amp * 0.5 }}
               />
             )
           })}

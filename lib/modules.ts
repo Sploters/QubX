@@ -107,7 +107,7 @@ export const MODULES: Module[] = [
     order: 6,
     title: 'O Desafio da Construção',
     description: 'Construir um computador quântico é um dos maiores desafios de engenharia da história. Criogenia, decoerência, correção de erros e as 4 tecnologias que competem pelo futuro.',
-    videoUrl: 'https://www.youtube.com/embed/2B680SL4K1I',
+    videoUrl: 'https://www.youtube.com/embed/UUXIk1BI02E',
     images: [],
     references: [
       { title: 'Kjaergaard et al.: Superconducting Qubits: Current State of Play (2020)', url: 'https://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031119-050605', type: 'paper' },

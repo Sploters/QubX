@@ -2,19 +2,19 @@
 
 Em 2019, o processador quântico Sycamore do Google realizou um cálculo específico em **200 segundos**. O supercomputador mais poderoso do mundo levaria estimados **10.000 anos** para fazer o mesmo.
 
-Esse momento — chamado de "<Term id="supremacia-quantica">supremacia quântica</Term>" — marcou o início de uma nova era da computação.
+<KeyInsight variant="tip" title="Supremacia Quântica">
+Esse momento — chamado de "<Term id="supremacia-quantica">supremacia quântica</Term>" — marcou o início de uma nova era da computação. Um problema que levaria milênios foi resolvido em minutos.
+</KeyInsight>
+
+<VisualDivider />
 
 ## O que é Computação Quântica?
 
-Computadores convencionais processam informação em **bits**: cada bit é 0 ou 1. Um computador quântico usa **<Term id="qubit">qubits</Term>**, que podem ser 0, 1 ou qualquer combinação dos dois ao mesmo tempo — graças a um fenômeno da física chamado **<Term id="superposicao">superposição</Term>**.
-
-<Callout type="tip" title="O Poder do Paralelismo">
-Isso permite que um computador quântico explore milhões de possibilidades simultaneamente, em vez de testá-las uma a uma. Imagine encontrar a saída de um labirinto: um computador clássico tenta um caminho por vez; o quântico entra em todos os caminhos ao mesmo tempo.
-</Callout>
+<ConceptBlock visual="qubit" title="Bits vs Qubits">
+Computadores convencionais usam **bits** (0 ou 1). Um computador quântico usa **<Term id="qubit">qubits</Term>**, que podem ser 0, 1 **ou** ambos ao mesmo tempo — graças à <Term id="superposicao">superposição</Term>. Um bit é uma chave binária. Um qubit é um vetor que aponta para qualquer ponto na superfície de uma esfera.
+</ConceptBlock>
 
 <BitVsQubit />
-
-Um bit clássico é uma chave binária: **0** ou **1**. Um qubit é um vetor de estado num espaço complexo bidimensional — e pode apontar para qualquer ponto da superfície de uma esfera. Os polos **|0⟩** e **|1⟩** são os únicos estados que existem no mundo clássico. Todo o resto — o equador, os meridianos, os pontos entre eles — é território exclusivamente quântico.
 
 Matematicamente, qualquer estado de um qubit é:
 
@@ -22,11 +22,13 @@ Matematicamente, qualquer estado de um qubit é:
 |ψ⟩ = α|0⟩ + β|1⟩    com α, β ∈ ℂ e |α|² + |β|² = 1
 ```
 
-Essa continuidade é o que permite algoritmos quânticos explorar muitas possibilidades simultaneamente. Mas atenção: **medir** um qubit colapsa esse estado de volta para 0 ou 1 — o resto desaparece.
+Essa continuidade é o que permite algoritmos quânticos explorar muitas possibilidades simultaneamente. Mas atenção: **medir** um qubit colapsa esse estado de volta para 0 ou 1.
+
+<VisualDivider variant="line" />
 
 ## A Corrida Global
 
-A computação quântica é considerada tão estratégica quanto a corrida espacial dos anos 1960. Os principais players:
+Considerada tão estratégica quanto a corrida espacial dos anos 1960.
 
 | País / Empresa | Investimento | Destaque |
 |----------------|-------------|---------|
@@ -37,7 +39,9 @@ A computação quântica é considerada tão estratégica quanto a corrida espac
 | 🇪🇺 União Europeia | €1B (Quantum Flagship) | Programa de 10 anos |
 | 🇧🇷 Brasil | Em desenvolvimento | CBPF e universidades federais |
 
-![Processador criogênico de computador quântico — interior de um sistema de diluição refrigerada](/images/Hardware-QC.webp)
+![Processador criogênico de computador quântico](/images/Hardware-QC.webp)
+
+<VisualDivider />
 
 ## Linha do Tempo: Marcos Históricos
 
@@ -76,38 +80,40 @@ A computação quântica é considerada tão estratégica quanto a corrida espac
   <text x="630" y="38" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="Inter, sans-serif">QEC milestone</text>
 </svg>
 
+<VisualDivider variant="line" />
+
 ## Por que Agora?
 
-Após décadas de teoria, três fatores convergiram para tornar a computação quântica uma realidade prática nesta década:
+Após décadas de teoria, três fatores convergiram para tornar a computação quântica realidade:
 
-1. <Term id="hardware">**Hardware**</Term> — processadores com mais qubits e menos erros a cada ano. O Google saiu de 53 qubits em 2019 para 105 em 2024; a IBM de 27 para mais de 1.100 no mesmo período.
-2. <Term id="software">**Software**</Term> — frameworks como Qiskit (IBM) e Cirq (Google) permitem programar circuitos quânticos em Python sem precisar de doutorado em física.
-3. <Term id="nuvem">**Nuvem**</Term> — qualquer pessoa pode acessar hardware quântico real hoje, de graça, via IBM Quantum Network.
+<KeyInsight>
+**Hardware:** processadores com mais qubits e menos erros (Google: 53→105 qubits, IBM: 27→1.100+). **Software:** frameworks como Qiskit e Cirq permitem programar circuitos em Python. **Nuvem:** qualquer pessoa acessa hardware quântico real hoje, de graça.
+</KeyInsight>
+
+<VisualDivider />
 
 ## Áreas de Impacto
 
-Diferente do que muitos pensam, o computador quântico não fará o Windows rodar mais rápido. Ele brilha em problemas onde o número de possibilidades é astronomicamente grande.
+Diferente do que muitos pensam, o computador quântico não fará o Windows rodar mais rápido. Ele brilha em problemas com número astronômico de possibilidades.
 
 > *"Imagine que você só tem cinco minutos para encontrar um 'X' escrito em uma página de um livro na Biblioteca do Congresso (que tem 50 milhões de livros). Seria impossível. Mas se você estivesse em 50 milhões de realidades paralelas, e em cada realidade pudesse folhear as páginas de um livro diferente, em uma dessas realidades você encontraria o 'X'."*
 >
 > — **Eric Ladizinsky**, cofundador da D-Wave Systems
 
-Em outras palavras: um computador comum é *você* correndo como um louco tentando olhar o máximo de livros possível em cinco minutos. Um computador quântico é você dividido em 50 milhões de instâncias, folheando calmamente um livro em cada realidade.
+Para acelerar os cálculos, computadores quânticos acessam um tecido da realidade imensamente vasto. Um único qubit pode representar 0, 1 ou qualquer superposição. Com 300 qubits, o número de estados simultâneos supera o total de átomos no universo observável.
 
-Para acelerar os cálculos, os computadores quânticos acessam diretamente um tecido da realidade imensamente vasto — o estranho e contraintuitivo mundo da mecânica quântica. Um único qubit pode representar 0, 1 ou qualquer superposição quântica desses dois estados. Um par de qubits pode estar em qualquer superposição de 4 estados. Três qubits, em qualquer superposição de 8 estados. Com 300 qubits, o número de estados simultâneos supera o total de átomos no universo observável.
+As principais áreas revolucionadas:
 
-As principais áreas revolucionadas pela computação quântica:
-
-- **Segurança Digital:** O algoritmo de Shor, executado em um computador quântico de grande escala, poderia quebrar a criptografia RSA que protege hoje toda a internet. Em contrapartida, a distribuição quântica de chaves (QKD) oferece comunicação matematicamente inquebrável.
-- **Inteligência Artificial:** O processamento de informação necessário para melhorar o aprendizado de máquina é ideal para computação quântica. Computadores quânticos podem analisar grandes volumes de dados para fornecer feedback a sistemas de IA com velocidade sem precedentes.
-- **Desenvolvimento de Medicamentos:** Como podem revisar múltiplas moléculas, proteínas e compostos simultaneamente, computadores quânticos permitem que químicos identifiquem candidatos a fármacos em uma fração do tempo atual.
-- **Logística e Tráfego:** Calcular rotas ótimas de forma concorrente permite scheduling eficiente e redução de congestionamentos — aplicável a tráfego urbano, aviação, frotas e cadeias de suprimento.
-- **Previsão do Tempo e Clima:** Como podem analisar todos os dados meteorológicos de uma vez, os computadores quânticos darão aos cientistas previsões muito mais precisas sobre eventos climáticos extremos, salvando vidas e recursos.
+- **Segurança Digital:** O algoritmo de Shor poderia quebrar a criptografia RSA que protege a internet. Em contrapartida, a distribuição quântica de chaves (QKD) oferece comunicação matematicamente inquebrável.
+- **Inteligência Artificial:** Computadores quânticos podem analisar grandes volumes de dados para melhorar aprendizado de máquina com velocidade sem precedentes.
+- **Desenvolvimento de Medicamentos:** Revisam múltiplas moléculas simultaneamente, permitindo identificar candidatos a fármacos em fração do tempo atual.
+- **Logística e Tráfego:** Calcular rotas ótimas de forma concorrente para tráfego, aviação, frotas e cadeias de suprimento.
+- **Previsão do Tempo e Clima:** Analisam todos os dados meteorológicos de uma vez para previsões muito mais precisas.
 
 <Callout type="info" title="Mito vs Fato">
 **Mito:** O computador quântico vai substituir o meu notebook em alguns anos.
 
-**Fato:** O computador quântico não substitui o computador clássico. Ele resolve problemas específicos exponencialmente mais rápido — especialmente simulação molecular, otimização e criptografia. Para tarefas comuns como navegar na web ou editar textos, seu computador atual é (e continuará sendo) muito mais eficiente.
+**Fato:** O computador quântico não substitui o clássico. Ele resolve problemas específicos exponencialmente mais rápido — simulação molecular, otimização e criptografia. Para tarefas comuns, seu computador atual é muito mais eficiente.
 </Callout>
 
 <GlossaryIndex terms={['supremacia-quantica', 'qubit', 'superposicao', 'hardware', 'software', 'nuvem']} />
